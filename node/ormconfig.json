@@ -1,0 +1,15 @@
+[{
+    "name": "default",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "developer",
+    "password": "developer",
+    "database": "projetosae",
+    "logging": true,
+    "entities": ["./src/models/**/*.ts"],
+    "migrations": ["./src/database/migrations/*.ts"],
+    "cli": {
+      "migrationsDir": "./src/database/migrations"
+    }
+  }]

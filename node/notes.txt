@@ -1,0 +1,11 @@
+
+yarn add  mysql
+ yarn typeorm migration:create -n CreateSAE_CategoriasItens
+ yarn typeorm migration:revert
+ yarn typeorm migration:run
+
+yarn add typeorm-model-generator
+npx  typeorm-model-generator -h localhost -d projetosae -u developer -x developer -e mysql -p 3306 -o ./typegen
+
+yarn add uuid
+yarn add @types/uuid -D
