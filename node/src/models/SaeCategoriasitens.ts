@@ -1,31 +1,39 @@
-import { Column, Entity, Index } from "typeorm";
+import { Column, Entity, Index, OneToMany } from "typeorm";
+import { SaeItensformularios } from "./SaeItensformularios";
 import { v4 as uuid  } from "uuid";
 
-@Index("IDX_ORDEMCATEGORIA", ["ordemCategoria"], {})
+@Index("ordemCategoriaItens_UNIQUE", ["ordemCategoriaItens"], { unique: true })
 @Entity("sae_categoriasitens", { schema: "projetosae" })
 export class SaeCategoriasitens {
-  @Column("int", { primary: true, name: "codCategoriasItens" })
-  readonly codCategoriasItens: number;
-
   @Column("varchar", {
     primary: true,
     name: "codCategoriasItensUUId",
-    length: 36,
+    length: 45,
   })
-  readonly codCategoriasItensUuId: string;
+  codCategoriasItensUuId: string;
 
-  @Column("varchar", { name: "descricaoCategorias", length: 200 })
-  descricaoCategorias: string;
+  @Column("varchar", { name: "descricaoCategoriasItens", length: 200 })
+  descricaoCategoriasItens: string;
 
-  @Column("varchar", { name: "nomeInternoCategorias", length: 200 })
-  nomeInternoCategorias: string;
+  @Column("varchar", {
+    name: "nomeInternoCategoriasItens",
+    nullable: true,
+    length: 200,
+  })
+  nomeInternoCategoriasItens: string | null;
 
-  @Column("int", { name: "ordemCategoria" })
-  ordemCategoria: number;
+  @Column("int", { name: "ordemCategoriaItens", nullable: true, unique: true })
+  ordemCategoriaItens: number | null;
+
+  @OneToMany(
+    () => SaeItensformularios,
+    (saeItensformularios) => saeItensformularios.codCategoriasItensUu
+  )
+  saeItensformularios: SaeItensformularios[];
 
   constructor () {
     if (!this.codCategoriasItensUuId){
-        this.codCategoriasItensUuId =uuid();
+        this.codCategoriasItensUuId = uuid();
     }
   }
 }

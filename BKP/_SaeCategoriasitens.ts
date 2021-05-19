@@ -1,17 +1,18 @@
 import { Column, Entity, Index } from "typeorm";
+import { v4 as uuid  } from "uuid";
 
 @Index("IDX_ORDEMCATEGORIA", ["ordemCategoria"], {})
 @Entity("sae_categoriasitens", { schema: "projetosae" })
 export class SaeCategoriasitens {
   @Column("int", { primary: true, name: "codCategoriasItens" })
-  codCategoriasItens: number;
+  readonly codCategoriasItens: number;
 
   @Column("varchar", {
     primary: true,
     name: "codCategoriasItensUUId",
     length: 36,
   })
-  codCategoriasItensUuId: string;
+  readonly codCategoriasItensUuId: string;
 
   @Column("varchar", { name: "descricaoCategorias", length: 200 })
   descricaoCategorias: string;
@@ -21,4 +22,10 @@ export class SaeCategoriasitens {
 
   @Column("int", { name: "ordemCategoria" })
   ordemCategoria: number;
+
+  constructor () {
+    if (!this.codCategoriasItensUuId){
+        this.codCategoriasItensUuId =uuid();
+    }
+  }
 }

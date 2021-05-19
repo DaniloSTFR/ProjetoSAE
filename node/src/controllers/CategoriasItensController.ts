@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import { getRepository } from "typeorm";
-import { SaeCategoriasitens } from "../models/SaeCategoriasitens";
+import { getCustomRepository } from "typeorm";
+import { CategoriasItensRepository } from "../repositories/CategoriasItensRepository";
 
 class CategoriasItensController {
     async create(request: Request, response: Response){
-        const { descricaoCategorias, nomeInternoCategorias, ordemCategoria}
+        const { descricaoCategoriasItens, nomeInternoCategoriasItens, ordemCategoriaItens}
                 = request.body;
         
-        const categoriasItensRepository = getRepository(SaeCategoriasitens);
+        const categoriasItensRepository = getCustomRepository( CategoriasItensRepository);
 
         const categoriasItensAlreadyExists = await categoriasItensRepository.findOne({
-            nomeInternoCategorias,
+            nomeInternoCategoriasItens,
         })
 
         if (categoriasItensAlreadyExists){
@@ -20,9 +20,9 @@ class CategoriasItensController {
         }
 
         const categoriasItens = categoriasItensRepository.create({
-            descricaoCategorias, 
-            nomeInternoCategorias, 
-            ordemCategoria,
+            descricaoCategoriasItens, 
+            nomeInternoCategoriasItens, 
+            ordemCategoriaItens,
         });
 
         await categoriasItensRepository.save(categoriasItens);
