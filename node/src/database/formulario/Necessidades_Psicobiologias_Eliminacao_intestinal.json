@@ -1,0 +1,93 @@
+[
+    {
+        "descricaoItem": "Evacua Normalmente/Diariamente",
+        "ordemItem": 1,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "EVACUA_NORMALMENTE_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "EVACUA_NORMALMENTE_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_intestinal",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    ,
+    {
+        "descricaoItem": "Dor ao Evacuar",
+        "ordemItem": 2,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "DOR_AO_EVACUAR_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "DOR_AO_EVACUAR_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_intestinal",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    ,
+    {
+        "descricaoItem": "Cor das Fezes",
+        "ordemItem": 3,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Amarela",
+                    "chave": "COR_FEZES_AMARELA"
+                },
+                {
+                    "descricao": "Marrom",
+                    "chave": "COR_FEZES_MARROM"
+                },
+                {
+                    "descricao": "Melena",
+                    "chave": "COR_FEZES_MELENA"
+                },
+                {
+                    "descricao": "Hematoquesia",
+                    "chave": "COR_FEZES_HEMATOQUESIA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_intestinal",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    ,
+    {
+        "descricaoItem": "Consistência das Fezes",
+        "ordemItem": 4,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Dura",
+                    "chave": "CONSISTENCIA_FEZES_DURA"
+                },
+                {
+                    "descricao": "Liquida",
+                    "chave": "CONSISTENCIA_FEZES_LIQUIDA"
+                },
+                {
+                    "descricao": "Modelada",
+                    "chave": "CONSISTENCIA_FEZES_MODELADA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_intestinal",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+]

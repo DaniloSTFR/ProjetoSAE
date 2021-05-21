@@ -1,0 +1,325 @@
+[
+{
+    "descricaoItem": "Higiene Corporal",
+    "ordemItem": 1,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Satisfatório",
+                "chave": "HIGIENE_CORPORAL_SATISFATORIA"
+            },
+            {
+                "descricao": "Insatisfatória",
+                "chave": "HIGIENE_CORPORAL_INSATISFATORIA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Higiene bucal",
+    "ordemItem": 2,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Satisfatório",
+                "chave": "HIGIENE_BUCAL_SATISFATORIA"
+            },
+            {
+                "descricao": "Insatisfatória",
+                "chave": "HIGIENE_BUCAL_INSATISFATORIA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Habito de Sono",
+    "ordemItem": 3,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Satisfatório",
+                "chave": "HABITO_SONO_SATISFATORIA"
+            },
+            {
+                "descricao": "Insatisfatória",
+                "chave": "HABITO_SONO_INSATISFATORIA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Habito de repouso",
+    "ordemItem": 4,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Satisfatório",
+                "chave": "HABITO_REPOUSO_SATISFATORIA"
+            },
+            {
+                "descricao": "Insatisfatória",
+                "chave": "HABITO_REPOUSO_INSATISFATORIA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Habito de conforto",
+    "ordemItem": 5,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Satisfatório",
+                "chave": "HABITO_CONFORTO_SATISFATORIA"
+            },
+            {
+                "descricao": "Insatisfatória",
+                "chave": "HABITO_CONFORTO_INSATISFATORIA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Prurido Localizado",
+    "ordemItem": 6,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "PRURIDO_LOCALIZADO_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "PRURIDO_LOCALIZADO_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Prurido Generalizado",
+    "ordemItem": 7,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "PRURIDO_GENERALIZADO_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "PRURIDO_GENERALIZADO_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Uso regular de creme hidratante",
+    "ordemItem": 8,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "USO_REGULAR_CREME_HIDRATANTE_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "USO_REGULAR_CREME_HIDRATANTE_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Uso regula de protetor solar",
+    "ordemItem": 9,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "USO_REGULA_PROTETOR_SOLAR_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "USO_REGULA_PROTETOR_SOLAR_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Tireoide palpável",
+    "ordemItem": 10,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "TIREOIDE_PALPAVEL_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "TIREOIDE_PALPAVEL_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Coloração da Pele",
+    "ordemItem": 11,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Palidez",
+                "chave": "COLORACAO_PELE_PALIDEZ"
+            },
+            {
+                "descricao": "Vermelidão",
+                "chave": "COLORACAO_PELE_VERMELHIDAO"
+            },
+            {
+                "descricao": "Cianose",
+                "chave": "COLORACAO_PELE_CIANOSE"
+            },
+            {
+                "descricao": "Icterícia ",
+                "chave": "COLORACAO_PELE_ICTERICIA"
+            },
+            {
+                "descricao": "Corada",
+                "chave": "COLORACAO_PELE_CORADA"
+            },
+            {
+                "descricao": "Manchas",
+                "chave": "COLORACAO_PELE_MANCHAS"
+            },
+            {
+                "descricao": "Lesões",
+                "chave": "COLORACAO_PELE_LESOES"
+            },
+            {
+                "descricao": "Hematoma",
+                "chave": "COLORACAO_PELE_HEMATOMA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Umidade da Pele",
+    "ordemItem": 12,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Normal",
+                "chave": "UMIDADE_PELE_NORMAL"
+            },
+            {
+                "descricao": "Seca",
+                "chave": "UMIDADE_PELE_SECA"
+            },
+            {
+                "descricao": "Aumentada",
+                "chave": "UMIDADE_PELE_AUMENTADA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Textura da Pele",
+    "ordemItem": 13,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Normal",
+                "chave": "TEXTURA_PELE_NORMAL"
+            },
+            {
+                "descricao": "Lisa",
+                "chave": "TEXTURA_PELE_LISA"
+            },
+            {
+                "descricao": "Fina",
+                "chave": "TEXTURA_PELE_FINA"
+            },
+            {
+                "descricao": "Aspera",
+                "chave": "TEXTURA_PELE_ASPERA"
+            },
+            {
+                "descricao": "Enrugada ",
+                "chave": "TEXTURA_PELE_ENRUGADA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Espessura da Pele",
+    "ordemItem": 14,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Normal",
+                "chave": "ESPESSURA_PELE_NORMAL"
+            },
+            {
+                "descricao": "Atrófica ",
+                "chave": "ESPESSURA_PELE_ATROFICA"
+            },
+            {
+                "descricao": "Espessas",
+                "chave": "ESPESSURA_PELE_ESPESSA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Cuidado_Corporal",
+    "nomeInternoCategoriasOpcoes": ""
+}
+]

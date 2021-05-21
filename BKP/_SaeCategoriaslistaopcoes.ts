@@ -1,5 +1,4 @@
 import { Column, Entity, Index, OneToMany } from "typeorm";
-import { SaeItensformularios } from "./SaeItensformularios";
 import { SaeItensopcoes } from "./SaeItensopcoes";
 import { v4 as uuid  } from "uuid";
 
@@ -33,12 +32,6 @@ export class SaeCategoriaslistaopcoes {
   ordemCategoriasOpcoes: number | null;
 
   @OneToMany(
-    () => SaeItensformularios,
-    (saeItensformularios) => saeItensformularios.codCategoriasListaOpcoesUu
-  )
-  saeItensformularios: SaeItensformularios[];
-
-  @OneToMany(
     () => SaeItensopcoes,
     (saeItensopcoes) => saeItensopcoes.codCategoriasListaOpcoesUu
   )
@@ -49,4 +42,5 @@ export class SaeCategoriaslistaopcoes {
         this.codCategoriasListaOpcoesUuId = uuid();
     }
   }
+
 }

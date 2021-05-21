@@ -1,0 +1,327 @@
+[
+{
+	"descricaoItem":"Alergia", 
+	"ordemItem" : 1, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "ALERGIA_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "ALERGIA_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Acidente Vascular Cerebral – AVC", 
+	"ordemItem" : 2, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "ACIDENTE_VASCULAR_CEREBRAL_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "ACIDENTE_VASCULAR_CEREBRAL_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Cirurgias", 
+	"ordemItem" : 3, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "CIRURGIAS_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "CIRURGIAS_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Cardiopatias", 
+	"ordemItem" : 4, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "CARDIOPATIAS_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "CARDIOPATIAS_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"DPOC", 
+	"ordemItem" : 5, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "DPOC_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "DPOC_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Câncer", 
+	"ordemItem" : 6, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "CANCER_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "CANCER_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+
+,
+{
+	"descricaoItem":"Diabetes", 
+	"ordemItem" : 7, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "DIABETES_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "DIABETES_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Dor", 
+	"ordemItem" : 8, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "DOR_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "DOR_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Depressão", 
+	"ordemItem" : 9, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "DEPRESSAO_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "DEPRESSAO_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Enfizema e Bronquite Crônica", 
+	"ordemItem" : 10, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "DEPREENFIZEMA_BRONQUITE_CRONICA_SIMSSAO_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "ENFIZEMA_BRONQUITE_CRONICA_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Pneumonia", 
+	"ordemItem" : 11, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "PNEUMONIA_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "PNEUMONIA_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Turbeculose", 
+	"ordemItem" : 12, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "TUBERCULOSE_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "TUBERCULOSE_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Osteoporose", 
+	"ordemItem" : 13, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "OSTEOPOROSE_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "OSTEOPOROSE_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Síndromes geriátricas", 
+	"ordemItem" : 14, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "SINDROMES_GERIATRICAS_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "SINDROMES_GERIATRICAS_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Internação Anterior", 
+	"ordemItem" : 15, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "INTERNACAO_ANTERIOR_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "INTERNACAO_ANTERIOR_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Motivo(s) da internação", 
+	"ordemItem" : 16, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "multi",
+    "valores": {}
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Historia Familiar", 
+	"ordemItem" : 17, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "multi",
+    "valores": {}
+  },
+	"nomeInternoCategoriasItens":"Historia_Pregressa", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+
+]
+
+

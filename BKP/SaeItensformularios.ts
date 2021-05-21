@@ -9,6 +9,7 @@ import {
 import { SaeCategoriasitens } from "./SaeCategoriasitens";
 import { SaeCategoriaslistaopcoes } from "./SaeCategoriaslistaopcoes";
 
+@Index("ordemCategoria_UNIQUE", ["ordemItem"], { unique: true })
 @Index("fk_codCategoriasItensUUIdIDX", ["codCategoriasItensUuId"], {})
 @Index(
   "fk_codCategoriasListaOpcoesUUIdIDX",
@@ -23,7 +24,7 @@ export class SaeItensformularios {
   @Column("varchar", { name: "descricaoItem", length: 500 })
   descricaoItem: string;
 
-  @Column("int", { name: "ordemItem", nullable: true })
+  @Column("int", { name: "ordemItem", nullable: true, unique: true })
   ordemItem: number | null;
 
   @Column("varchar", { name: "codCategoriasItensUUId", length: 45 })

@@ -1,0 +1,85 @@
+[
+    {
+        "descricaoItem": "Condição Moradia",
+        "ordemItem": 1,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Própria",
+                    "chave": "MORADIA_PROPRIA"
+                },
+                {
+                    "descricao": "Cedida",
+                    "chave": "MORADIA_CEDIDA"
+                },
+                {
+                    "descricao": "Alugada",
+                    "chave": "MORADIA_ALUGADA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Tem Energia elétrica",
+        "ordemItem": 2,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "TEM_ENERGIA_ELETRICA_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "TEM_ENERGIA_ELETRICA_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Tem Água tratada",
+        "ordemItem": 3,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "TEM_AGUA_TRATADA_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "TEM_AGUA_TRATADA_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Tem Coleta de lixo",
+        "ordemItem": 4,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "TEM_COLETA_DE_LIXO_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "TEM_COLETA_DE_LIXO_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+]

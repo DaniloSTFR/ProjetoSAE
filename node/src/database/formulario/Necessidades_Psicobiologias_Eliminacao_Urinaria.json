@@ -1,0 +1,121 @@
+[
+    {
+        "descricaoItem": "Urina normalmente",
+        "ordemItem": 1,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "URINA_NORMALMENTE_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "URINA_NORMALMENTE_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_Urinaria",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Dor ao Urinar",
+        "ordemItem": 2,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "DOR_AO_URINAR_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "DOR_AO_URINAR_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_Urinaria",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Aspecto da Urina",
+        "ordemItem": 3,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Incolor",
+                    "chave": "ASPECTO_URINA_INCOLOR"
+                },
+                {
+                    "descricao": "Amarelo pálida",
+                    "chave": "ASPECTO_URINA_AMARELO_PALIDA"
+                },
+                {
+                    "descricao": "Amarelo escuro",
+                    "chave": "ASPECTO_URINA_AMARELO_ESCURO"
+                },
+                {
+                    "descricao": "Hematúria",
+                    "chave": "ASPECTO_URINA_HEMATURIA"
+                },
+                {
+                    "descricao": "Colúria/bilirrubina",
+                    "chave": "ASPECTO_URINA_COLURIA_BILIRRUBINA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_Urinaria",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Odor da Urina",
+        "ordemItem": 4,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Normal",
+                    "chave": "ODOR_URINA_NORMAL"
+                },
+                {
+                    "descricao": "Amônia sui generis",
+                    "chave": "ODOR_URINA_AMONIA_SUI_GENERIS"
+                },
+                {
+                    "descricao": "Fétido",
+                    "chave": "ODOR_URINA_FETIDO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_Urinaria",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Limpidez da Urina",
+        "ordemItem": 5,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Transparente",
+                    "chave": "LIMPIDEZ_URINA_TRANSPARENTE"
+                },
+                {
+                    "descricao": "Turva",
+                    "chave": "LIMPIDEZ_URINA_TURVA"
+                },
+                {
+                    "descricao": "Leitosa",
+                    "chave": "LIMPIDEZ_URINA_LEITOSA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Eliminacao_Urinaria",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+]

@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { SaeCategoriaslistaopcoes } from "./SaeCategoriaslistaopcoes";
 
+@Index("ordemOpcoes_UNIQUE", ["ordemOpcoes"], { unique: true })
 @Index("fk_codCategoriasListaOpcoesUUId", ["codCategoriasListaOpcoesUuId"], {})
 @Entity("sae_itensopcoes", { schema: "projetosae" })
 export class SaeItensopcoes {
@@ -17,7 +18,7 @@ export class SaeItensopcoes {
   @Column("varchar", { name: "descricaoOpcoes", length: 500 })
   descricaoOpcoes: string;
 
-  @Column("int", { name: "ordemOpcoes", nullable: true })
+  @Column("int", { name: "ordemOpcoes", nullable: true, unique: true })
   ordemOpcoes: number | null;
 
   @Column("varchar", { name: "codCategoriasListaOpcoesUUId", length: 45 })

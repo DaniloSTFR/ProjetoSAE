@@ -1,0 +1,203 @@
+[
+{
+    "descricaoItem": "Dependente Quimico",
+    "ordemItem": 1,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "DEPENDENTE_QUIMICO_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "DEPENDENTE_QUIMICO_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Etilismo",
+    "ordemItem": 2,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Social",
+                "chave": "ETILISMO_SOCIAL"
+            },
+            
+            {
+                "descricao": "3 vezes por semana",
+                "chave": "ETILISMO_3_VEZES_SEMANA"
+            },
+            {
+                "descricao": "Mais 3 vezes por semana",
+                "chave": "ETILISMO_MAIS_3_VEZES_SEMANA"
+            },
+						{
+                "descricao": "Todos os dias",
+                "chave": "ETILISMO_TODOS_ OS_DIAS"
+            },
+            {
+                "descricao": "Não",
+                "chave": "ETILISMO_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Tabagista",
+    "ordemItem": 3,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "TABAGISTA_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "TABAGISTA_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Ex-tabagista",
+    "ordemItem": 4,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "EX_TABAGISTA_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "EX_TABAGISTA_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Uso de aparelho auditivo",
+    "ordemItem": 5,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "USO_APARELHO_AUDITIVO_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "USO_APARELHO_AUDITIVO_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Uso de óculos",
+    "ordemItem": 6,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "USO_OCULOS_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "USO_OCULOS_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Uso de prótese dentaria",
+    "ordemItem": 7,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "USO_PROTESE_DENTARIA_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "USO_PROTESE_DENTARIA_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Uso andador",
+    "ordemItem": 8,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "USO_ANDADOR_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "USO_ANDADOR_NAO"
+            },
+            {
+                "descricao": "Tem Risco de Queda",
+                "chave": "RISCO_QUEDA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+,
+{
+    "descricaoItem": "Uso bengala",
+    "ordemItem": 9,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "USO_BENGALA_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "USO_BENGALA_NAO"
+            },
+            {
+                "descricao": "Tem Risco de Queda",
+                "chave": "RISCO_QUEDA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Necessidades_Psicossociais_Habitos_de_Vida",
+    "nomeInternoCategoriasOpcoes": ""
+}
+
+]

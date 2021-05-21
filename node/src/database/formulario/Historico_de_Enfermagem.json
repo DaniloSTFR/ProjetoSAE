@@ -1,0 +1,187 @@
+[{
+	"descricaoItem":"Sexo", 
+	"ordemItem" : 1, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Feminino",
+        "chave": "SEXO_FEMININO"
+      },
+      {
+        "descricao": "Masculino",
+        "chave": "SEXO_MASCULINO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historico_de_Enfermagem", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Estdo civil", 
+	"ordemItem" : 2, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "multi",
+    "valores": [
+      {
+        "descricao": "Solteiro(a)",
+        "chave": "ESTADO_CIVIL_SOLTEIRO"
+      },
+      {
+        "descricao": "Casado(a)",
+        "chave": "ESTADO_CIVIL_CASADO"
+      },
+      {
+        "descricao": "União Estável",
+        "chave": "ESTADO_CIVIL_UNIAO_ESTAVEL"
+      },
+      {
+        "descricao": "Divorciado(a)",
+        "chave": "ESTADO_CIVIL_DIVORCIADO"
+      },
+      {
+        "descricao": "Viúvo(a)",
+        "chave": "ESTADO_CIVIL_VIUVO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historico_de_Enfermagem", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Raça:", 
+	"ordemItem" : 3, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Negro(a)",
+        "chave": "RACA_NEGRO"
+      },
+      {
+        "descricao": "Branco(a)",
+        "chave": "RACA_BRANCO"
+      },
+      {
+        "descricao": "Pardo(a)",
+        "chave": "RACA_PARDO"
+      },
+      {
+        "descricao": "Amarelo(a)",
+        "chave": "RACA_AMARELO"
+      },
+      {
+        "descricao": "Indígena",
+        "chave": "RACA_INDIGENA"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historico_de_Enfermagem", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+
+{
+	"descricaoItem":"Religião", 
+	"ordemItem" : 4, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "RELIGIAO_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "RELIGAO_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historico_de_Enfermagem", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Grau escolaridade", 
+	"ordemItem" : 5, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Fundamental",
+        "chave": "ESCOLARIDADE_FUNDAMENTAL"
+      },
+      {
+        "descricao": "Médio",
+        "chave": "ESCOLARIDADE_MEDIO"
+      },
+      {
+        "descricao": "Superior",
+        "chave": "ESCOLARIDADE_SUPERIOR"
+      },
+      {
+        "descricao": "Sem escolaridade",
+        "chave": "SEM_ESCOLARIDADE"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historico_de_Enfermagem", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Uso de medicação continua", 
+	"ordemItem" : 6, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Sim",
+        "chave": "MEDICACAO_CONTINUA_SIM"
+      },
+      {
+        "descricao": "Não",
+        "chave": "MEDICACAO_CONTINUA_NAO"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historico_de_Enfermagem", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+{
+	"descricaoItem":"Informante", 
+	"ordemItem" : 7, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Paciente",
+        "chave": "INFORMANTE_PACIENTE"
+      },
+      {
+        "descricao": "Familiar",
+        "chave": "INFORMANTE_FAMILIAR"
+      },
+      {
+        "descricao": "Amigo",
+        "chave": "INFORMANTE_AMIGO"
+      },
+      {
+        "descricao": "Cuidador",
+        "chave": "INFORMANTE_CUIDADOR"
+      },
+      {
+        "descricao": "Outros",
+        "chave": "INFORMANTE_OUTROS"
+      }
+    ]
+  },
+	"nomeInternoCategoriasItens":"Historico_de_Enfermagem", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+
+]
+

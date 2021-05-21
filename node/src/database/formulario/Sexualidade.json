@@ -1,0 +1,101 @@
+[
+    {
+        "descricaoItem": "Tem vida sexual ativa",
+        "ordemItem": 1,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "FEZ_USO_DE_PRESERVATIVOS_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "FEZ_USO_DE_PRESERVATIVOS_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Sexualidade",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Fez uso de preservativos",
+        "ordemItem": 2,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "FAZ_REPOSICAO_HORMONAL_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "FAZ_REPOSICAO_HORMONAL_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Sexualidade",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Faz uso de terapia de reposição hormonal",
+        "ordemItem": 3,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "FAZ_MEDICAMENTOS_PARA_DISFUNCAO_SEXUAL_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "FAZ_MEDICAMENTOS_PARA_DISFUNCAO_SEXUAL_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Sexualidade",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Faz uso de medicamentos para disfunção sexual",
+        "ordemItem": 4,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "LESAO_ PERIANAL_OU_GENITAL_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "LESAO_ PERIANAL_OU_GENITAL_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Sexualidade",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Relata lesão(s) perianal ou genital",
+        "ordemItem": 5,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "RELATA_LESAO_PERIANAL_GENITAL_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "RELATA_LESAO_PERIANAL_GENITAL_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Sexualidade",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+]

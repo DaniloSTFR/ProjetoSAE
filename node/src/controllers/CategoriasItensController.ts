@@ -27,8 +27,33 @@ class CategoriasItensController {
 
         await categoriasItensRepository.save(categoriasItens);
 
-        return response.json(categoriasItens);
+        return response.status(201).json(categoriasItens);
     }
+
+    async show(request: Request, response: Response){
+        const categoriasItensRepository = getCustomRepository( CategoriasItensRepository);
+        const all = await categoriasItensRepository.find({
+            order: {
+                ordemCategoriaItens: "ASC",
+            },
+        });
+        return response.json(all);
+    }
+
+    async showcategoriasitens(request: Request, response: Response){
+        const { nomeInternoCategoriasItens} = request.body;
+
+        const categoriasItensRepository = getCustomRepository( CategoriasItensRepository);
+        const all = await categoriasItensRepository.find({
+            where: [{nomeInternoCategoriasItens}],
+            relations: ["saeItensformularios"],  
+            order: {
+                ordemCategoriaItens: "ASC",
+            },
+        });
+        return response.json(all);
+    }
+
 }
 
 export { CategoriasItensController };

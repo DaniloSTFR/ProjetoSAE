@@ -1,0 +1,161 @@
+[
+    {
+        "descricaoItem": "Alimentação Rica em frutas",
+        "ordemItem": 1,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "ALIMENTACAO_RICA_FRUTAS_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "ALIMENTACAO_RICA_FRUTAS_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Nutricao_e_Hidratacao",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Alimentação Rica em gordura",
+        "ordemItem": 2,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "ALIMENTACAO_RICA_GORDURA_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "ALIMENTACAO_RICA_GORDURA_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Nutricao_e_Hidratacao",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Alimentação Rica em carboidratos",
+        "ordemItem": 3,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "ALIMENTACAO_RICA_CARBOIDRATOS_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "ALIMENTACAO_RICA_CARBOIDRATOS_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Nutricao_e_Hidratacao",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Alimentação Rica em fibras",
+        "ordemItem": 4,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "ALIMENTACAO_RICA_FIBRAS_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "ALIMENTACAO_RICA_FIBRAS_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Nutricao_e_Hidratacao",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Alimentação  Rica em proteína",
+        "ordemItem": 5,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "ALIMENTACAO _RICA_PROTEÍNA_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "ALIMENTACAO _RICA_PROTEÍNA_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Nutricao_e_Hidratacao",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Alimentação Rica em legumes e verduras",
+        "ordemItem": 6,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "ALIMENTACAO_RICA_LEGUMES_VERDURAS_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "ALIMENTACAO_RICA_LEGUMES_VERDURAS_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Nutricao_e_Hidratacao",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Hidratação com Água",
+        "ordemItem": 7,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Satisfatório",
+                    "chave": "HIDRATACAO_AGUA_SATISFATORIA"
+                },
+                {
+                    "descricao": "Insatisfatória",
+                    "chave": "HIDRATACAO_AGUA_INSATISFATORIA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Nutricao_e_Hidratacao",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+    ,
+    {
+        "descricaoItem": "Hidratação com Suco",
+        "ordemItem": 8,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Satisfatório",
+                    "chave": "HIDRATACAO_SUCO_SATISFATORIA"
+                },
+                {
+                    "descricao": "Insatisfatória",
+                    "chave": "HIDRATACAO_SUCO_INSATISFATORIA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Necessidades_Psicobiologias_Nutricao_e_Hidratacao",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+]
