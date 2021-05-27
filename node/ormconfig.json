@@ -6,7 +6,7 @@
     "username": "developer",
     "password": "developer",
     "database": "projetosae",
-    "logging": true,
+    "logging": false,
     "entities": ["./src/models/**/*.ts"],
     "migrations": ["./src/database/migrations/*.ts"],
     "cli": {

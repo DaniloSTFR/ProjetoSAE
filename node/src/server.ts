@@ -2,10 +2,23 @@ import 'reflect-metadata';
 import './database';
 import express, { request, response } from "express";
 import { router } from './routes';
-
+const cors = require('cors');
 const app = express();
+
+//Set up mongoose connection
+const mongoose = require('mongoose');
+mongoose.connect ('mongodb://localhost:27017/SAE',{
+    useNewUrlParser: true ,
+    useUnifiedTopology: true ,
+    useFindAndModify: false,
+    useCreateIndex: true,
+});
+mongoose.Promise = global.Promise;
+
+app.use(cors());
 app.use(express.json());
 app.use( router );
+
 
 app.listen(3333, () => console.log("Projeto SAE is running!")); 
 

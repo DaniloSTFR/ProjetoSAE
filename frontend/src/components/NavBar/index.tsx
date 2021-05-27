@@ -1,4 +1,4 @@
-import ImgDsDark from 'assets/img/ds-dark.svg';
+import ImgDsDark from 'assets/img/sae.svg';
 import React from 'react';
 import { Link } from 'react-router-dom';
 

@@ -3,6 +3,7 @@ import { CategoriasItensController } from "./controllers/CategoriasItensControll
 import { CategoriasListaOpcoesController } from "./controllers/CategoriasListaOpcoesController";
 import { ItensFormulariosController } from "./controllers/ItensFormulariosController";
 import { ItensOpcoesController } from "./controllers/ItensOpcoesController";
+import { AnalseDeDadosController} from "./controllers/AnalseDeDadosController";
 
 const router = Router();
 
@@ -10,6 +11,7 @@ const categoriasItensController = new CategoriasItensController();
 const categoriasListaOpcoesController = new CategoriasListaOpcoesController();
 const itensFormulariosController = new ItensFormulariosController();
 const itensOpcoesController = new ItensOpcoesController();
+const analseDeDadosController = new AnalseDeDadosController();
 
 
 router.post("/categoriasitens",categoriasItensController.create );
@@ -26,6 +28,10 @@ router.get("/itensformularios",itensFormulariosController.show );
 
 router.post("/itensopcoes",itensOpcoesController.create );
 router.get("/itensopcoes",itensOpcoesController.show );
+
+router.post("/analisededados",analseDeDadosController.analisededados );
+
+
 
 
 

@@ -8,7 +8,9 @@
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mongoose": "^5.12.11",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.32",
