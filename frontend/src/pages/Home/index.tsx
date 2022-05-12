@@ -8,33 +8,33 @@ const Home = () => {
         <>
             <NavBar />
             <div className="container">
-                <div className="jumbotron">
-                    <h1 className="display-4">Projeto SAE</h1>
-                    <p className="lead">Sistematização da Assistência de Enfermagem</p>
+                <div className="jumbotron" style={{textAlign: "justify"}}>
+                    <h1 className="display-4">Projeto enfSenior</h1>
+                    <p className="lead">Sistematização da assistência de enfermagem ao idoso na atenção primária à saúde.</p>
                     <hr />
-                    <p>Esta aplicação consiste em auxiliar a SAE no diagnósticos de enfermagem.</p>
-                    <p>Os diagnósticos de enfermagem surgiram como uma necessidade de dar nome 
-                        ao que os enfermeiros identificavam a partir do pensamento crítico e o 
-                        raciocínio clínico, competências adquiridas pelo enfermeiro e essenciais 
-                        para o cuidado. Além disso, o diagnóstico de enfermagem é parte da 
-                        Sistematização da Assistência de Enfermagem (SAE) e ação privativa do
-                         enfermeiro, conforme a Resolução COFEN 358/2009.</p>
-                     <h5>NANDA Internacional</h5>
+
+                    <p>O projeto tem como objetivo auxiliar o enfermeiro na realização da consulta de
+                    enfermagem ao idoso na atenção primária à saúde, buscando implementar a sistematização
+                    da assistência de enfermagem.</p>
+                    <p>A SAE é um dos instrumentos de trabalho do profissional
+                    enfermeiro que embasa no que tange o conhecimento científico sendo uma ação privativa do
+                           enfermeiro, conforme a Resolução COFEN 358/2009.</p>
+                    {/*                      <h5>NANDA Internacional</h5>
                       <p>A NANDA Internacional surgiu no ano de 1982 como uma forma de 
                         uniformizar os diagnósticos de enfermagem tornando a linguagem única e 
-                        facilitando o uso de terminologias pelos enfermeiros.</p>    
+                        facilitando o uso de terminologias pelos enfermeiros.</p>     */}
                     <div>
                         <Link className="btn btn-primary btn-lg" to="/formulario">
                             Acessar o Formulário
                         </Link>
                     </div>
-                    <br/>
-                    <div>
+                    <br />
+                    {/*                     <div>
                         <Link className="btn btn-primary btn-lg" to="/dashboard">
                             Acessar o Dashboard
                         </Link>
-                    </div>
-                    <br/>
+                    </div> */}
+                    <br />
                 </div>
             </div>
             <Footer />

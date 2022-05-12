@@ -1,0 +1,56 @@
+{
+    "descricaoItem": "Trabalha",
+    "ordemItem": 11,
+    "opcoesItensFormJson": {
+        "tipo": "multipla",
+        "valores": [
+            {
+                "descricao": "Infecção urinária",
+                "chave": "HDA_INFECCAO_URINARIA"
+            },
+            {
+                "descricao": "Alzheimer",
+                "chave": "HDA_ALZHEIMER"
+            },
+            {
+                "descricao": "Osteoartrose",
+                "chave": "HDA_OSTEOARTROSE"
+            },
+            {
+                "descricao": "Insuficiência cardíaca congestiva",
+                "chave": "HDA_INSUFICIÊNCIA_CARDÍACA_CONGESTIVA"
+            },
+            {
+                "descricao": "Infarto agudo do miocárdio",
+                "chave": "HDA_INFARTO_AGUDO_DO_MIOCÁRDIO"
+            },
+            {
+                "descricao": "Parkinson",
+                "chave": "HDA_PARKINSON"
+            },
+            {
+                "descricao": "Hipertensão arterial sistêmica",
+                "chave": "HDA_HIPERTENSAO_ARTERIAL_SISTEMICA"
+            },
+            {
+                "descricao": "Diabetes mellitus",
+                "chave": "HDA_DIABETES_MELLITUS"
+            },
+            {
+                "descricao": "Incontinência fecal",
+                "chave": "HDA_INCONTINENCIA_FECAL"
+            },
+            {
+                "descricao": "Incontinência urinaria ",
+                "chave": "HDA_INCONTINENCIA_URINARIA"
+            },
+            {
+                "descricao": "Declínio cognitivo",
+                "chave": "HDA_DECLINIO_COGNITIVO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Moradia",
+    "nomeInternoCategoriasOpcoes": ""
+}
+

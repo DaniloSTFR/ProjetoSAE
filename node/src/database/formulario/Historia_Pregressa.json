@@ -264,15 +264,33 @@
 	"descricaoItem":"Síndromes geriátricas", 
 	"ordemItem" : 14, 
 	"opcoesItensFormJson":{ 
-    "tipo" : "unica",
+    "tipo" : "multipla",
     "valores": [
       {
-        "descricao": "Sim",
-        "chave": "SINDROMES_GERIATRICAS_SIM"
+        "descricao": "Incapacidade cognitiva",
+        "chave": "INCAPACIDADE_COGNITIVA"
       },
       {
-        "descricao": "Não",
-        "chave": "SINDROMES_GERIATRICAS_NAO"
+        "descricao": "Instabilidade postural",
+        "chave": "INSTABILIDADE_POSTURAL"
+      },{
+        "descricao": "Queda",
+        "chave": "QUEDA"
+      },
+      {
+        "descricao": "Imobilidade",
+        "chave": "IMOBILIDADE"
+      },{
+        "descricao": "Incontinência urinaria",
+        "chave": "INCONTINENCIA_URINARIA"
+      },
+      {
+        "descricao": "Incontinência fecal",
+        "chave": "INCONTINENCIA_FECAL"
+      },
+      {
+        "descricao": "Iatrogenia",
+        "chave": "IATROGENIA"
       }
     ]
   },
@@ -315,8 +333,35 @@
 	"descricaoItem":"Historia Familiar", 
 	"ordemItem" : 17, 
 	"opcoesItensFormJson":{ 
-    "tipo" : "multi",
-    "valores": {}
+    "tipo" : "multipla",
+    "valores": [
+      {
+        "descricao": "Acidente vascular cerebral avc",
+        "chave": "ACIDENTE_VASCULAR_CEREBRAL_AVC"
+      },
+      {
+        "descricao": "Hipertensão",
+        "chave": "HIPERTENSAO"
+      },{
+        "descricao": "Diabete milittus",
+        "chave": "DIABETE MILITTUS"
+      },
+      {
+        "descricao": "Câncer",
+        "chave": "CANCER"
+      },{
+        "descricao": "Cardiopatias",
+        "chave": "CARDIOPATIAS"
+      },
+      {
+        "descricao": "Trombofilia",
+        "chave": "TROMBOFILIA"
+      },
+      {
+        "descricao": "Outros",
+        "chave": "OUTROS"
+      }
+    ]
   },
 	"nomeInternoCategoriasItens":"Historia_Pregressa", 
   "nomeInternoCategoriasOpcoes" : ""

@@ -1,0 +1,639 @@
+[
+    
+{
+    "descricaoItem": "ESCALA DE KATZ-ATIVIDADES BÁSICAS DE VIDA DIÁRIA",
+    "ordemItem": 1,
+    "opcoesItensFormJson": {
+        "tipo": "div",
+        "valores": []
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+
+,
+
+{
+    "descricaoItem": "Banho",
+    "ordemItem": 2,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Não recebe assistência",
+                "chave": "BANHO_NAO_RECEBE_ASSISTENCIA"
+            },
+            {
+                "descricao": "Assistência para uma parte do corpo",
+                "chave": "BANHO_ASSISTENCIA_PARA_UMA_PARTE_DO_CORPO"
+            },
+            {
+                "descricao": "Não toma banho sozinho",
+                "chave": "BANHO_NAO_TOMA_BANHO_SOZINHO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Vestuário",
+    "ordemItem": 3,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Veste sem assistência ",
+                "chave": "VESTUARIO_VESTE_SEM_ASSISTENCIA"
+            },
+            {
+                "descricao": "Assistência para amarrar sapatos",
+                "chave": "VESTUARIO_ASSISTENCIA_PARA_AMARRAR_SAPATOS"
+            },
+            {
+                "descricao": "Assistência para vestir",
+                "chave": "VESTUARIO_ASSISTENCIA_PARA_VESTIR"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Higiene pessoal ",
+    "ordemItem": 4,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Vai ao banheiro sem assistência",
+                "chave": "HIGIENE_PESSOAL_VAI_AO_BANHEIRO_SEM_ASSISTENCIA"
+            },
+            {
+                "descricao": "Recebe assistência para ir ao banheiro",
+                "chave": "HIGIENE_PESSOAL_RECEBE_ASSISTENCIA_PARA_IR_AO_BANHEIRO"
+            },
+            {
+                "descricao": "Não vai ao banheiro para eliminações",
+                "chave": "HIGIENE_PESSOAL_NAO_VAI_AO_BANHEIRO_PARA_ELIMINACOES"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Transferência ",
+    "ordemItem": 5,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Deita levanta senta sem assistência",
+                "chave": "TRANSFERENCIA_DEITA_LEVANTA_SENTA_SEM_ASSISTENCIA"
+            },
+            {
+                "descricao": "Deita levanta senta com assistência",
+                "chave": "TRANSFERENCIA_DEITA_LEVANTA_SENTA_COM_ASSISTENCIA"
+            },
+            {
+                "descricao": "Não levanta da cama",
+                "chave": "TRANSFERENCIA_NAO_LEVANTA_DA_CAMA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Continência ",
+    "ordemItem": 6,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Controle esfincteriano completo",
+                "chave": "CONTINENCIA_CONTROLE_ESFINCTERIANO_COMPLETO"
+            },
+            {
+                "descricao": "Acidentes ocasionais",
+                "chave": "CONTINENCIA_ACIDENTES_OCASIONAIS"
+            },
+            {
+                "descricao": "Supervisão usa de cateter ou incontinência",
+                "chave": "CONTINENCIA_SUPERVISAO_USA_DE_CATETER_OU_INCONTINECIA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Alimentação",
+    "ordemItem": 7,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem assistência",
+                "chave": "ALIMENTACAO_SEM_ASSISTENCIA"
+            },
+            {
+                "descricao": "Assistência para cortar carne ou passar manteiga no pão",
+                "chave": "ALIMENTACAO_ASSISTENCIA_PARA_CORTAR_CARNE_OU_PASSAR_MANTEIGA_NO_PAO"
+            },
+            {
+                "descricao": "Com assistência ou sondas ou fluidos iv",
+                "chave": "ALIMENTACAO_COM_ASSISTENCIA_OU_SONDAS_OU_FLUIDOS_IV"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Escala de katz- resultados",
+    "ordemItem": 8,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Dependente",
+                "chave": "ESCALA_DE_KATZ_DEPENDENTE"
+            },
+            {
+                "descricao": "Parcialmente dependente ",
+                "chave": "ESCALA_DE_KATZ_PARCIALMENTE_DEPENDENTE"
+            },
+            {
+                "descricao": "Independente",
+                "chave": "ESCALA_DE_KATZ_INDEPENDENTE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "ESCALA DE LAWTON- ATIVIDADES INSTRUMENTAIS DE VIDA DIÁRIA",
+    "ordemItem": 9,
+    "opcoesItensFormJson": {
+        "tipo": "div",
+        "valores": []
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Consegue usar telefone",
+    "ordemItem": 10,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "CONSEGUE_USAR_TELEFONE_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "CONSEGUE_USAR_TELEFONE_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "CONSEGUE_USAR_TELEFONE_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} ,
+
+{
+    "descricaoItem": "Consegue ir a locais distantes, usando algum transporte",
+    "ordemItem": 11,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "LOCAIS_DISTANTES_USANDO_ALGUM_TRANSPORTE_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "LOCAIS_DISTANTES_USANDO_ALGUM_TRANSPORTE_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "LOCAIS_DISTANTES_USANDO_ALGUM_TRANSPORTE_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Consegue fazer compras",
+    "ordemItem": 12,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "FAZER_COMPRAS_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "FAZER_COMPRAS_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "FAZER_COMPRAS_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Consegue preparar suas próprias refeições",
+    "ordemItem": 13,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "PREPARAR_SUAS_PRÓPRIAS_REFEICOES_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "PREPARAR_SUAS_PRÓPRIAS_REFEICOES_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "PREPARAR_SUAS_PRÓPRIAS_REFEICOES_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+},
+
+
+{
+    "descricaoItem": "Consegue arrumar a casa ",
+    "ordemItem": 14,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "ARRUMAR_A_CASA_ARRUMAR_A_CASA_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "ARRUMAR_A_CASA_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "ARRUMAR_A_CASA_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Consegue fazer trabalhos manuais domésticos com pequenos reparos",
+    "ordemItem": 15,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "FAZER_TRABALHOS_MANUAIS_DOMESTICOS_COM_PEQUENOS_REPAROS_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "FAZER_TRABALHOS_MANUAIS_DOMESTICOS_COM_PEQUENOS_REPAROS_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "FAZER_TRABALHOS_MANUAIS_DOMESTICOS_COM_PEQUENOS_REPAROS_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Consegue lavar e passar sua roupa",
+    "ordemItem": 16,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "LAVAR_E_PASSAR_SUA_ROUPA_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "LAVAR_E_PASSAR_SUA_ROUPA_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "LAVAR_E_PASSAR_SUA_ROUPA_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Consegue tomar seus remédios na dose e horários corretos",
+    "ordemItem": 17,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "TOMAR_SEUS_REMEDIOS_NA_DOSE_E_HORARIOS_CORRETOS_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "TOMAR_SEUS_REMEDIOS_NA_DOSE_E_HORARIOS_CORRETOS_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "TOMAR_SEUS_REMEDIOS_NA_DOSE_E_HORARIOS_CORRETOS_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Consegue cuidar de suas finanças",
+    "ordemItem": 18,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sem ajuda",
+                "chave": "CUIDAR_DE_SUAS_FINANCAS_SEM_AJUDA"
+            },
+            {
+                "descricao": "Com ajuda parcial",
+                "chave": "CUIDAR_DE_SUAS_FINANCAS_COM_AJUDA_PARCIAL"
+            },
+            {
+                "descricao": "Não consegue",
+                "chave": "CUIDAR_DE_SUAS_FINANCAS_NAO_CONSEGUE"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Escala de lawton- resultados",
+    "ordemItem": 19,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Dependência total",
+                "chave": "ESCALA_DE_LAWTON_RESULTADOS_DEPENDENCIA_TOTAL"
+            },
+            {
+                "descricao": "Dependência parcial",
+                "chave": "ESCALA_DE_LAWTON_RESULTADOS_DEPENDENCIA_PARCIAL"
+            },
+            {
+                "descricao": "Independência",
+                "chave": "ESCALA_DE_LAWTON_RESULTADOS_INDEPENDENCIA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Teste de alcance funcional- taf",
+    "ordemItem": 20,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Pontuação normal",
+                "chave": "TESTE_DE_ALCANCE_FUNCIONAL_TAF_PONTUACAO_NORMAL"
+            },
+            {
+                "descricao": "Pontuação alterada",
+                "chave": "TESTE_DE_ALCANCE_FUNCIONAL_TAF_PONTUACAO_ALTERADA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Timed up and go-tug",
+    "ordemItem": 21,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Tempo normal",
+                "chave": "TIMED_UP_AND_GO_TUG_TEMPO_NORMAL"
+            },
+            {
+                "descricao": "Tempo alterado ",
+                "chave": "TIMED_UP_AND_GO_TUG_TEMPO_ALTERADO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "ESCALA DE DAWNTON- AVALIAÇÃO RISCO DE QUEDA",
+    "ordemItem": 22,
+    "opcoesItensFormJson": {
+        "tipo": "div",
+        "valores": []
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Quedas anteriores",
+    "ordemItem": 23,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Sim",
+                "chave": "QUEDAS_ANTERIORES_SIM"
+            },
+            {
+                "descricao": "Não",
+                "chave": "QUEDAS_ANTERIORES_NAO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Medicamentos",
+    "ordemItem": 24,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Nenhum",
+                "chave": "MEDICAMENTOS_NENHUM"
+            },
+            {
+                "descricao": "Tranquilizantes-sedativos",
+                "chave": "MEDICAMENTOS_TRANQUILIZANTES-SEDATIVOS"
+            },
+            {
+                "descricao": "Hipotensores - não diuréticos",
+                "chave": "MEDICAMENTOS_HIPOTENSORES_NAO_DIURETICOS"
+            },
+            {
+                "descricao": "Antiparkinsonianos",
+                "chave": "MEDICAMENTOS_ANTIPARKINSONIANOS"
+            },
+            {
+                "descricao": "Antidepressivos ",
+                "chave": "MEDICAMENTOS_ANTIDEPRESSIVOS"
+            },
+            {
+                "descricao": "Outros",
+                "chave": "MEDICAMENTOS_OUTROS"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Déficits sensoriais",
+    "ordemItem": 25,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Nenhum",
+                "chave": "DEFICITS_SENSORIAIS_NENHUM"
+            },
+            {
+                "descricao": "Alterações visuais",
+                "chave": "DEFICITS_SENSORIAIS_ALTERACOES_VISUAIS"
+            },
+            {
+                "descricao": "Alterações auditivas",
+                "chave": "DEFICITS_SENSORIAIS_ALTERACOES_AUDITIVAS"
+            },
+            {
+                "descricao": "Extremidades",
+                "chave": "DEFICITS_SENSORIAIS_EXTREMIDADES"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Estado mental",
+    "ordemItem": 26,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Orientado",
+                "chave": "ESTADO_MENTAL_ORIENTADO"
+            },
+            {
+                "descricao": "Confuso",
+                "chave": "ESTADO_MENTAL_CONFUSO"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Deambulação",
+    "ordemItem": 27,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Normal",
+                "chave": "DEAMBULACAO_NORMAL"
+            },
+            {
+                "descricao": "Segura com ajuda",
+                "chave": "DEAMBULACAO_SEGURA_COM_AJUDA"
+            },
+            {
+                "descricao": "Insegura com ou sem ajuda",
+                "chave": "DEAMBULACAO_INSEGURA_COM_OU_SEM_AJUDA"
+            },
+            {
+                "descricao": "Impossível",
+                "chave": "DEAMBULACAO_IMPOSSÍVEL"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+} 
+,
+{
+    "descricaoItem": "Escala de dawnton- resultado",
+    "ordemItem": 28,
+    "opcoesItensFormJson": {
+        "tipo": "unica",
+        "valores": [
+            {
+                "descricao": "Pontuação normal",
+                "chave": "ESCALA_DE_DAWNTON_RESULTADO_PONTUACAO_NORMAL"
+            },
+            {
+                "descricao": "Pontuação alterada",
+                "chave": "ESCALA_DE_DAWNTON_RESULTADO_PONTUACAO_ALTERADA"
+            }
+        ]
+    },
+    "nomeInternoCategoriasItens": "Instrumentos",
+    "nomeInternoCategoriasOpcoes": ""
+}
+
+]

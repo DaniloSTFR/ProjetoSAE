@@ -1,12 +1,21 @@
 export type  DiagnosticosItensTypes = {
-    codigo_do_diagnostico: String,
-    dominio: String,
-    classe: String,
-    definicao: String,
-    keyword: [String],
-    caracteristicas_definidoras : [String],
-    condicoes_associadas : [String],
-    fatores_relacionados : [String],
-    populacao_em_risco : [String],
-    fatores_de_risco : [String]
+    _id: string;
+    codigo_do_diagnostico: string,
+    dominio: string,
+    classe: string,
+    definicao: string,
+    keyword: [string],
+    caracteristicas_definidoras : [string],
+    condicoes_associadas : [string],
+    fatores_relacionados : [string],
+    populacao_em_risco : [string],
+    fatores_de_risco : [string]
+  }
+
+
+  export type SaeNicNocTypes = {
+    uuid_diagnosticos: string,
+    codigo_do_diagnostico: string,
+    intervercoes_nic: [string],
+    resultados_noc : [string]
   }

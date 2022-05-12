@@ -1,0 +1,118 @@
+[
+{
+	"descricaoItem":"Tem dificuldade para realização das atividades diárias", 
+	"ordemItem" : 1, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "multipla",
+    "valores": [
+      {
+        "descricao": "Alimentação ",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_ALIMENTACAO"
+      },
+      {
+        "descricao": "Banho",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_BANHO"
+      },{
+        "descricao": "Vestuário",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_VESTUARIO"
+      },
+      {
+        "descricao": "Higiene pessoal",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_HIGIENE_PESSOAL"
+      },{
+        "descricao": "Transferência",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_TRANSFERENCIA"
+      },
+      {
+        "descricao": "Continência",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_CONTINENCIA"
+      },
+      {
+        "descricao": "Usar telefone",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_USAR_TELEFONE"
+      },
+      {
+        "descricao": "Fazer compras",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_FAZER_COMPRAS"
+      },
+      {
+        "descricao": "Preparar suas próprias refeições",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_PREPARAR_SUAS_PROPRIAS_REFEICOES"
+      },
+      {
+        "descricao": "Arrumar a casa",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_ARRRUMAR_A_CASA"
+      },
+      {
+        "descricao": "Cuidar de suas finanças",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_CUIDAR_DE_SUAS_FINANCAS"
+      },
+      {
+        "descricao": "Lavar e passar roupa",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_LAVAR_E_PASSAR_ROUPA"
+      },
+      {
+        "descricao": "Não tem dificuldade",
+        "chave": "DIFICULDADE_ATIVIDADES_DIARIAS_NAO_TEM_DIFICULDADE"
+      }
+
+    ]
+  },
+	"nomeInternoCategoriasItens":"Mobilidade_e_Funcionalidade", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+,
+
+{
+	"descricaoItem":"Utilização da escala de Kartz e de Lawnton para avaliação das atividades de vida diária", 
+	"ordemItem" : 2, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "unica",
+    "valores": [
+      {
+        "descricao": "Avaliado ",
+        "chave": "ESCALA_KARTZ_LAWNTON_ATIVIDADES_AVALIADO"
+      },
+      {
+        "descricao": "Não avaliado",
+        "chave": "ESCALA_KARTZ_LAWNTON_ATIVIDADES_NAO_AVALIADO"
+      }
+
+    ]
+  },
+	"nomeInternoCategoriasItens":"Mobilidade_e_Funcionalidade", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+
+,
+
+{
+	"descricaoItem":"Mobilidade e risco de queda", 
+	"ordemItem" : 3, 
+	"opcoesItensFormJson":{ 
+    "tipo" : "multipla",
+    "valores": [
+      {
+        "descricao": "Faz uso de medicamento",
+        "chave": "MOBILIDADE_RISCO_DE_QUEDA_FAZ_USO_DE_MEDICAMENTO"
+      },
+      {
+        "descricao": "Sensibilidade nos pés",
+        "chave": "MOBILIDADE_RISCO_DE_QUEDA_SENSIBILIDADE_NOS_PÉS"
+      },
+      {
+        "descricao": "Deambulação normal",
+        "chave": "MOBILIDADE_RISCO_DE_QUEDA_DEAMBULACAO_NORMAL"
+      },
+      {
+        "descricao": "Deambulação com ajuda",
+        "chave": "MOBILIDADE_RISCO_DE_QUEDA_DEAMBULAÇÃO_COM_AJUDA"
+      }
+
+    ]
+  },
+	"nomeInternoCategoriasItens":"Mobilidade_e_Funcionalidade", 
+  "nomeInternoCategoriasOpcoes" : ""
+}
+
+]

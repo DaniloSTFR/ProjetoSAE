@@ -3,6 +3,7 @@ import { getCustomRepository } from "typeorm";
 import { CategoriasItensRepository } from "../repositories/CategoriasItensRepository";
 
 import saeNandaSchema from "../models/SaeNandaSchema";
+import saeNicNocShema from "../models/SaeNicNocShema";
 
 type KeyWordElements ={
     uuid:string; 
@@ -26,12 +27,29 @@ class AnalseDeDadosController {
             {keyword: {
                 $in:keyWordarr,
               }}
-            );
+            ).limit(4);
         //console.log(respostaDagnostico);
         //console.log(keyWordArray);
 
         return response.json({ 
         respostaDagnostico
+       });
+    }
+
+    async analisediagnostico(request: Request, response: Response){
+        
+        const { uuidDiagArray } = request.body ;
+
+        const respostasNICNOC = await saeNicNocShema.find(
+            {uuid_diagnosticos: {
+                $in:uuidDiagArray,
+              }}
+            );
+        //console.log(uuidDiagArray);
+        //console.log(respostasNICNOC);
+
+        return response.json({ 
+            respostasNICNOC
        });
     }
 

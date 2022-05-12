@@ -76,6 +76,9 @@ class ItensFormulariosController {
         const one = await itensFormulariosRepository.findOne({
             where: [{codItensFormularios}],
             relations: ["codCategoriasItensUu", "codCategoriasListaOpcoesUu"],  
+            order: {
+                descricaoItem: "ASC",
+            },
         });
         return response.json(one);
     }

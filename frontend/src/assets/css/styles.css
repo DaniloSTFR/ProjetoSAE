@@ -43,6 +43,25 @@ html, body {
     white-space: nowrap;
     list-style: none;
   }
+
+  .textareaanotacao{
+    width: 550%;
+    }
+
+.multipla{
+    flex-direction: column !important;
+}
+
+  @media (max-width: 1000px){
+    .inlineList {
+      flex-direction: column;
+    }
+
+    .textareaanotacao{
+        width: 200%;
+    }
+  }
+
 .question{
     margin: 0 0 0 .90rem;
 }
