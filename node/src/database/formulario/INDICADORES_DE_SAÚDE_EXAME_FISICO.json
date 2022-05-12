@@ -1,0 +1,399 @@
+[
+    
+    {
+        "descricaoItem": "INDICADORES DE SAÚDE: EXAME FÍSICO",
+        "ordemItem": 1,
+        "opcoesItensFormJson": {
+            "tipo": "div",
+            "valores": []
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    
+    ,
+    
+    {
+        "descricaoItem": "Temperatura",
+        "ordemItem": 2,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Normotermia",
+                    "chave": "TEMPERATURA_NORMOTERMIA"
+                },
+                {
+                    "descricao": "Hipertermia",
+                    "chave": "TEMPERATURA_HIPERTERMIA"
+                },
+                {
+                    "descricao": "Pirexia",
+                    "chave": "TEMPERATURA_PIREXIA"
+                },
+                {
+                    "descricao": "Hipotermia",
+                    "chave": "TEMPERATURA_HIPOTERMIA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+
+    ,
+    
+    {
+        "descricaoItem": "Pulso",
+        "ordemItem": 3,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Normocardia",
+                    "chave": "PULSO_NORMOCARDIA"
+                },
+                {
+                    "descricao": "Bradicardia",
+                    "chave": "PULSO_BRADICARDIA"
+                },
+                {
+                    "descricao": "Taquicardia",
+                    "chave": "PULSO_TAQUICARDIA"
+                },
+                {
+                    "descricao": "Taquisfigmia",
+                    "chave": "PULSO_TAQUISFIGMIA"
+                },
+                {
+                    "descricao": "Bradisfigmia",
+                    "chave": "PULSO_BRADISFIGMIA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+
+    ,
+    
+    {
+        "descricaoItem": "Respiração",
+        "ordemItem": 4,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Dispneia",
+                    "chave": "RESPIRACO_DISPNEIA"
+                },
+                {
+                    "descricao": "Eupneia",
+                    "chave": "RESPIRACO_EUPNEIA"
+                },
+                {
+                    "descricao": "Taquipneia",
+                    "chave": "RESPIRACO_TAQUIPNEIA"
+                },
+                {
+                    "descricao": "Bradipneia",
+                    "chave": "RESPIRACO_BRADIPNEIA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+
+    ,
+    
+    {
+        "descricaoItem": "Pressão arterial",
+        "ordemItem": 5,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Hipertensão",
+                    "chave": "PRESSAO_ARTERIAL_HIPERTENSÃO"
+                },
+                {
+                    "descricao": "Hipotensão",
+                    "chave": "PRESSAO_ARTERIAL_HIPOTENSÃO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    ,
+    
+    {
+        "descricaoItem": "Glicemia",
+        "ordemItem": 6,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Normal",
+                    "chave": "GLICEMIA_NORMAL"
+                },
+                {
+                    "descricao": "Alterada",
+                    "chave": "GLICEMIA_ALTERADA"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    }
+
+    ,
+
+    {
+        "descricaoItem": "Peso",
+        "ordemItem": 7,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Baixo peso",
+                    "chave": "PESO_BAIXO_PESO"
+                },
+                {
+                    "descricao": "Peso adequado",
+                    "chave": "PESO_PESO_ADEQUADO"
+                },
+                {
+                    "descricao": "Sobrepeso",
+                    "chave": "PESO_SOBREPESO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    ,
+
+    {
+        "descricaoItem": "Perímetro da panturrilha",
+        "ordemItem": 8,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Acompanhamento rotina",
+                    "chave": "PERIMETRO_DA_PANTURILHA_ACOMPANHAMENTO_ROTINA"
+                },
+                {
+                    "descricao": "Atenção",
+                    "chave": "PERIMETRO_DA_PANTURILHA_ATENCAO"
+                },
+                {
+                    "descricao": "Ação",
+                    "chave": "PERIMETRO_DA_PANTURILHA_ACAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    ,
+
+    {
+        "descricaoItem": "CABEÇA",
+        "ordemItem": 9,
+        "opcoesItensFormJson": {
+            "tipo": "div",
+            "valores": []
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    
+    ,
+    {
+        "descricaoItem": "Couro cabeludo - Integro",
+        "ordemItem": 10,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+               
+                {
+                    "descricao": "Com sujidade",
+                    "chave": "CABECA_COURO_CABELUDO_COM_SUJIDADE"
+                },
+                {
+                    "descricao": "Sem sujidade",
+                    "chave": "CABECA_COURO_CABELUDO_SEM_SUJIDADE"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    }  
+
+    ,
+    {
+        "descricaoItem": "Couro cabeludo - Com lesão",
+        "ordemItem": 11,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+               
+                {
+                    "descricao": "Sim",
+                    "chave": "COURO_CABELUDO_COM_LESAO_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "COURO_CABELUDO_COM_LESAO_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+,
+    {
+        "descricaoItem": "OLHOS",
+        "ordemItem": 12,
+        "opcoesItensFormJson": {
+            "tipo": "div",
+            "valores": []
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+
+    ,
+    {
+        "descricaoItem": "Acuidade visual",
+        "ordemItem": 13,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+               
+                {
+                    "descricao": "Sim",
+                    "chave": "OLHOS_ACUIDADE_VISUAL_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "OLHOS_ACUIDADE_VISUAL_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+    ,
+    {
+        "descricaoItem": "Uso de lentes de contato",
+        "ordemItem": 14,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+               
+                {
+                    "descricao": "Sim",
+                    "chave": "OLHOS_USO_DE_LENTES_DE_CONTATO_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "OLHOS_USO_DE_LENTES_DE_CONTATO_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+
+    ,
+    {
+        "descricaoItem": "Uso de óculos",
+        "ordemItem": 15,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+               
+                {
+                    "descricao": "Sim",
+                    "chave": "OLHOS_USO_DE_OCULOS_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "OLHOS_USO_DE_OCULOS_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+
+    ,
+    {
+        "descricaoItem": "Com alteração",
+        "ordemItem": 16,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+               
+                {
+                    "descricao": "Sim",
+                    "chave": "OLHOS_COM_ALTERACAO_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "OLHOS_COM_ALTERACAO_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+
+    ,
+    {
+        "descricaoItem": "Presença de secreção",
+        "ordemItem": 17,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+               
+                {
+                    "descricao": "Sim",
+                    "chave": "OLHOS_PRESENCA_DE_SECRECAO_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "OLHOS_PRESENCA_DE_SECRECAO_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+
+    ,
+    {
+        "descricaoItem": "Pupilas",
+        "ordemItem": 18,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+               
+                {
+                    "descricao": "Simétricas",
+                    "chave": "OLHOS_PUPILAS_SIMETRICAS"
+                },
+                {
+                    "descricao": "Assimétricas",
+                    "chave": "OLHOS_PUPILAS_ASSIMETRICAS"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Exame_Fisico",
+        "nomeInternoCategoriasOpcoes": ""
+    } 
+]

@@ -1,15 +1,15 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import api from 'services/api';
 import { Showcategoriasitens } from 'types/Categorias';
-import { BASE_URL } from 'utils/resquests';
 
 type Props = {
+    checkFunction: Function;
     onChecked: Function;
     nInteno: string;
 }
 
 
-const CategoriesItens = ({ onChecked, nInteno = "" }: Props) => {
+const CategoriesItens = ({ checkFunction, onChecked, nInteno = "" }: Props) => {
 
     const [varCategoriasItensTypes, setVarCategoriasItensTypes] = useState<Showcategoriasitens>({
         codCategoriasItensUuId: "",
@@ -20,17 +20,15 @@ const CategoriesItens = ({ onChecked, nInteno = "" }: Props) => {
     });
 
 
-
-
     useEffect(() => {
-        axios.post(`${BASE_URL}/showcategoriasitens`, { nomeInternoCategoriasItens: nInteno })
-            .then(response => {
-                //const data = response.data as CategoriasItensTypes[];
-                const dados = response.data as Showcategoriasitens[];
-                setVarCategoriasItensTypes(dados[0]);
-            })
-            .finally(            );
-    }, [nInteno]);
+        async function loadItens() {
+            const response = await api.post('/showcategoriasitens', { nomeInternoCategoriasItens: nInteno });
+            const dados = response.data as Showcategoriasitens[];
+            setVarCategoriasItensTypes(dados[0]);
+        }
+        loadItens();
+      }, [nInteno]);
+
 
     useEffect(() => {
         //console.log(varCategoriasItensTypes);
@@ -45,8 +43,28 @@ const CategoriesItens = ({ onChecked, nInteno = "" }: Props) => {
                     value={`"${valueOP}"`}
 
                     name={nameOP}
-                    //checked={state === "Male"}
                     onChange={() => onChecked(uuid_in,idItem_in,valueOP)}
+                    checked = {checkFunction (`${valueOP}`)? true: false }
+                    style={{ margin: '.4rem' }}
+                />
+                {txtOP}
+            </label>
+
+        );
+    }
+
+
+    function selectOption(txtOP: string, valueOP: string, nameOP: string, uuid_in:string,idItem_in:number) {
+        return (
+
+            <label style={{ margin: '0 .4rem 0 0' }}>
+                <input
+                    type="checkbox"
+                    value={`"${valueOP}"`}
+
+                    name={nameOP}
+                    onChange={() => onChecked(uuid_in+idItem_in,idItem_in,valueOP)}
+                    /* checked = {checkFunction (`${valueOP}`)? true: false } */
                     style={{ margin: '.4rem' }}
                 />
                 {txtOP}
@@ -58,7 +76,6 @@ const CategoriesItens = ({ onChecked, nInteno = "" }: Props) => {
     // {varCategoriasItensTypes.saeItensformularios[0].opcoesItensFormJson[0].valores.map(( it, index ) =>
     return (
         <>
-            <p>{nInteno}</p>
             <div>
                 <h4>{varCategoriasItensTypes.ordemCategoriaItens + " - " + varCategoriasItensTypes.descricaoCategoriasItens}</h4>
 
@@ -69,22 +86,42 @@ const CategoriesItens = ({ onChecked, nInteno = "" }: Props) => {
                             <div key={indexSIF}>
 
                                 <h5> {sif.descricaoItem} </h5>
+                                {sif.opcoesItensFormJson.tipo === "multipla"? 
 
-                                <div className="radio">
-                                    <ul className="inlineList" >
+                                        <div className="checkbox">
+                                            <ul className= "inlineList multipla">
 
-                                        {sif.opcoesItensFormJson.valores.map((it, indexVl) =>
-                                            <li key={indexVl}>
-                                                {radioOption(it.descricao, it.chave,
-                                                    varCategoriasItensTypes.nomeInternoCategoriasItens + '-' +
-                                                    sif.ordemItem,
-                                                    sif.codCategoriasItensUuId,
-                                                    sif.codItensFormularios)}
-                                            </li>
-                                        )}
+                                                {sif.opcoesItensFormJson.valores?.map((it, indexVl) =>
+                                                    <li key={indexVl}>
+                                                        {selectOption(it.descricao, it.chave,
+                                                            varCategoriasItensTypes.nomeInternoCategoriasItens + '-' +
+                                                            sif.ordemItem,
+                                                            sif.codCategoriasItensUuId,
+                                                            sif.codItensFormularios)}
+                                                    </li>
+                                                )}
 
-                                    </ul>
-                                </div>
+                                            </ul>
+                                        </div>
+
+                                   :
+                                        <div className="radio">
+                                            <ul className= "inlineList" >
+                                                {sif.opcoesItensFormJson.valores?.map((it, indexVl) =>
+                                                    <li key={indexVl}>
+                                                        {radioOption(it.descricao, it.chave,
+                                                            varCategoriasItensTypes.nomeInternoCategoriasItens + '-' +
+                                                            sif.ordemItem,
+                                                            sif.codCategoriasItensUuId,
+                                                            sif.codItensFormularios)}
+                                                    </li>
+                                                )}
+                                            </ul>
+                                        </div> 
+                                 }
+
+
+
                                 <br />
                             </div>
                         )}

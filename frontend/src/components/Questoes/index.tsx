@@ -1,10 +1,11 @@
-import axios from 'axios';
 import CategoriesItens from 'components/CategoriesItens';
-import { CategoriasItensTypes } from 'types/Categorias';
-import { useEffect, useState } from 'react';
-import { BASE_URL } from 'utils/resquests';
-import ReactDOM from 'react-dom'
 import Diagnosticos from 'components/Diagnosticos';
+import IntervercoesResultados from 'components/IntervercoesResultados';
+import Pagination from 'components/Pagination';
+import { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import api from 'services/api';
+import { CategoriasItensTypes } from 'types/Categorias';
 
 
 type NomeCategorias = {
@@ -25,64 +26,33 @@ type KeyWordElementsArray ={
 
 
 const Questoes = () => {
-    const myArray = ["Historico_de_Enfermagem","Historia_Doenca_Atual","Historia_Pregressa","Exame_Fisico","Necessidades_Psicossociais_Habitos_de_Vida","Necessidades_Psicobiologias_Cuidado_Corporal","Necessidades_Psicobiologias_Nutricao_e_Hidratacao","Necessidades_Psicobiologias_Eliminacao_Urinaria","Necessidades_Psicobiologias_Eliminacao_intestinal","Sexualidade","Moradia"];
-    const [load,setLoad] = useState(false); 
-    const [active, setActive] = useState(false);
-    // eslint-disable-next-line 
-    const [state, setState] = useState("");
+    const myArray = ["Historico_de_Enfermagem","Historia_Doenca_Atual","Historia_Pregressa","Exame_Fisico","Necessidades_Psicossociais_Habitos_de_Vida","Necessidades_Psicobiologias_Cuidado_Corporal","Necessidades_Psicobiologias_Nutricao_e_Hidratacao","Necessidades_Psicobiologias_Eliminacao_Urinaria","Necessidades_Psicobiologias_Eliminacao_intestinal","Sexualidade","Moradia","Instrumentos"];
+
+    const [state, setState] = useState(0);
+    // eslint-disable-next-line
     const [categoriesJSON, setCategoriesJSON] = useState(myArray);
     const [nomeCategorias, setNomeCategorias] = useState<NomeCategorias>({ nomeInteno: categoriesJSON, uuid: [] });
     const [listaKeyWordElements, setlistaKeyWordElements] = useState<KeyWordElementsArray>({ arr: [] });
 
     
 
-
-
     useEffect(() => {
-        axios.get(`${BASE_URL}/categoriasitens`)
-            .then(response => {
-                const data = response.data as CategoriasItensTypes[];
-                const nmInteno = data.map(x => x.nomeInternoCategoriasItens);
-                const uuidItem = data.map(x => x.codCategoriasItensUuId);
-                setNomeCategorias({ nomeInteno: nmInteno, uuid: uuidItem });
+        async function loadCategoriasitens() {
+          const response = await api.get('/categoriasitens');
+            const data = response.data as CategoriasItensTypes[];
+            const nmInteno = data.map(x => x.nomeInternoCategoriasItens);
+            const uuidItem = data.map(x => x.codCategoriasItensUuId);
+            setNomeCategorias({ nomeInteno: nmInteno, uuid: uuidItem });
+        }
+        loadCategoriasitens();
+      }, []);
 
-                
-                //setCategoriesJSON(nmInteno);
-            }
-            );
-            ReactDOM.render (<h3>React</h3>, document.getElementById('rectTeste'));    
-    }, []); 
-
-    useEffect(() => {
-        ReactDOM.render (
-
-            <form //onSubmit={loadPage}
-            >   
-                {nomeCategorias.nomeInteno.map(( dev, index ) =>
-
-                <div key={index}> 
-                    {// eslint-disable-next-line
-                    }
-                    <CategoriesItens onChecked={onChangeItemSimples} nInteno={dev} />
-                </div>
-                )}        
-                <div>   
-                    {// eslint-disable-next-line
-                    }                
-                    <button type="button" onClick={handleDadosAnalise} className="btn btn-outline-primary btn-lg">Analisar dados</button>
-                </div>
-
-                <br />
-
-            </form> 
-            
-            , document.getElementById('rectTeste'));
-    },[nomeCategorias]); 
-
+    const keywordExists = (keyword_in: string) => {
+        const arraypereciveis  =   listaKeyWordElements.arr.filter(f => f.keyword === keyword_in);
+        return (arraypereciveis.length > 0);
+      };
 
     const onChangeItemSimples = (uuid_in:string, idItem_in:number, keyword_in: string) => {
-        setState(keyword_in);
-        //console.log(categories);
         console.log("keyword:" + keyword_in);
 
         let listaUP:KeyWordElementsArray = {
@@ -120,34 +90,53 @@ const Questoes = () => {
     }
 
     useEffect(() => {
-        //console.log(listaKeyWordElements);
+        console.log(listaKeyWordElements);
     },[listaKeyWordElements]); 
     
-        // eslint-disable-next-line
-    function loadPage (e: any) {
-        e.preventDefault();
-        setLoad(true);
-        setActive(true);
-        setCategoriesJSON(myArray);
-        console.log(load);
-        console.log(active);
         
-        
+    const loadPage = (idx :number) => {
+       setState(idx);    
     }
+
+
+    async function onClickedNicNoc(uuid_Diagnosticos: string){
+
+        ReactDOM.render (<div></div>, document.getElementById('formulario'));
+        ReactDOM.render (<div></div>, document.getElementById('diagnosticos'));
+        
+        //const uuidArray = ["60822f3f24a3f414f43be6a1","60822f3f24a3f414f43be698","60822f4724a3f414f43be6ac", "60822f4f24a3f414f43be6c9" ];
+        const uuidArray = [uuid_Diagnosticos];
+        ReactDOM.render (<IntervercoesResultados uuidDiagArray={uuidArray} />, document.getElementById('intervercoes_resultados'));
+      };
 
     async function handleDadosAnalise(){
 
         const enviar = listaKeyWordElements.arr;
-        ReactDOM.render (<Diagnosticos keyWordElementsArray={enviar} />, document.getElementById('diagnosticos'));
+        ReactDOM.render (<Diagnosticos keyWordElementsArray={enviar} onClickedNicNoc= {onClickedNicNoc} />, document.getElementById('diagnosticos'));
       };
+
     
     return (
         <>
-            <div id="rectTeste"></div>
 
-            <div id="formulario"></div>
+            <div id="formulario">
+                <form >                        
+                    <CategoriesItens checkFunction={keywordExists} onChecked={onChangeItemSimples} nInteno={nomeCategorias.nomeInteno[state]} />
+                    <br />
+                </form>
 
+                <Pagination onClicked={loadPage} paginaAtual={state} tamanhaDasPaginas={nomeCategorias.nomeInteno.length} />
+
+                
+                <button type="button" onClick={handleDadosAnalise} className="btn btn-outline-primary btn-lg">Analisar dados</button>
+                
+                <br />
+            </div>            
+            <br />
             <div id="diagnosticos"></div>
+            <br />
+            <br />
+            <div id="intervercoes_resultados"></div>
         </>
     );
 }
@@ -157,6 +146,15 @@ export default Questoes;
 
 
 /*
+
+
+                    {nomeCategorias.nomeInteno.map((dev, index) =>
+
+                        <div key={`${index}-${dev}`}>
+                            
+                            <CategoriesItens onChecked={onChangeItemSimples} nInteno={nomeCategorias.nomeInteno[state]} />
+                        </div>
+                    )}
 
 
     useEffect(() => {

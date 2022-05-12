@@ -30,7 +30,7 @@ router.post("/itensopcoes",itensOpcoesController.create );
 router.get("/itensopcoes",itensOpcoesController.show );
 
 router.post("/analisededados",analseDeDadosController.analisededados );
-
+router.post("/analisediagnostico",analseDeDadosController.analisediagnostico );
 
 
 

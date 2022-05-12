@@ -5,6 +5,7 @@ import { DiagnosticosItensTypes } from 'types/Diagnosticos';
 
 type Props = {
     keyWordElementsArray: KeyWordElements[];
+    onClickedNicNoc: Function;
 }
 type KeyWordElements ={
     uuid:string; 
@@ -17,10 +18,11 @@ type DiagnosticosItensTypesArr ={
 }
 
 //const Diagnosticos = ({ onChecked, nInteno = "" }: Props) => {
-const Diagnosticos = ({ keyWordElementsArray }: Props) => {   
+const Diagnosticos = ({ keyWordElementsArray,onClickedNicNoc }: Props) => {   
 
     const [diagnosticosItensTypesArr, setDiagnosticosItensTypesArr] = useState<DiagnosticosItensTypesArr>({
             arr: [{
+                _id:"",
                 codigo_do_diagnostico: "",
                 dominio: "",
                 classe: "",
@@ -52,6 +54,17 @@ const Diagnosticos = ({ keyWordElementsArray }: Props) => {
 
     //console.log(keyWordElementsArray);
     // {varCategoriasItensTypes.saeItensformularios[0].opcoesItensFormJson[0].valores.map(( it, index ) =>
+/*
+    txt = txt.replace("Definição",                   '+ definicao : ')------------
+    txt = txt.replace("Características definidoras", '+ "caracteristicas_definidoras" : ')--------
+    txt = txt.replace("Código do diagnóstico",       '+ "codigo_do_diagnostico" : ')----------------
+    txt = txt.replace("Condições associadas",        '+ "condicoes_associadas" : ')-----------------
+    txt = txt.replace("Fatores relacionados",        '+ "fatores_relacionados" : ')-------------------
+    txt = txt.replace("Populações em risco",         '+ "populacao_em_risco" : ')
+    txt = txt.replace("Fatores de risco",            '+ "fatores_de_risco" : ')---------------------
+*/
+
+
     return (
         <>
             <div>
@@ -68,16 +81,60 @@ const Diagnosticos = ({ keyWordElementsArray }: Props) => {
                                 <h5 className="card-header">{itens.codigo_do_diagnostico}</h5>
                                 <div className="card-body">
                                     <h6 className="card-title">Definição: {itens.definicao}</h6>
-                                    <p className="card-text">Condições associadas:</p>
+
+                                    <p className="card-text">Características definidoras:</p>
                                         <ul>
-                                            {itens.condicoes_associadas.map(( itkey, idx ) => 
+                                            {itens.caracteristicas_definidoras.map(( itkey, idx ) => 
                                                 <li key={idx}>
                                                     {itkey}
                                                 </li>
                                             )}
+                                            {itens.caracteristicas_definidoras.length<1?  "Nenhuma": "" }
                                         </ul>
-                                    
-                                    <a href="#diagnosticos" className="btn btn-primary">Diagnóstico mais adequado</a>
+
+                                    <p className="card-text">Condições associadas:</p>
+                                        <ul>
+                                            {itens.condicoes_associadas?.map(( itkey, idx ) => 
+                                                <li key={idx}>
+                                                    {itkey}
+                                                </li>
+                                            )}
+                                            {itens.condicoes_associadas.length<1?  "Nenhuma": "" }
+                                        </ul>
+                                                        
+
+                                    <p className="card-text">Fatores relacionados:</p>
+                                        <ul>
+                                            {itens.fatores_relacionados?.map(( itkey, idx ) => 
+                                                <li key={idx}>
+                                                    {itkey}
+                                                </li>
+                                            )}
+                                            {itens.fatores_relacionados.length<1?  "Nenhum": "" }
+                                        </ul>
+
+                                    <p className="card-text">Fatores de risco:</p>
+                                        <ul>
+                                            {itens.fatores_de_risco?.map(( itkey, idx ) => 
+                                                <li key={idx}>
+                                                    {itkey}
+                                                </li>
+                                            )}
+                                            {itens.fatores_de_risco.length<1?  "Nenhum": "" }
+                                        </ul>    
+                                    <p className="card-text">Populações em risco:</p>
+                                        <ul>
+                                            {itens.populacao_em_risco?.map(( itkey, idx ) => 
+                                                <li key={idx}>
+                                                    {itkey}
+                                                </li>
+                                            )}
+                                            {itens.populacao_em_risco.length<1?  "Nenhuma": "" }
+                                        </ul>                
+
+
+                                    {/* <a href="#diagnosticos" className="btn btn-primary">Diagnóstico mais adequado</a>  */}
+                                    <button type="button" onClick={() => onClickedNicNoc(itens._id)} className="btn btn-outline-primary btn-lg">Diagnóstico mais adequado</button>          
                                 </div>
                                 </div>
                                 <br />

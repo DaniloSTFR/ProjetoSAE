@@ -81,5 +81,143 @@
         },
         "nomeInternoCategoriasItens": "Moradia",
         "nomeInternoCategoriasOpcoes": ""
+    },
+
+
+    {
+        "descricaoItem": "Mora sozinho",
+        "ordemItem": 6,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "MORA_SOZINHO_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "MORA_SOZINHO_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    },
+
+    {
+        "descricaoItem": "Mora com familiares",
+        "ordemItem": 7,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "MORA_FAMILIARES_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "MORA_FAMILIARES_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    },
+
+    {
+        "descricaoItem": "Mora com companheiro",
+        "ordemItem": 8,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "MORA_COMPANHEIRO_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "MORA_COMPANHEIRO_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    },
+
+    {
+        "descricaoItem": "Mora em ILPI",
+        "ordemItem": 9,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "MORA_ILPI_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "MORA_ILPI_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    },
+
+    {
+        "descricaoItem": "No ultimo mes você saiu com amigos",
+        "ordemItem": 10,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "ULTIMO_MES_VOCE_SAIU_COM_AMIGOS_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "ULTIMO_MES_VOCE_SAIU_COM_AMIGOS_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    },
+
+    {
+        "descricaoItem": "Trabalha",
+        "ordemItem": 11,
+        "opcoesItensFormJson": {
+            "tipo": "unica",
+            "valores": [
+                {
+                    "descricao": "Sim",
+                    "chave": "TRABALHA_SIM"
+                },
+                {
+                    "descricao": "Não",
+                    "chave": "TRABALHA_NAO"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
+    },
+
+    {
+        "descricaoItem": "INFORMAÇÕES SOCIOFAMILIARES ",
+        "ordemItem": 5,
+        "opcoesItensFormJson": {
+            "tipo": "div",
+            "valores": [
+                {
+                    "descricao": "DIV",
+                    "chave": "DIV"
+                }
+            ]
+        },
+        "nomeInternoCategoriasItens": "Moradia",
+        "nomeInternoCategoriasOpcoes": ""
     }
+
 ]
