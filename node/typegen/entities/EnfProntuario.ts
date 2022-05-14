@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { EnfAnamnesediagnostico } from "./EnfAnamnesediagnostico";
 import { EnfComentarioprontuario } from "./EnfComentarioprontuario";
+import { EnfNumeroprontuario } from "./EnfNumeroprontuario";
 import { EnfUsuario } from "./EnfUsuario";
 import { EnfRascunhoprontuario } from "./EnfRascunhoprontuario";
 
@@ -64,6 +65,12 @@ export class EnfProntuario {
     (enfComentarioprontuario) => enfComentarioprontuario.codProntuarioUu
   )
   enfComentarioprontuarios: EnfComentarioprontuario[];
+
+  @OneToMany(
+    () => EnfNumeroprontuario,
+    (enfNumeroprontuario) => enfNumeroprontuario.codProntuarioUu
+  )
+  enfNumeroprontuarios: EnfNumeroprontuario[];
 
   @ManyToOne(() => EnfUsuario, (enfUsuario) => enfUsuario.enfProntuarios, {
     onDelete: "NO ACTION",
