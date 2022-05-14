@@ -5,6 +5,8 @@ import { ItensFormulariosController } from "./controllers/ItensFormulariosContro
 import { ItensOpcoesController } from "./controllers/ItensOpcoesController";
 import { AnalseDeDadosController } from "./controllers/AnalseDeDadosController";
 import { UsuarioController }  from "./controllers/UsuarioController";
+import { ensureAdmin } from "./middlewares/ensureAdmin";
+import { ensureUserLogin } from "./middlewares/ensureUserLogin";
 
 const router = Router();
 
@@ -36,7 +38,7 @@ router.post("/analisediagnostico",analseDeDadosController.analisediagnostico );
 
 
 router.post("/criateusuario",usuarioController.criateUsuarios );
-router.get("/showallUsuario",usuarioController.showAllUsuarios );
+router.get("/showallUsuario", ensureUserLogin, ensureAdmin,  usuarioController.showAllUsuarios );
 router.post("/actionloginusuario",usuarioController.actionLoginUsuarios );
 
 export { router}
