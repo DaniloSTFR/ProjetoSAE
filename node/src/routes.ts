@@ -3,7 +3,8 @@ import { CategoriasItensController } from "./controllers/CategoriasItensControll
 import { CategoriasListaOpcoesController } from "./controllers/CategoriasListaOpcoesController";
 import { ItensFormulariosController } from "./controllers/ItensFormulariosController";
 import { ItensOpcoesController } from "./controllers/ItensOpcoesController";
-import { AnalseDeDadosController} from "./controllers/AnalseDeDadosController";
+import { AnalseDeDadosController } from "./controllers/AnalseDeDadosController";
+import { UsuarioController }  from "./controllers/UsuarioController";
 
 const router = Router();
 
@@ -12,6 +13,7 @@ const categoriasListaOpcoesController = new CategoriasListaOpcoesController();
 const itensFormulariosController = new ItensFormulariosController();
 const itensOpcoesController = new ItensOpcoesController();
 const analseDeDadosController = new AnalseDeDadosController();
+const usuarioController = new UsuarioController();
 
 
 router.post("/categoriasitens",categoriasItensController.create );
@@ -33,6 +35,8 @@ router.post("/analisededados",analseDeDadosController.analisededados );
 router.post("/analisediagnostico",analseDeDadosController.analisediagnostico );
 
 
-
+router.post("/criateusuario",usuarioController.criateUsuarios );
+router.get("/showallUsuario",usuarioController.showAllUsuarios );
+router.post("/actionloginusuario",usuarioController.actionLoginUsuarios );
 
 export { router}

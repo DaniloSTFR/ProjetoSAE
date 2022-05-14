@@ -16,6 +16,9 @@ export class EnfUsuario {
   @Column("varchar", { name: "nomePessoa", length: 250 })
   nomePessoa: string;
 
+  @Column("varchar", { name: "email", length: 100 })
+  email: string;
+
   @Column("varchar", { name: "senha", length: 100 })
   senha: string;
 
@@ -24,6 +27,8 @@ export class EnfUsuario {
 
   @Column("datetime", { name: "dataExclusao", nullable: true })
   dataExclusao: Date | null;
+
+  statusLogin: boolean = false;
 
   @OneToMany(
     () => EnfComentarioprontuario,
