@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { UsuarioServices } from "../services/UsuarioServices"
 import { validate } from "deep-email-validator";
-import { hash } from "bcryptjs";
+import { compare, hash } from "bcryptjs";
+import { sign } from "jsonwebtoken"; 
 
 class UsuarioController {
     async createUsuarios(request: Request, response: Response){
@@ -55,8 +56,11 @@ class UsuarioController {
         const usuarioServices =  new UsuarioServices()
         const usuariofind = await usuarioServices.findUser(usuario);
 
+        // verificar usuario e senha
+
         if (typeof usuariofind !== 'undefined'){
-            if(usuariofind.senha !== senha){
+            const senhaCompare =  await compare(senha, usuariofind.senha );
+            if(!senhaCompare){
                 return response.status(400).json({
                     error: "Usuário ou senha incorreta!",
                 });
@@ -67,8 +71,24 @@ class UsuarioController {
             });
         }
 
-        usuariofind.statusLogin = true;
-        return response.status(201).json(usuariofind);
+        //Gerar token
+        const token = sign(
+            {
+                nomeUsuario: usuariofind.nomeUsuario, 
+                nomePessoa: usuariofind.nomePessoa, 
+                email:usuariofind.email, 
+                dataCadastro: usuariofind.dataCadastro,
+            },
+            "8e4f47754fdec7a65308baf4b7f782fd",
+            {
+                subject:  usuariofind.codUsuarioUuId,
+                expiresIn: "1d"
+            } 
+            );
+        
+        //usuariofind.statusLogin = true;
+        //return response.status(201).json(usuariofind);
+        return response.status(201).json(token);
     }
 
     async showAllUsuarios(request: Request, response: Response){        

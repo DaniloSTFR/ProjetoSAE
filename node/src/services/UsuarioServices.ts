@@ -34,7 +34,7 @@ class UsuarioServices{
 
     async findUser(usuario: string){
         const usuarioRepository = getCustomRepository( UsuarioRepository);
-        const nomeUsuarioExists = await usuarioRepository.findOne(
+        const usuarioExists = await usuarioRepository.findOne(
             {
                 where: [
                     { nomeUsuario: usuario,},
@@ -42,8 +42,18 @@ class UsuarioServices{
                 ],
             });
         
-        return nomeUsuarioExists;
+        return usuarioExists;
     }
+
+    async findUserByUuId(codUsuarioUuId: string){
+        const usuarioRepository = getCustomRepository( UsuarioRepository);
+        const usuarioExists = await usuarioRepository.findOne({
+            codUsuarioUuId,
+        });
+        
+        return usuarioExists;
+    }
+
 
     async findEmail(email: string){
         const usuarioRepository = getCustomRepository( UsuarioRepository);
@@ -56,7 +66,10 @@ class UsuarioServices{
 
     async getAllUser(){
         const usuarioRepository = getCustomRepository( UsuarioRepository);
-        const allUser = await usuarioRepository.find();
+        const allUser = await usuarioRepository.find(
+            {
+                select: ['nomeUsuario', 'nomePessoa','email', 'dataCadastro', 'dataExclusao'],
+            });
         return allUser;
     }
 

@@ -28,8 +28,6 @@ export class EnfUsuario {
   @Column("datetime", { name: "dataExclusao", nullable: true })
   dataExclusao: Date | null;
 
-  statusLogin: boolean = false;
-
   @OneToMany(
     () => EnfComentarioprontuario,
     (enfComentarioprontuario) => enfComentarioprontuario.codUsuarioUu

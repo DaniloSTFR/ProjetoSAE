@@ -1,13 +1,23 @@
 import { Request, Response, NextFunction } from "express";
+import { UsuarioServices } from "../services/UsuarioServices"
 
 
-export function ensureAdmin(
+export async function ensureAdmin(
     request: Request, response: Response, next: NextFunction
 ){
-    // TODO verificar se o usuario esta logado
-    const admin = true;
+    // TODO construir metodos e tabelas para criar e validar perfils
+    // BuscarUsuarioINcontroller()
+    // BuscarPerfilINController()
+    // Criartabela
 
-    if (admin) {
+    const { codUsuarioUuId } = request;
+    
+    const usuarioServices =  new UsuarioServices();
+    const usuario = await usuarioServices.findUserByUuId(codUsuarioUuId);
+
+    //const admin = true;
+
+    if (usuario) {
         return next();
     }
 
