@@ -9,7 +9,7 @@ class UsuarioController {
         const { nomeUsuario, nomePessoa, email, senha}  = request.body;
         const usuarioServices =  new UsuarioServices();
 
-        const nomeUsuarioAlreadyExists = await usuarioServices.findUser(nomeUsuario);
+        const nomeUsuarioAlreadyExists = await usuarioServices.findUserbyNameUserOrEmail(nomeUsuario);
         const validar_email = await validate(email);
         const emailAlreadyExists = await usuarioServices.findEmail(email);
 
@@ -54,11 +54,11 @@ class UsuarioController {
     async autenticarUsuarios(request: Request, response: Response){
         const { usuario, senha} = request.body;
         const usuarioServices =  new UsuarioServices()
-        const usuariofind = await usuarioServices.findUser(usuario);
+
+        const usuariofind = await usuarioServices.findUserbyNameUserOrEmail(usuario);
 
         // verificar usuario e senha
-
-        if (typeof usuariofind !== 'undefined'){
+        if (typeof usuariofind !== 'undefined'){     
             const senhaCompare =  await compare(senha, usuariofind.senha );
             if(!senhaCompare){
                 return response.status(400).json({
@@ -78,6 +78,7 @@ class UsuarioController {
                 nomePessoa: usuariofind.nomePessoa, 
                 email:usuariofind.email, 
                 dataCadastro: usuariofind.dataCadastro,
+                tagUsuario: usuariofind.tagUsuario,
             },
             "8e4f47754fdec7a65308baf4b7f782fd",
             {

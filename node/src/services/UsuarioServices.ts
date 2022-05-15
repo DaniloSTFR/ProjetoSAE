@@ -1,6 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { UsuarioRepository } from "../repositories/UsuarioRepository";
 import { GetDateNow } from "../util/GetDateNow"; 
+import { instanceToPlain } from "class-transformer";
 
 
 interface IUsuario{
@@ -29,10 +30,10 @@ class UsuarioServices{
         
         await usuarioRepository.save(usuario);
 
-        return usuario;
+        return instanceToPlain(usuario);
     }
 
-    async findUser(usuario: string){
+    async findUserbyNameUserOrEmail(usuario: string){
         const usuarioRepository = getCustomRepository( UsuarioRepository);
         const usuarioExists = await usuarioRepository.findOne(
             {
@@ -51,7 +52,7 @@ class UsuarioServices{
             codUsuarioUuId,
         });
         
-        return usuarioExists;
+        return instanceToPlain(usuarioExists);
     }
 
 
@@ -67,10 +68,11 @@ class UsuarioServices{
     async getAllUser(){
         const usuarioRepository = getCustomRepository( UsuarioRepository);
         const allUser = await usuarioRepository.find(
-            {
+/*             {
                 select: ['nomeUsuario', 'nomePessoa','email', 'dataCadastro', 'dataExclusao'],
-            });
-        return allUser;
+            } */
+            );
+        return instanceToPlain(allUser);
     }
 
 

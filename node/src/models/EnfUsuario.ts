@@ -4,6 +4,7 @@ import { EnfNotificacaousuario } from "./EnfNotificacaousuario";
 import { EnfProntuario } from "./EnfProntuario";
 import { EnfRascunhoprontuario } from "./EnfRascunhoprontuario";
 import { v4 as uuid  } from "uuid";
+import { Expose, Exclude } from "class-transformer";
 
 @Entity("enf_usuario", { schema: "projetosae" })
 export class EnfUsuario {
@@ -19,6 +20,7 @@ export class EnfUsuario {
   @Column("varchar", { name: "email", length: 100 })
   email: string;
 
+  @Exclude()
   @Column("varchar", { name: "senha", length: 100 })
   senha: string;
 
@@ -48,6 +50,11 @@ export class EnfUsuario {
     (enfRascunhoprontuario) => enfRascunhoprontuario.codUsuarioUu
   )
   enfRascunhoprontuarios: EnfRascunhoprontuario[];
+
+  @Expose({name:"tagUsuario"})
+  tagUsuario(): string {
+    return `@${this.nomeUsuario}`;
+  }
 
   constructor () {
     if (!this.codUsuarioUuId){

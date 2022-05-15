@@ -3,8 +3,10 @@ import './database';
 import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors"
 import { router } from './routes';
-const cors = require('cors');
+import cors from "cors"
+
 const app = express();
+app.use(cors());
 
 //Set up mongoose connection
 const mongoose = require('mongoose');
@@ -16,7 +18,6 @@ mongoose.connect ('mongodb://localhost:27017/SAE',{
 });
 mongoose.Promise = global.Promise;
 
-app.use(cors());
 app.use(express.json());
 app.use( router );
 
