@@ -32,11 +32,15 @@ class UsuarioServices{
         return usuario;
     }
 
-    async findUser(nomeUsuario: string){
+    async findUser(usuario: string){
         const usuarioRepository = getCustomRepository( UsuarioRepository);
-        const nomeUsuarioExists = await usuarioRepository.findOne({
-            nomeUsuario,
-        });
+        const nomeUsuarioExists = await usuarioRepository.findOne(
+            {
+                where: [
+                    { nomeUsuario: usuario,},
+                    { email: usuario,},
+                ],
+            });
         
         return nomeUsuarioExists;
     }

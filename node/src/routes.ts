@@ -37,8 +37,8 @@ router.post("/analisededados",analseDeDadosController.analisededados );
 router.post("/analisediagnostico",analseDeDadosController.analisediagnostico );
 
 
-router.post("/criateusuario",usuarioController.criateUsuarios );
+router.post("/createusuario",usuarioController.createUsuarios );
 router.get("/showallUsuario", ensureUserLogin, ensureAdmin,  usuarioController.showAllUsuarios );
-router.post("/actionloginusuario",usuarioController.actionLoginUsuarios );
+router.post("/autenticarUsuarios",usuarioController.autenticarUsuarios );
 
 export { router}
