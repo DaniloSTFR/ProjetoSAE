@@ -5,8 +5,10 @@ import { ItensFormulariosController } from "./controllers/ItensFormulariosContro
 import { ItensOpcoesController } from "./controllers/ItensOpcoesController";
 import { AnalseDeDadosController } from "./controllers/AnalseDeDadosController";
 import { UsuarioController }  from "./controllers/UsuarioController";
+import { ProntuarioController }  from "./controllers/ProntuarioController"
 import { ensureAdmin } from "./middlewares/ensureAdmin";
 import { ensureAutenticarUsuario } from "./middlewares/ensureAutenticarUsuario";
+
 
 const router = Router();
 
@@ -16,6 +18,7 @@ const itensFormulariosController = new ItensFormulariosController();
 const itensOpcoesController = new ItensOpcoesController();
 const analseDeDadosController = new AnalseDeDadosController();
 const usuarioController = new UsuarioController();
+const prontuarioController = new ProntuarioController();
 
 
 router.post("/categoriasitens",categoriasItensController.create );
@@ -37,8 +40,12 @@ router.post("/analisededados",analseDeDadosController.analisededados );
 router.post("/analisediagnostico",analseDeDadosController.analisediagnostico );
 
 
-router.post("/createusuario",usuarioController.createUsuarios );
-router.get("/showallUsuario", ensureAutenticarUsuario, ensureAdmin,  usuarioController.showAllUsuarios );
-router.post("/autenticarUsuarios",usuarioController.autenticarUsuarios );
+router.post("/createusuarios",usuarioController.createUsuarios );
+router.get("/showallusuarios", ensureAutenticarUsuario, ensureAdmin,  usuarioController.showAllUsuarios );
+router.post("/autenticarusuarios",usuarioController.autenticarUsuarios );
+
+router.post("/createprontuarios", ensureAutenticarUsuario, prontuarioController.createProntuarios );
+router.post("/findprontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
+router.post("/findprontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
 
 export { router}

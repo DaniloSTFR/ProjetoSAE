@@ -39,8 +39,8 @@ export class EnfProntuario {
   @Column("float", { name: "glicemia", nullable: true, precision: 12 })
   glicemia: number | null;
 
-  @Column("float", { name: "pressaoArterial", nullable: true, precision: 12 })
-  pressaoArterial: number | null;
+  @Column("varchar", { name: "pressaoArterial", nullable: true, length: 45 })
+  pressaoArterial: string | null;
 
   @Column("float", { name: "oximetria", nullable: true, precision: 12 })
   oximetria: number | null;

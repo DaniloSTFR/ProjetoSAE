@@ -2,7 +2,7 @@ import { Repository, EntityRepository } from "typeorm";
 import { EnfRascunhoprontuario } from "../models/EnfRascunhoprontuario";
 
 @EntityRepository(EnfRascunhoprontuario)
-class RascunhoprontuarioRepository extends Repository<EnfRascunhoprontuario> {
+class RascunhoProntuarioRepository extends Repository<EnfRascunhoprontuario> {
 
 }
-export {RascunhoprontuarioRepository};
+export {RascunhoProntuarioRepository};

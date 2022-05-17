@@ -14,8 +14,8 @@ export class EnfNumeroprontuario {
   @PrimaryGeneratedColumn({ type: "int", name: "numeroprontuario" })
   numeroprontuario: number;
 
-  @Column("varchar", { name: "codProntuarioUUId", nullable: true, length: 45 })
-  codProntuarioUuId: string | null;
+  @Column("varchar", { name: "codProntuarioUUId", length: 45 })
+  codProntuarioUuId: string;
 
   @ManyToOne(
     () => EnfProntuario,
