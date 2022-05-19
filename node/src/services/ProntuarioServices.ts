@@ -48,7 +48,7 @@ class ProntuarioServices {
         const prontuarioRepository = getCustomRepository(ProntuarioRepository);
         const prontuariolExists = await prontuarioRepository.findOne({
             where: [{codProntuarioUuId}],
-            relations: ["codUsuarioUu", "enfRascunhoprontuarios"],  
+            relations: ["codUsuarioUu", "enfComentarioprontuarios", "enfComentarioprontuarios.codUsuarioUu"],  
         });
         
         return instanceToPlain(prontuariolExists);

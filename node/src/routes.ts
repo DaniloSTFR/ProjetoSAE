@@ -5,7 +5,9 @@ import { ItensFormulariosController } from "./controllers/ItensFormulariosContro
 import { ItensOpcoesController } from "./controllers/ItensOpcoesController";
 import { AnalseDeDadosController } from "./controllers/AnalseDeDadosController";
 import { UsuarioController }  from "./controllers/UsuarioController";
-import { ProntuarioController }  from "./controllers/ProntuarioController"
+import { ProntuarioController }  from "./controllers/ProntuarioController";
+import { ComentarioProntuarioController } from "./controllers/ComentarioProntuarioController";
+
 import { ensureAdmin } from "./middlewares/ensureAdmin";
 import { ensureAutenticarUsuario } from "./middlewares/ensureAutenticarUsuario";
 
@@ -19,6 +21,7 @@ const itensOpcoesController = new ItensOpcoesController();
 const analseDeDadosController = new AnalseDeDadosController();
 const usuarioController = new UsuarioController();
 const prontuarioController = new ProntuarioController();
+const comentarioProntuarioContoller = new ComentarioProntuarioController();
 
 
 router.post("/categoriasitens",categoriasItensController.create );
@@ -47,5 +50,9 @@ router.post("/autenticarusuarios",usuarioController.autenticarUsuarios );
 router.post("/createprontuarios", ensureAutenticarUsuario, prontuarioController.createProntuarios );
 router.post("/findprontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
 router.post("/findprontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
+
+router.post("/createcomentarioprontuario", ensureAutenticarUsuario, comentarioProntuarioContoller.createComentarioProntuarios );
+
+
 
 export { router}
