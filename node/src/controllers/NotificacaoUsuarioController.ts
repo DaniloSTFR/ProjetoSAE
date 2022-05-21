@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { NotificacaoUsuarioServices } from "../services/NotificacaoUsuarioServices";
-import { UsuarioServices } from "../services/UsuarioServices"
+import { ComentarioProntuarioServices } from "../services/ComentarioProntuarioServices";
+import { UsuarioServices } from "../services/UsuarioServices";
 
 
 class NotificacaoUsuarioController {
@@ -11,7 +12,6 @@ class NotificacaoUsuarioController {
         const usuarioServices =  new UsuarioServices()
         const usuariofind = await usuarioServices.findUserbyNameUserOrEmail(usuarioAlvo.replace("@",""));
 
-        // verificar usuario e senha
         if (typeof usuariofind === 'undefined'){     
                 return response.status(400).json({
                     error: `Usuário ${usuarioAlvo},não encontrado!`,});
@@ -24,6 +24,44 @@ class NotificacaoUsuarioController {
 
             return response.status(201).json({
                 message: "Notificação criada com sucesso!",
+                status: true,
+                notificacaoUsuario,
+            });
+
+        }catch (err){
+            return response.status(400).json({
+                message: "Erro ao criar a Notificação!",
+                error: err,
+            });
+        }
+    }
+
+    async createComentarioNotificacaoUsuarios(request: Request, response: Response){
+        const{codUsuarioUuId, codProntuarioUuId, comentarioProntuario, usuarioAlvo, notificacaoVista} = request.body;
+        const notificacaoUsuarioServices = new NotificacaoUsuarioServices();
+        const comentarioProntuarioServices = new ComentarioProntuarioServices();
+
+        const usuarioServices =  new UsuarioServices()
+        const usuariofind = await usuarioServices.findUserbyNameUserOrEmail(usuarioAlvo.replace("@",""));
+
+        if (typeof usuariofind === 'undefined'){     
+                return response.status(400).json({
+                    error: `Usuário ${usuarioAlvo},não encontrado!`,});
+        }
+        
+        
+        try{ 
+            // criar comentario
+            const novocomentarioProntuario =  await comentarioProntuarioServices.
+            createComentarioProntuario({ codProntuarioUuId, codUsuarioUuId, comentarioProntuario,} );
+                
+            // criar notificação
+            const notificacaoUsuario = await notificacaoUsuarioServices.
+            createNotificacaoUsuario( {codUsuarioUuId, codComentarioProntuarioUuId: novocomentarioProntuario.codComentarioProntuarioUuId, 
+                usuarioAlvo, codNotificacaoUsuarioAlvoUuId:usuariofind.codUsuarioUuId, notificacaoVista} );
+
+            return response.status(201).json({
+                message: "Comentario e Notificação criados com sucesso!",
                 status: true,
                 notificacaoUsuario,
             });

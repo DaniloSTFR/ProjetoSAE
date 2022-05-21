@@ -57,6 +57,7 @@ router.post("/findprontuariocompletebynumero", ensureAutenticarUsuario, prontuar
 router.post("/createcomentarioprontuarios", ensureAutenticarUsuario, comentarioProntuarioContoller.createComentarioProntuarios );
 
 router.post("/createnotificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createNotificacaoUsuarios );
+router.post("/createcomentarionotificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createComentarioNotificacaoUsuarios );
 router.post("/showallnotificacoesusuario", ensureAutenticarUsuario, notificacaoUsuarioController.showAllNotificacoesUsuarioNaoVistas );
 router.post("/updatestatusnotificacaousuariovista", ensureAutenticarUsuario, notificacaoUsuarioController.updateStatusNotificacaoUsuarioVista );
 

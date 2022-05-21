@@ -1,13 +1,10 @@
 import { getCustomRepository } from "typeorm";
 import { ComentarioProntuarioRepository } from "../repositories/ComentarioProntuarioRepository";
 import { GetDateNow } from "../util/GetDateNow";
-
-
-
 interface IComentarioProntuario{
-    codProntuarioUuId: string
+    codProntuarioUuId: string,
     codUsuarioUuId: string,
-    comentarioProntuario?: string;
+    comentarioProntuario?: string
 }
 
 class ComentarioProntuarioServices{
@@ -18,10 +15,10 @@ class ComentarioProntuarioServices{
         comentarioProntuario = '', 
         }: IComentarioProntuario){
 
-        const comentarioProntuarioRepository = getCustomRepository( ComentarioProntuarioRepository);
+        const comentarioProntuarioRepository = getCustomRepository(ComentarioProntuarioRepository);
     
-            const getDateNow = new GetDateNow();
-            const datenow = getDateNow.getDateNow();
+        const getDateNow = new GetDateNow();
+        const datenow = getDateNow.getDateNow();
         const novocomentarioProntuario =  comentarioProntuarioRepository.create({
             codProntuarioUuId,
             codUsuarioUuId, 
@@ -33,9 +30,8 @@ class ComentarioProntuarioServices{
         await comentarioProntuarioRepository.save(novocomentarioProntuario);
 
         return novocomentarioProntuario;
-
     }
-
+    
 }
 
 export {ComentarioProntuarioServices};

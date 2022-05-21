@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ComentarioProntuarioServices } from "../services/ComentarioProntuarioServices"
+import { ComentarioProntuarioServices } from "../services/ComentarioProntuarioServices";
 
 class ComentarioProntuarioController{
 
