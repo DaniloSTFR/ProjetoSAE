@@ -47,8 +47,7 @@ class NotificacaoUsuarioController {
         if (typeof usuariofind === 'undefined'){     
                 return response.status(400).json({
                     error: `Usuário ${usuarioAlvo},não encontrado!`,});
-        }
-        
+        } 
         
         try{ 
             // criar comentario

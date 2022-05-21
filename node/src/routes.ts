@@ -8,7 +8,7 @@ import { UsuarioController }  from "./controllers/UsuarioController";
 import { ProntuarioController }  from "./controllers/ProntuarioController";
 import { ComentarioProntuarioController } from "./controllers/ComentarioProntuarioController";
 import { NotificacaoUsuarioController } from "./controllers/NotificacaoUsuarioController";
-
+import { RascunhoProntuarioController } from "./controllers/RascunhoProntuarioController";
 
 import { ensureAdmin } from "./middlewares/ensureAdmin";
 import { ensureAutenticarUsuario } from "./middlewares/ensureAutenticarUsuario";
@@ -25,6 +25,7 @@ const usuarioController = new UsuarioController();
 const prontuarioController = new ProntuarioController();
 const comentarioProntuarioContoller = new ComentarioProntuarioController();
 const notificacaoUsuarioController = new NotificacaoUsuarioController();
+const rascunhoProntuarioController = new RascunhoProntuarioController();
 
 
 router.post("/categoriasitens",categoriasItensController.create );
@@ -45,20 +46,24 @@ router.get("/itensopcoes",itensOpcoesController.show );
 router.post("/analisededados",analseDeDadosController.analisededados );
 router.post("/analisediagnostico",analseDeDadosController.analisediagnostico );
 
-
 router.post("/createusuarios",usuarioController.createUsuarios );
 router.get("/showallusuarios", ensureAutenticarUsuario, ensureAdmin,  usuarioController.showAllUsuarios );
 router.post("/autenticarusuarios",usuarioController.autenticarUsuarios );
 
 router.post("/createprontuarios", ensureAutenticarUsuario, prontuarioController.createProntuarios );
-router.post("/findprontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
-router.post("/findprontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
+router.get("/findprontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
+router.get("/findprontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
 
 router.post("/createcomentarioprontuarios", ensureAutenticarUsuario, comentarioProntuarioContoller.createComentarioProntuarios );
 
 router.post("/createnotificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createNotificacaoUsuarios );
 router.post("/createcomentarionotificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createComentarioNotificacaoUsuarios );
-router.post("/showallnotificacoesusuario", ensureAutenticarUsuario, notificacaoUsuarioController.showAllNotificacoesUsuarioNaoVistas );
-router.post("/updatestatusnotificacaousuariovista", ensureAutenticarUsuario, notificacaoUsuarioController.updateStatusNotificacaoUsuarioVista );
+router.get("/showallnotificacoesusuario", ensureAutenticarUsuario, notificacaoUsuarioController.showAllNotificacoesUsuarioNaoVistas );
+router.patch("/updatestatusnotificacaousuariovista", ensureAutenticarUsuario, notificacaoUsuarioController.updateStatusNotificacaoUsuarioVista );
+
+router.post("/createrascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.createRascunhoProntuarios );
+router.get("/showallrascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.showAllRascunhoProntuarios );
+router.patch("/updaterascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.updateRascunhoProntuarios );
+router.delete("/deleterascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.deleteRascunhoProntuarios );
 
 export { router}
