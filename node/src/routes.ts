@@ -7,6 +7,8 @@ import { AnalseDeDadosController } from "./controllers/AnalseDeDadosController";
 import { UsuarioController }  from "./controllers/UsuarioController";
 import { ProntuarioController }  from "./controllers/ProntuarioController";
 import { ComentarioProntuarioController } from "./controllers/ComentarioProntuarioController";
+import { NotificacaoUsuarioController } from "./controllers/NotificacaoUsuarioController";
+
 
 import { ensureAdmin } from "./middlewares/ensureAdmin";
 import { ensureAutenticarUsuario } from "./middlewares/ensureAutenticarUsuario";
@@ -22,6 +24,7 @@ const analseDeDadosController = new AnalseDeDadosController();
 const usuarioController = new UsuarioController();
 const prontuarioController = new ProntuarioController();
 const comentarioProntuarioContoller = new ComentarioProntuarioController();
+const notificacaoUsuarioController = new NotificacaoUsuarioController();
 
 
 router.post("/categoriasitens",categoriasItensController.create );
@@ -51,8 +54,10 @@ router.post("/createprontuarios", ensureAutenticarUsuario, prontuarioController.
 router.post("/findprontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
 router.post("/findprontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
 
-router.post("/createcomentarioprontuario", ensureAutenticarUsuario, comentarioProntuarioContoller.createComentarioProntuarios );
+router.post("/createcomentarioprontuarios", ensureAutenticarUsuario, comentarioProntuarioContoller.createComentarioProntuarios );
 
-
+router.post("/createnotificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createNotificacaoUsuarios );
+router.post("/showallnotificacoesusuario", ensureAutenticarUsuario, notificacaoUsuarioController.showAllNotificacoesUsuarioNaoVistas );
+router.post("/updatestatusnotificacaousuariovista", ensureAutenticarUsuario, notificacaoUsuarioController.updateStatusNotificacaoUsuarioVista );
 
 export { router}

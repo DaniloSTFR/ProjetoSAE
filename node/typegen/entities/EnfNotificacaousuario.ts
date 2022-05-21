@@ -26,7 +26,14 @@ export class EnfNotificacaousuario {
   @Column("varchar", { name: "usuarioAlvo", length: 45 })
   usuarioAlvo: string;
 
-  @Column("varchar", { name: "notificacaoVista", length: 5 })
+  @Column("varchar", { name: "codNotificacaoUsuarioAlvoUUId", length: 45 })
+  codNotificacaoUsuarioAlvoUuId: string;
+
+  @Column("varchar", {
+    name: "notificacaoVista",
+    length: 5,
+    default: () => "'NÃO'",
+  })
   notificacaoVista: string;
 
   @Column("datetime", { name: "dataCriacao" })
