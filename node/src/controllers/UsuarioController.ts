@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UsuarioServices } from "../services/UsuarioServices"
+import { UsuarioServices } from "../services/UsuarioServices";
 import { validate } from "deep-email-validator";
 import { compare, hash } from "bcryptjs";
 import { sign } from "jsonwebtoken"; 

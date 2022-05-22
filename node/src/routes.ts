@@ -9,6 +9,7 @@ import { ProntuarioController }  from "./controllers/ProntuarioController";
 import { ComentarioProntuarioController } from "./controllers/ComentarioProntuarioController";
 import { NotificacaoUsuarioController } from "./controllers/NotificacaoUsuarioController";
 import { RascunhoProntuarioController } from "./controllers/RascunhoProntuarioController";
+import { AnamneseDiagnosticoController } from "./controllers/AnamneseDiagnosticoController";
 
 import { ensureAdmin } from "./middlewares/ensureAdmin";
 import { ensureAutenticarUsuario } from "./middlewares/ensureAutenticarUsuario";
@@ -26,6 +27,7 @@ const prontuarioController = new ProntuarioController();
 const comentarioProntuarioContoller = new ComentarioProntuarioController();
 const notificacaoUsuarioController = new NotificacaoUsuarioController();
 const rascunhoProntuarioController = new RascunhoProntuarioController();
+const anamneseDiagnosticoController = new AnamneseDiagnosticoController();
 
 
 router.post("/categoriasitens",categoriasItensController.create );
@@ -43,27 +45,32 @@ router.get("/itensformularios",itensFormulariosController.show );
 router.post("/itensopcoes",itensOpcoesController.create );
 router.get("/itensopcoes",itensOpcoesController.show );
 
-router.post("/analisededados",analseDeDadosController.analisededados );
-router.post("/analisediagnostico",analseDeDadosController.analisediagnostico );
+router.post("/analisededados", ensureAutenticarUsuario, analseDeDadosController.analisededados );
+router.post("/analisediagnostico", ensureAutenticarUsuario, analseDeDadosController.analisediagnostico );
 
-router.post("/createusuarios",usuarioController.createUsuarios );
-router.get("/showallusuarios", ensureAutenticarUsuario, ensureAdmin,  usuarioController.showAllUsuarios );
+router.post("/create/usuarios",usuarioController.createUsuarios );
+router.get("/showall/usuarios", ensureAutenticarUsuario, ensureAdmin,  usuarioController.showAllUsuarios );
 router.post("/autenticarusuarios",usuarioController.autenticarUsuarios );
 
-router.post("/createprontuarios", ensureAutenticarUsuario, prontuarioController.createProntuarios );
-router.get("/findprontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
-router.get("/findprontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
+router.post("/create/prontuarios", ensureAutenticarUsuario, prontuarioController.createProntuarios );
+router.get("/find/prontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
+router.get("/find/prontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
 
-router.post("/createcomentarioprontuarios", ensureAutenticarUsuario, comentarioProntuarioContoller.createComentarioProntuarios );
+router.post("/create/comentarioprontuarios", ensureAutenticarUsuario, comentarioProntuarioContoller.createComentarioProntuarios );
 
-router.post("/createnotificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createNotificacaoUsuarios );
-router.post("/createcomentarionotificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createComentarioNotificacaoUsuarios );
-router.get("/showallnotificacoesusuario", ensureAutenticarUsuario, notificacaoUsuarioController.showAllNotificacoesUsuarioNaoVistas );
-router.patch("/updatestatusnotificacaousuariovista", ensureAutenticarUsuario, notificacaoUsuarioController.updateStatusNotificacaoUsuarioVista );
+router.post("/create/notificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createNotificacaoUsuarios );
+router.post("/create/comentarionotificacaousuarios", ensureAutenticarUsuario, notificacaoUsuarioController.createComentarioNotificacaoUsuarios );
+router.get("/showall/notificacoesusuario", ensureAutenticarUsuario, notificacaoUsuarioController.showAllNotificacoesUsuarioNaoVistas );
+router.patch("/update/statusnotificacaousuariovista", ensureAutenticarUsuario, notificacaoUsuarioController.updateStatusNotificacaoUsuarioVista );
 
-router.post("/createrascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.createRascunhoProntuarios );
-router.get("/showallrascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.showAllRascunhoProntuarios );
-router.patch("/updaterascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.updateRascunhoProntuarios );
-router.delete("/deleterascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.deleteRascunhoProntuarios );
+router.post("/create/rascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.createRascunhoProntuarios );
+router.get("/showall/rascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.showAllRascunhoProntuarios );
+router.patch("/update/rascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.updateRascunhoProntuarios );
+router.delete("/delete/rascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.deleteRascunhoProntuarios );
+
+router.post("/create/anamnesediagnosticos", ensureAutenticarUsuario, anamneseDiagnosticoController.createAnamneseDiagnosticos );
+router.patch("/update/anamnesediagnosticos", ensureAutenticarUsuario, anamneseDiagnosticoController.updateAnamneseDiagnosticos );
+router.get("/find/AnamneseDiagnostico", ensureAutenticarUsuario, anamneseDiagnosticoController.findAnamneseDiagnostico );
+
 
 export { router}
