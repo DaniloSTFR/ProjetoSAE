@@ -1,57 +1,50 @@
 import { Request, Response } from "express";
 import { getCustomRepository } from "typeorm";
-import { CategoriasItensRepository } from "../repositories/CategoriasItensRepository";
+import { CategoriasItensServices } from "../services/CategoriasItensServices";
 
 class CategoriasItensController {
-    async create(request: Request, response: Response){
+    async createCategoriasItens(request: Request, response: Response){
+
         const { descricaoCategoriasItens, nomeInternoCategoriasItens, ordemCategoriaItens}
                 = request.body;
-        
-        const categoriasItensRepository = getCustomRepository( CategoriasItensRepository);
+        const categoriasItensServices =  new CategoriasItensServices();
 
-        const categoriasItensAlreadyExists = await categoriasItensRepository.findOne({
-            nomeInternoCategoriasItens,
-        })
+        const categoriasItensAlreadyExists = await categoriasItensServices.findCategoriasItensByNome(nomeInternoCategoriasItens);
 
-        if (categoriasItensAlreadyExists){
+        if (typeof categoriasItensAlreadyExists !== 'undefined'){
             return response.status(400).json({
                 error: "Categoria de Item já criada!",
             });
         }
 
-        const categoriasItens = categoriasItensRepository.create({
-            descricaoCategoriasItens, 
-            nomeInternoCategoriasItens, 
-            ordemCategoriaItens,
-        });
+        try{ 
+            const categoriasItens = await categoriasItensServices.createCategoriasItens( 
+                { descricaoCategoriasItens, nomeInternoCategoriasItens, ordemCategoriaItens} );
 
-        await categoriasItensRepository.save(categoriasItens);
+            return response.status(201).json({
+                message: "Categoria criado com sucesso!",
+                status: true,
+                categoriasItens,
+            });
 
-        return response.status(201).json(categoriasItens);
+        }catch (err){
+            return response.status(400).json({
+                error: err,
+            });
+        }
     }
 
-    async show(request: Request, response: Response){
-        const categoriasItensRepository = getCustomRepository( CategoriasItensRepository);
-        const all = await categoriasItensRepository.find({
-            order: {
-                ordemCategoriaItens: "ASC",
-            },
-        });
-        return response.json(all);
+    async showAllCategoriasItens(request: Request, response: Response){
+        const categoriasItensServices =  new CategoriasItensServices();
+        const allCategoriasItens= await categoriasItensServices.showAllCategoriasItens();
+        return response.json(allCategoriasItens);
     }
 
-    async showcategoriasitens(request: Request, response: Response){
+    async findCategoriasItensByNome(request: Request, response: Response){
         const { nomeInternoCategoriasItens} = request.body;
-
-        const categoriasItensRepository = getCustomRepository( CategoriasItensRepository);
-        const all = await categoriasItensRepository.find({
-            where: [{nomeInternoCategoriasItens}],
-            relations: ["saeItensformularios"],  
-            order: {
-                ordemCategoriaItens: "ASC",
-            },
-        });
-        return response.json(all);
+        const categoriasItensServices =  new CategoriasItensServices();
+        const categoriasItens= await categoriasItensServices.findCategoriasItensByNome(nomeInternoCategoriasItens);
+        return response.json(categoriasItens);
     }
 
 }

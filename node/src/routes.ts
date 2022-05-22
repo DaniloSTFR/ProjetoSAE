@@ -30,9 +30,9 @@ const rascunhoProntuarioController = new RascunhoProntuarioController();
 const anamneseDiagnosticoController = new AnamneseDiagnosticoController();
 
 
-router.post("/categoriasitens",categoriasItensController.create );
-router.post("/showcategoriasitens",categoriasItensController.showcategoriasitens );
-router.get("/categoriasitens",categoriasItensController.show );
+router.post("/create/categoriasitens",ensureAutenticarUsuario, ensureAdmin,categoriasItensController.createCategoriasItens );
+router.get("/showall/categoriasitens",ensureAutenticarUsuario, ensureAdmin, categoriasItensController.showAllCategoriasItens );
+router.get("/find/categoriasitensbynome",ensureAutenticarUsuario, ensureAdmin, categoriasItensController.findCategoriasItensByNome );
 
 router.post("/categoriaslistaopcoes",categoriasListaOpcoesController.create );
 router.post("/showcategoriaslistaopcoes",categoriasListaOpcoesController.showcategoriaslistaopcoes );
