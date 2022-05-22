@@ -30,20 +30,20 @@ const rascunhoProntuarioController = new RascunhoProntuarioController();
 const anamneseDiagnosticoController = new AnamneseDiagnosticoController();
 
 
-router.post("/create/categoriasitens",ensureAutenticarUsuario, ensureAdmin,categoriasItensController.createCategoriasItens );
-router.get("/showall/categoriasitens",ensureAutenticarUsuario, ensureAdmin, categoriasItensController.showAllCategoriasItens );
-router.get("/find/categoriasitensbynome",ensureAutenticarUsuario, ensureAdmin, categoriasItensController.findCategoriasItensByNome );
+router.post("/create/categoriasitens", ensureAutenticarUsuario, ensureAdmin,categoriasItensController.createCategoriasItens );
+router.get("/showall/categoriasitens", ensureAutenticarUsuario,  categoriasItensController.showAllCategoriasItens );
+router.get("/find/categoriasitensbynome", ensureAutenticarUsuario,  categoriasItensController.findCategoriasItensByNome );
 
-router.post("/categoriaslistaopcoes",categoriasListaOpcoesController.create );
-router.post("/showcategoriaslistaopcoes",categoriasListaOpcoesController.showcategoriaslistaopcoes );
-router.get("/categoriaslistaopcoes",categoriasListaOpcoesController.show );
+router.post("/create/categoriaslistaopcoes", ensureAutenticarUsuario, ensureAdmin, categoriasListaOpcoesController.createCategoriasListaOpcoes );
+router.get("/find/categoriaslistaopcoesbyuuid", ensureAutenticarUsuario, categoriasListaOpcoesController.findCategoriasListaOpcoesByUuId );
+router.get("/showall/categoriaslistaopcoes", ensureAutenticarUsuario, categoriasListaOpcoesController.showAllCategoriasListaOpcoes );
 
-router.post("/itensformularios",itensFormulariosController.create );
-router.post("/itensformulariosone",itensFormulariosController.showone );
-router.get("/itensformularios",itensFormulariosController.show );
+router.post("/create/itensformularios", ensureAutenticarUsuario, ensureAdmin, itensFormulariosController.createItensFormularios );
+router.get("/find/itensformularios", ensureAutenticarUsuario, itensFormulariosController.findOneItensFormularios );
+router.get("/showall/itensformularios", ensureAutenticarUsuario,itensFormulariosController.showAllItensFormularios );
 
-router.post("/itensopcoes",itensOpcoesController.create );
-router.get("/itensopcoes",itensOpcoesController.show );
+router.post("/create/itensopcoes", ensureAutenticarUsuario, ensureAdmin, itensOpcoesController.createItensOpcoes );
+router.get("/showall/itensopcoes", ensureAutenticarUsuario, itensOpcoesController.showAllItensOpcoes );
 
 router.post("/analisededados", ensureAutenticarUsuario, analseDeDadosController.analisededados );
 router.post("/analisediagnostico", ensureAutenticarUsuario, analseDeDadosController.analisediagnostico );

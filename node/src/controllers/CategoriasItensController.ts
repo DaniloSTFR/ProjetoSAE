@@ -9,7 +9,7 @@ class CategoriasItensController {
                 = request.body;
         const categoriasItensServices =  new CategoriasItensServices();
 
-        const categoriasItensAlreadyExists = await categoriasItensServices.findCategoriasItensByNome(nomeInternoCategoriasItens);
+        const categoriasItensAlreadyExists = await categoriasItensServices.findOneCategoriasItensByNome(nomeInternoCategoriasItens);
 
         if (typeof categoriasItensAlreadyExists !== 'undefined'){
             return response.status(400).json({

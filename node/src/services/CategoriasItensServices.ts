@@ -47,6 +47,12 @@ class CategoriasItensServices{
         return categoriasItens;
     }
 
+    async findOneCategoriasItensByNome( nomeInternoCategoriasItens: string){
+        const categoriasItensRepository = getCustomRepository( CategoriasItensRepository);
+        const categoriasItens = await categoriasItensRepository.findOne({nomeInternoCategoriasItens});
+        return categoriasItens;
+    }
+
 }
 
 export {CategoriasItensServices};

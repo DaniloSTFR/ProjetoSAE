@@ -1,57 +1,59 @@
 import { Request, Response } from "express";
-import { getCustomRepository } from "typeorm";
-import { CategoriasListaOpcoesRepository } from "../repositories/CategoriasListaOpcoesRepository";
-import { ItensOpcoesRepository } from "../repositories/ItensOpcoesRepository";
-
-
-interface IItensOpcoes{
-    descricaoOpcoes: string, 
-    ordemOpcoes: number, 
-    listaOpcoesJson: {}, 
-    nomeInternoCategoriasOpcoes: string, 
-}//TODO implementar  o uso de interface
+import { ItensOpcoesServices } from "../services/ItensOpcoesServices";
+import { CategoriasListaOpcoesServices } from "../services/CategoriasListaOpcoesServices";
 
 class ItensOpcoesController {
-    async create(request: Request, response: Response){
+    async createItensOpcoes(request: Request, response: Response){
+
         const { descricaoOpcoes, ordemOpcoes, listaOpcoesJson, nomeInternoCategoriasOpcoes}
                 = request.body;
-        
-        const itensOpcoesRepository = getCustomRepository( ItensOpcoesRepository);
-        const categoriasListaOpcoesRepository = getCustomRepository( CategoriasListaOpcoesRepository);
 
-        const categoriasListaOpcoesAlreadyExists = await categoriasListaOpcoesRepository.findOne({
-            nomeInternoCategoriasOpcoes,
-        })
+        const itensOpcoesServices = new ItensOpcoesServices();
+        const categoriasListaOpcoesServices = new CategoriasListaOpcoesServices();
 
-        const itensOpcoesRepositoryAlreadyExists = await itensOpcoesRepository.findOne({
-            descricaoOpcoes,
-        })
+        try{ 
+            const categoriasListaOpcoesAlreadyExists = await categoriasListaOpcoesServices.findOneCategoriasListaOpcoesByNome(nomeInternoCategoriasOpcoes);
+            if (typeof categoriasListaOpcoesAlreadyExists === 'undefined'){
+                return response.status(400).json({
+                    error: "A opção para Item não existe!",
+                });
+            }
+            
+            const itensOpcoesRepositoryAlreadyExists = await itensOpcoesServices.findOneItensOpcoesByDescricao(descricaoOpcoes);
 
-        if(itensOpcoesRepositoryAlreadyExists){
-            throw new Error() 
-        }
+            if (itensOpcoesRepositoryAlreadyExists){
+                return response.status(400).json({
+                    error: "A opção de item já criada!",
+                });
+            } 
 
-/*         if (itensOpcoesRepositoryAlreadyExists){
-            return response.status(400).json({
-                error: "A opção de item já criada!",
+
+            const itensOpcoes = await itensOpcoesServices.createItensOpcoes({
+                descricaoOpcoes,
+                ordemOpcoes,
+                codCategoriasListaOpcoesUuId: categoriasListaOpcoesAlreadyExists.codCategoriasListaOpcoesUuId,
+                listaOpcoesJson,
             });
-        } */
 
-        const itensOpcoes = itensOpcoesRepository.create({
-            descricaoOpcoes,
-            ordemOpcoes,
-            codCategoriasListaOpcoesUuId: categoriasListaOpcoesAlreadyExists.codCategoriasListaOpcoesUuId,
-            listaOpcoesJson,
-        });
-        
-        await itensOpcoesRepository.save(itensOpcoes);
+            return response.status(201).json({
+                message: "Opções criadas com sucesso!",
+                status: true,
+                itensOpcoes,
+            });
 
-        return response.status(201).json(itensOpcoes);
+        }catch (err){
+            return response.status(400).json({
+                error: err,
+            });
+        }
+            
+
+
     }
 
-    async show(request: Request, response: Response){
-        const itensOpcoesRepository = getCustomRepository( ItensOpcoesRepository);
-        const all = await itensOpcoesRepository.find();
+    async showAllItensOpcoes(request: Request, response: Response){
+        const itensOpcoesServices = new ItensOpcoesServices();
+        const all = await itensOpcoesServices.showAllItensOpcoes();
         return response.json(all);
     }
 
