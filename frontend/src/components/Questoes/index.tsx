@@ -38,7 +38,7 @@ const Questoes = () => {
 
     useEffect(() => {
         async function loadCategoriasitens() {
-          const response = await api.get('/categoriasitens');
+          const response = await api.get('/showall/categoriasitens');
             const data = response.data as CategoriasItensTypes[];
             const nmInteno = data.map(x => x.nomeInternoCategoriasItens);
             const uuidItem = data.map(x => x.codCategoriasItensUuId);

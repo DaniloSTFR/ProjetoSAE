@@ -32,14 +32,14 @@ const anamneseDiagnosticoController = new AnamneseDiagnosticoController();
 
 router.post("/create/categoriasitens", ensureAutenticarUsuario, ensureAdmin,categoriasItensController.createCategoriasItens );
 router.get("/showall/categoriasitens", ensureAutenticarUsuario,  categoriasItensController.showAllCategoriasItens );
-router.get("/find/categoriasitensbynome", ensureAutenticarUsuario,  categoriasItensController.findCategoriasItensByNome );
+router.post("/find/categoriasitensbynome", ensureAutenticarUsuario,  categoriasItensController.findCategoriasItensByNome );
 
 router.post("/create/categoriaslistaopcoes", ensureAutenticarUsuario, ensureAdmin, categoriasListaOpcoesController.createCategoriasListaOpcoes );
-router.get("/find/categoriaslistaopcoesbyuuid", ensureAutenticarUsuario, categoriasListaOpcoesController.findCategoriasListaOpcoesByUuId );
+router.post("/find/categoriaslistaopcoesbyuuid", ensureAutenticarUsuario, categoriasListaOpcoesController.findCategoriasListaOpcoesByUuId );
 router.get("/showall/categoriaslistaopcoes", ensureAutenticarUsuario, categoriasListaOpcoesController.showAllCategoriasListaOpcoes );
 
 router.post("/create/itensformularios", ensureAutenticarUsuario, ensureAdmin, itensFormulariosController.createItensFormularios );
-router.get("/find/itensformularios", ensureAutenticarUsuario, itensFormulariosController.findOneItensFormularios );
+router.post("/find/itensformularios", ensureAutenticarUsuario, itensFormulariosController.findOneItensFormularios );
 router.get("/showall/itensformularios", ensureAutenticarUsuario,itensFormulariosController.showAllItensFormularios );
 
 router.post("/create/itensopcoes", ensureAutenticarUsuario, ensureAdmin, itensOpcoesController.createItensOpcoes );
@@ -51,10 +51,11 @@ router.post("/analisediagnostico", ensureAutenticarUsuario, analseDeDadosControl
 router.post("/create/usuarios",usuarioController.createUsuarios );
 router.get("/showall/usuarios", ensureAutenticarUsuario, ensureAdmin,  usuarioController.showAllUsuarios );
 router.post("/autenticarusuarios",usuarioController.autenticarUsuarios );
+router.get("/find/usuario",ensureAutenticarUsuario, ensureAdmin,  usuarioController.getUsuarioByUuid);
 
 router.post("/create/prontuarios", ensureAutenticarUsuario, prontuarioController.createProntuarios );
-router.get("/find/prontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
-router.get("/find/prontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
+router.post("/find/prontuariocompletebyuuid", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByUuId );
+router.post("/find/prontuariocompletebynumero", ensureAutenticarUsuario, prontuarioController.findProntuarioCompleteByNumero );
 
 router.post("/create/comentarioprontuarios", ensureAutenticarUsuario, comentarioProntuarioContoller.createComentarioProntuarios );
 
@@ -70,7 +71,7 @@ router.delete("/delete/rascunhoprontuarios", ensureAutenticarUsuario, rascunhoPr
 
 router.post("/create/anamnesediagnosticos", ensureAutenticarUsuario, anamneseDiagnosticoController.createAnamneseDiagnosticos );
 router.patch("/update/anamnesediagnosticos", ensureAutenticarUsuario, anamneseDiagnosticoController.updateAnamneseDiagnosticos );
-router.get("/find/AnamneseDiagnostico", ensureAutenticarUsuario, anamneseDiagnosticoController.findAnamneseDiagnostico );
+router.post("/find/AnamneseDiagnostico", ensureAutenticarUsuario, anamneseDiagnosticoController.findAnamneseDiagnostico );
 
 
 export { router}

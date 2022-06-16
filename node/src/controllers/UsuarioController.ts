@@ -62,12 +62,12 @@ class UsuarioController {
             const senhaCompare =  await compare(senha, usuariofind.senha );
             if(!senhaCompare){
                 return response.status(400).json({
-                    error: "Usuário ou senha incorreta!",
+                    error: "Usuário ou senha incorretas!",
                 });
             }
         }else{
             return response.status(400).json({
-                error: "Usuário ou senha incorreta!",
+                error: "Usuário ou senha incorretas!",
             });
         }
 
@@ -89,13 +89,24 @@ class UsuarioController {
         
         //usuariofind.statusLogin = true;
         //return response.status(201).json(usuariofind);
-        return response.status(201).json(token);
+        return response.status(201).json(
+            {
+                token
+            });
     }
 
     async showAllUsuarios(request: Request, response: Response){        
         const usuarioServices =  new UsuarioServices()
         const allUsers = await usuarioServices.getAllUser();
         return response.json(allUsers);
+    }
+
+    async getUsuarioByUuid(request: Request, response: Response){        
+        const { codUsuarioUuId } = request;
+    
+        const usuarioServices =  new UsuarioServices();
+        const usuario = await usuarioServices.findUserByUuId(codUsuarioUuId);
+        return response.json(usuario);
     }
 
 }

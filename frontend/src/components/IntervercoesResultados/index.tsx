@@ -53,57 +53,57 @@ const IntervercoesResultados = ({ uuidDiagArray }: Props) => {
             <div>
                 {saeNicNocTypesArr.arr.length > 0 ? (
                     <div>
-                        {saeNicNocTypesArr.arr.map(( itens, index ) =>
-                            
+                        {saeNicNocTypesArr.arr.map((itens, index) =>
+
                             <div key={index}>
 
                                 <div className="card">
-                                <h5 className="card-header">{itens.codigo_do_diagnostico}</h5>
-                                <div className="card-body">
-                                    <p className="card-text">Resultados:</p>
+                                    <h5 className="card-header">{itens.codigo_do_diagnostico}</h5>
+                                    <div className="card-body">
+                                        <p className="card-text">Resultados:</p>
                                         <ul>
-                                            {itens.resultados_noc.map(( itkey, idx ) => 
+                                            {itens.resultados_noc.map((itkey, idx) =>
                                                 <li key={idx}>
                                                     {itkey}
                                                 </li>
                                             )}
                                         </ul>
 
-                                    <p className="card-text">Intervenções:</p>
+                                        <p className="card-text">Intervenções:</p>
                                         <ul>
-                                            {itens.intervercoes_nic.map(( itkey, idx ) => 
+                                            {itens.intervercoes_nic.map((itkey, idx) =>
                                                 <li key={idx}>
-                                                    {itkey.replace(/[(0-9)]/g,"")}
+                                                    {itkey.replace(/[(0-9)]/g, "")}
                                                 </li>
                                             )}
                                         </ul>
 
-                                </div>
+                                    </div>
                                 </div>
                                 <br />
-                            </div>   
-                        )}    
+                            </div>
+                        )}
                     </div>
-                ): 
-                
-                     <p>Sem Diagnósticos</p>
+                ) :
+
+                    <p>Sem Diagnósticos</p>
                 }
-                
+
             </div>
 
             <div className="container-lg">
                 <label>Anotações de enfermagem:
-    
+
                     <br /><br />
-                    <textarea className="textareaanotacao" id="exampleFormControlTextarea1" rows={5} style={{marginTop: '0px', marginBottom: '0px', height: '314px'}} />
+                    <textarea className="textareaanotacao" id="exampleFormControlTextarea1" rows={5} style={{ marginTop: '0px', marginBottom: '0px', height: '314px' }} />
                 </label>
             </div>
             <div>
-                <button type="button"  className="btn btn-outline-success btn-lg">Imprimir diagnóstico</button>  
+                <button type="button" className="btn btn-outline-success btn-lg">Imprimir diagnóstico</button>
                 <br /><br />
             </div>
 
-        </>    
+        </>
     );
 
 }

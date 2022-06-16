@@ -22,7 +22,7 @@ const CategoriesItens = ({ checkFunction, onChecked, nInteno = "" }: Props) => {
 
     useEffect(() => {
         async function loadItens() {
-            const response = await api.post('/showcategoriasitens', { nomeInternoCategoriasItens: nInteno });
+            const response = await api.post('/find/categoriasitensbynome', { nomeInternoCategoriasItens: nInteno });
             const dados = response.data as Showcategoriasitens[];
             setVarCategoriasItensTypes(dados[0]);
         }
