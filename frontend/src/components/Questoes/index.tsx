@@ -14,19 +14,19 @@ type NomeCategorias = {
 }
 
 
-type KeyWordElements ={
-    uuid:string; 
-    idItem:number; 
-    keyword:string;
+type KeyWordElements = {
+    uuid: string;
+    idItem: number;
+    keyword: string;
 }
 
-type KeyWordElementsArray ={
+type KeyWordElementsArray = {
     arr: KeyWordElements[];
 }
 
 
 const Questoes = () => {
-    const myArray = ["Historico_de_Enfermagem","Historia_Doenca_Atual","Historia_Pregressa","Exame_Fisico","Necessidades_Psicossociais_Habitos_de_Vida","Necessidades_Psicobiologias_Cuidado_Corporal","Necessidades_Psicobiologias_Nutricao_e_Hidratacao","Necessidades_Psicobiologias_Eliminacao_Urinaria","Necessidades_Psicobiologias_Eliminacao_intestinal","Sexualidade","Moradia","Instrumentos"];
+    const myArray = ["Historico_de_Enfermagem", "Historia_Doenca_Atual", "Historia_Pregressa", "Exame_Fisico", "Necessidades_Psicossociais_Habitos_de_Vida", "Necessidades_Psicobiologias_Cuidado_Corporal", "Necessidades_Psicobiologias_Nutricao_e_Hidratacao", "Necessidades_Psicobiologias_Eliminacao_Urinaria", "Necessidades_Psicobiologias_Eliminacao_intestinal", "Sexualidade", "Moradia", "Instrumentos"];
 
     const [state, setState] = useState(0);
     // eslint-disable-next-line
@@ -34,104 +34,104 @@ const Questoes = () => {
     const [nomeCategorias, setNomeCategorias] = useState<NomeCategorias>({ nomeInteno: categoriesJSON, uuid: [] });
     const [listaKeyWordElements, setlistaKeyWordElements] = useState<KeyWordElementsArray>({ arr: [] });
 
-    
+
 
     useEffect(() => {
         async function loadCategoriasitens() {
-          const response = await api.get('/showall/categoriasitens');
+            const response = await api.get('/showall/categoriasitens');
             const data = response.data as CategoriasItensTypes[];
             const nmInteno = data.map(x => x.nomeInternoCategoriasItens);
             const uuidItem = data.map(x => x.codCategoriasItensUuId);
             setNomeCategorias({ nomeInteno: nmInteno, uuid: uuidItem });
         }
         loadCategoriasitens();
-      }, []);
+    }, []);
 
     const keywordExists = (keyword_in: string) => {
-        const arraypereciveis  =   listaKeyWordElements.arr.filter(f => f.keyword === keyword_in);
+        const arraypereciveis = listaKeyWordElements.arr.filter(f => f.keyword === keyword_in);
         return (arraypereciveis.length > 0);
-      };
+    };
 
-    const onChangeItemSimples = (uuid_in:string, idItem_in:number, keyword_in: string) => {
+    const onChangeItemSimples = (uuid_in: string, idItem_in: number, keyword_in: string) => {
         console.log("keyword:" + keyword_in);
 
-        let listaUP:KeyWordElementsArray = {
-            arr:listaKeyWordElements.arr
+        let listaUP: KeyWordElementsArray = {
+            arr: listaKeyWordElements.arr
         };
 
 
-        if(listaUP.arr.length === 0 ){
+        if (listaUP.arr.length === 0) {
             listaUP.arr.push(
                 {
-                    uuid:uuid_in, 
-                    idItem:idItem_in, 
-                    keyword:keyword_in
+                    uuid: uuid_in,
+                    idItem: idItem_in,
+                    keyword: keyword_in
                 });
 
-        }else{
+        } else {
 
-            let idx:number = listaUP.arr.findIndex( x => (x.uuid === uuid_in && x.idItem === idItem_in ));
-            
-            if(idx+1){
+            let idx: number = listaUP.arr.findIndex(x => (x.uuid === uuid_in && x.idItem === idItem_in));
+
+            if (idx + 1) {
                 listaUP.arr[idx].uuid = uuid_in;
                 listaUP.arr[idx].idItem = idItem_in;
                 listaUP.arr[idx].keyword = keyword_in;
 
-            }else{
+            } else {
                 listaUP.arr.push(
                     {
-                        uuid:uuid_in, 
-                        idItem:idItem_in, 
-                        keyword:keyword_in
+                        uuid: uuid_in,
+                        idItem: idItem_in,
+                        keyword: keyword_in
                     });
             }
         }
-        setlistaKeyWordElements({arr:listaUP.arr})
+        setlistaKeyWordElements({ arr: listaUP.arr })
     }
 
     useEffect(() => {
         console.log(listaKeyWordElements);
-    },[listaKeyWordElements]); 
-    
-        
-    const loadPage = (idx :number) => {
-       setState(idx);    
+    }, [listaKeyWordElements]);
+
+
+    const loadPage = (idx: number) => {
+        setState(idx);
     }
 
 
-    async function onClickedNicNoc(uuid_Diagnosticos: string){
+    async function onClickedNicNoc(uuid_Diagnosticos: string) {
 
-        ReactDOM.render (<div></div>, document.getElementById('formulario'));
-        ReactDOM.render (<div></div>, document.getElementById('diagnosticos'));
-        
+        ReactDOM.render(<div></div>, document.getElementById('formulario'));
+        ReactDOM.render(<div></div>, document.getElementById('diagnosticos'));
+
         //const uuidArray = ["60822f3f24a3f414f43be6a1","60822f3f24a3f414f43be698","60822f4724a3f414f43be6ac", "60822f4f24a3f414f43be6c9" ];
         const uuidArray = [uuid_Diagnosticos];
-        ReactDOM.render (<IntervercoesResultados uuidDiagArray={uuidArray} />, document.getElementById('intervercoes_resultados'));
-      };
+        ReactDOM.render(<IntervercoesResultados uuidDiagArray={uuidArray} />, document.getElementById('intervercoes_resultados'));
+    };
 
-    async function handleDadosAnalise(){
+    async function handleDadosAnalise() {
 
         const enviar = listaKeyWordElements.arr;
-        ReactDOM.render (<Diagnosticos keyWordElementsArray={enviar} onClickedNicNoc= {onClickedNicNoc} />, document.getElementById('diagnosticos'));
-      };
+        ReactDOM.render(<Diagnosticos keyWordElementsArray={enviar} onClickedNicNoc={onClickedNicNoc} />, document.getElementById('diagnosticos'));
+    };
 
-    
+
     return (
         <>
 
             <div id="formulario">
-                <form >                        
+                <form >
                     <CategoriesItens checkFunction={keywordExists} onChecked={onChangeItemSimples} nInteno={nomeCategorias.nomeInteno[state]} />
                     <br />
                 </form>
 
                 <Pagination onClicked={loadPage} paginaAtual={state} tamanhaDasPaginas={nomeCategorias.nomeInteno.length} />
 
-                
+
                 <button type="button" onClick={handleDadosAnalise} className="btn btn-outline-primary btn-lg">Analisar dados</button>
-                
+
                 <br />
-            </div>            
+            </div>
             <br />
             <div id="diagnosticos"></div>
             <br />

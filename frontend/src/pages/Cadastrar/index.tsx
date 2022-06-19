@@ -15,6 +15,7 @@ import back from 'assets/images/back.svg';
 import sucesso from 'assets/images/vsucesso.svg';
 import falha from 'assets/images/xfalha.svg';
 import 'styles/cadastrar.scss';
+import 'styles/modal.scss';
 
 interface IFormCadastro {
     nomeUsuario: string;
@@ -50,7 +51,6 @@ const Cadastrar = () => {
     });
 
     const cadastroAction = async (data: IFormCadastro) => {
-        console.log(data);
 
         try {
             const response = await request.post(`${BASE_URL}/create/usuarios`, data);

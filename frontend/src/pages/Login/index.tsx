@@ -38,7 +38,9 @@ const Login = () => {
   });
 
   useEffect(() => {
-    console.log(usuario);
+    if(usuario){
+      //console.log(usuario);
+    }
   }, [usuario]);
 
   const loginAction = async (data: IFormInputs) => {
@@ -46,7 +48,7 @@ const Login = () => {
     try {
       await signInAction(data.usuario, data.senha);
 
-      history.push('/formulario');//redirect aqui ou
+      history.push('/home');//redirect aqui ou
     } catch (err) {
       if (request.isAxiosError(err) && err.response) {
         console.log((err.response?.data).error);
@@ -126,4 +128,6 @@ const Login = () => {
 }
 
 export default Login;
+
+//TODO: Transformar o modal em um componente no momento do refino, atribuir pata login e cadastro
 

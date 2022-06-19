@@ -1,45 +1,129 @@
-import Footer from "components/Footer"
-import NavBar from "components/NavBar"
-import React from "react"
-import { Link } from "react-router-dom"
+import { useState, useEffect } from 'react';
+import { Link, useHistory, useParams } from "react-router-dom"
+import { useAuth } from 'hooks/useAuth';
+import ReactDOM from 'react-dom';
+
+import Dashboard from "pages/Dashboard";
+//import Formulario from "pages/Formulario";
+import FormProntuario from "components/FormProntuario";
+import Formulario from "pages/Formulario";
+
+
+import 'styles/home-menu.scss';
+
+type HomeParams = {
+    id: string;
+    uuid: string;
+  }
 
 const Home = () => {
-    return (
-        <>
-            <NavBar />
-            <div className="container">
-                <div className="jumbotron" style={{textAlign: "justify"}}>
-                    <h1 className="display-4">Projeto enfSenior</h1>
-                    <p className="lead">Sistematização da assistência de enfermagem ao idoso na atenção primária à saúde.</p>
-                    <hr />
+    const {usuario, signOutAction} = useAuth();
+    const [menuTitulo, setMenuTitulo] = useState(`Olá, ${usuario?.tagUsuario}`);
+    const params = useParams<HomeParams>();
+    const history = useHistory();
+    console.log(params.id);
+    console.log(params.uuid);
+    
+    function toHomeComponent(idRouter: string, uuidProntuario: string){
+        console.log(`Avançar idRouter: ${idRouter}`);
+        console.log(`Avançar uuidProntuario: ${uuidProntuario}`);
+        //toHomeComponent("formulario",uuidProntuario)
+        history.push(`/home/${idRouter}/${uuidProntuario}`);
+    }
 
-                    <p>O projeto tem como objetivo auxiliar o enfermeiro na realização da consulta de
-                    enfermagem ao idoso na atenção primária à saúde, buscando implementar a sistematização
-                    da assistência de enfermagem.</p>
-                    <p>A SAE é um dos instrumentos de trabalho do profissional
-                    enfermeiro que embasa no que tange o conhecimento científico sendo uma ação privativa do
-                           enfermeiro, conforme a Resolução COFEN 358/2009.</p>
-                    {/*                      <h5>NANDA Internacional</h5>
-                      <p>A NANDA Internacional surgiu no ano de 1982 como uma forma de 
-                        uniformizar os diagnósticos de enfermagem tornando a linguagem única e 
-                        facilitando o uso de terminologias pelos enfermeiros.</p>     */}
-                    <div>
-                        <Link className="btn btn-primary btn-lg" to="/formulario">
-                            Acessar o Formulário
-                        </Link>
-                    </div>
-                    <br />
-                    {/*                     <div>
-                        <Link className="btn btn-primary btn-lg" to="/dashboard">
-                            Acessar o Dashboard
-                        </Link>
-                    </div> */}
-                    <br />
+    useEffect(() => {
+        if(params.id === "prontuario"){
+          setMenuTitulo(`Novo paciente`);
+          CarrregarComponente( <FormProntuario  usuarioContext = {usuario} toHomeComponent = {toHomeComponent}/>)
+        } else
+        if(params.id === "formulario"){
+            setMenuTitulo(`Formulário`);
+            CarrregarComponente(<Formulario />);
+        }else
+        if(params.id === "historico"){
+            setMenuTitulo(`Histórico`);
+            CarrregarComponente(<div>Formulário Histórico</div>);
+        }else
+        if(params.id === "rascunho"){
+            setMenuTitulo(`Rascunho`);
+            CarrregarComponente(<div>Formulário Rascunho</div>);
+        } else
+        if(params.id === "notificacoes"){
+            setMenuTitulo(`Notificações`);
+            CarrregarComponente(<div>Formulário Notificações</div>);
+        }else{
+            setMenuTitulo(`Olá, ${usuario?.tagUsuario}`);
+            CarrregarComponente(<Dashboard />);
+        }
+      // eslint-disable-next-line
+      }, [params.id,usuario]);
+
+    async function CarrregarComponente( component:any){
+         ReactDOM.render (component, document.getElementById('main_components'));
+    }; 
+
+    return (
+        <div className="body-menu">
+            <main id="body-pd">
+                <header className="header" id="header">
+                    <div className="header_toggle"> <i className='bx bx-menu' id="header-toggle"></i>  </div>
+                    <div><h2>{menuTitulo}</h2></div>
+                    
+                    {/* <div className="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div> */}
+                </header>
+                <div className="l-navbar" id="nav-bar">
+                    <nav className="nav">
+                        <div> 
+
+                            <Link className="nav_logo active" to="/home">
+                                <i className='bx bx-home nav_logo-icon'></i> 
+                                <span className="nav_logo-name">Home</span>
+                            </Link>
+                            
+                            <div className="nav_list"> 
+                            
+                                <Link className="nav_link" to="/home/prontuario">
+                                    <i className='bx bx-user nav_icon'></i> 
+                                    <span className="nav_name">Novo paciente</span>
+                                </Link>
+
+                                <Link className="nav_link" to="/home/historico">
+                                    <i className='bx bx-history nav_icon'></i>
+                                    <span className="nav_name">Ver histórico</span>
+                                </Link>
+
+                                <Link className="nav_link" to="/home/rascunho">
+                                    <i className='bx bx-layer nav_icon'></i> 
+                                    <span className="nav_name">Ver rascunhos</span>
+                                </Link>
+
+                                <Link className="nav_link" to="/home/notificacoes">
+                                    <i className='bx bx-message-square-detail nav_icon'></i> 
+                                    <span className="nav_name">3 notificações</span>
+                                </Link>  
+                                <Link className="nav_link" to="/" onClick={() => signOutAction()}>
+                                    <i className='bx bx-log-out nav_icon'></i> 
+                                    <span className="nav_name">Sair</span>
+                                </Link>            
+
+                            </div>
+                        </div> 
+
+                    </nav>
                 </div>
-            </div>
-            <Footer />
-        </>
+                {/* <!--Container Main start--> */}
+                <div className="height-100 bg-light">
+                    <h4>Main Components</h4>
+                    <div id="main_components"></div>
+                </div>
+                {/* Container Main end */}
+
+            </main>
+
+        </div>
     );
 }
 
 export default Home;
+
+

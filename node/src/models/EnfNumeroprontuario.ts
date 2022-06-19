@@ -20,7 +20,7 @@ export class EnfNumeroprontuario {
   @ManyToOne(
     () => EnfProntuario,
     (enfProntuario) => enfProntuario.enfNumeroprontuarios,
-    { onDelete: "NO ACTION", onUpdate: "NO ACTION" }
+    { onDelete: "CASCADE", onUpdate: "CASCADE" }
   )
   @JoinColumn([
     { name: "codProntuarioUUId", referencedColumnName: "codProntuarioUuId" },

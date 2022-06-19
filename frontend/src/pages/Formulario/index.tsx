@@ -1,12 +1,10 @@
-import Footer from "components/Footer";
-import NavBar from "components/NavBar";
 import Questoes from "components/Questoes";
 import React from "react";
 
 const Formulario = () => {
     return (
         <>
-            <NavBar />
+            
             <div className="container">
                 <div className="jumbotron">
                     <h1 className="h2">Formulário</h1>
@@ -18,7 +16,7 @@ const Formulario = () => {
                     <Questoes />
                 </div>
             </div>
-            <Footer />
+            
         </>
     );
 }
