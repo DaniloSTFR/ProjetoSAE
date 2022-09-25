@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 import { Usuario } from 'types/Usuario';
-import 'styles/prontuario.scss';
+import './styles.scss';
 
 interface IFormProntuario {
     nomePaciente: string;

@@ -3,9 +3,10 @@ import { Link, useHistory, useParams } from "react-router-dom"
 import { useAuth } from 'hooks/useAuth';
 import ReactDOM from 'react-dom';
 
-import Dashboard from "pages/Dashboard";
 //import Formulario from "pages/Formulario";
 import FormProntuario from "components/FormProntuario";
+import HorizontalMenu from "components/HorizontalMenu";
+import HistoricoTable from "components/HistoricoTable";
 import Formulario from "pages/Formulario";
 
 
@@ -53,7 +54,7 @@ const Home = () => {
             CarrregarComponente(<div>Formulário Notificações</div>);
         }else{
             setMenuTitulo(`Olá, ${usuario?.tagUsuario}`);
-            CarrregarComponente(<Dashboard />);
+            CarrregarComponente(<><div><HorizontalMenu/></div> <div><HistoricoTable/></div></>);
         }
       // eslint-disable-next-line
       }, [params.id,usuario]);
@@ -64,7 +65,7 @@ const Home = () => {
 
     return (
         <div className="body-menu">
-            <main id="body-pd">
+            <main id="body-pd"  style={{padding: "0px"}}>
                 <header className="header" id="header">
                     <div className="header_toggle"> <i className='bx bx-menu' id="header-toggle"></i>  </div>
                     <div><h2>{menuTitulo}</h2></div>
@@ -113,7 +114,7 @@ const Home = () => {
                 </div>
                 {/* <!--Container Main start--> */}
                 <div className="height-100 bg-light">
-                    <h4>Main Components</h4>
+                    
                     <div id="main_components"></div>
                 </div>
                 {/* Container Main end */}
