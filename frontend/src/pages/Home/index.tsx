@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useHistory, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useAuth } from 'hooks/useAuth';
 import ReactDOM from 'react-dom';
 
@@ -9,7 +9,6 @@ import HorizontalMenu from "components/HorizontalMenu";
 import HistoricoTable from "components/HistoricoTable";
 import Formulario from "pages/Formulario";
 
-
 import 'styles/home-menu.scss';
 
 type HomeParams = {
@@ -18,12 +17,10 @@ type HomeParams = {
   }
 
 const Home = () => {
-    const {usuario, signOutAction} = useAuth();
+    const {usuario, signOutAction, getServiceRequestApi} = useAuth();
     const [menuTitulo, setMenuTitulo] = useState(`Olá, ${usuario?.tagUsuario}`);
     const params = useParams<HomeParams>();
     const history = useHistory();
-    console.log(params.id);
-    console.log(params.uuid);
     
     function toHomeComponent(idRouter: string, uuidProntuario: string){
         console.log(`Avançar idRouter: ${idRouter}`);
@@ -39,11 +36,13 @@ const Home = () => {
         } else
         if(params.id === "formulario"){
             setMenuTitulo(`Formulário`);
-            CarrregarComponente(<Formulario />);
+            const numeroprontuario = Number(params.uuid);
+            CarrregarComponente(<Formulario usuarioContext = {usuario} historyRouter = {history} numeroprontuario = {numeroprontuario}/>);
         }else
         if(params.id === "historico"){
             setMenuTitulo(`Histórico`);
             CarrregarComponente(<div>Formulário Histórico</div>);
+            callService();
         }else
         if(params.id === "rascunho"){
             setMenuTitulo(`Rascunho`);
@@ -54,20 +53,66 @@ const Home = () => {
             CarrregarComponente(<div>Formulário Notificações</div>);
         }else{
             setMenuTitulo(`Olá, ${usuario?.tagUsuario}`);
-            CarrregarComponente(<><div><HorizontalMenu/></div> <div><HistoricoTable/></div></>);
+            CarrregarComponente(<><div><HorizontalMenu historyRouter = {history}/></div> <div><HistoricoTable/></div></>);
         }
       // eslint-disable-next-line
       }, [params.id,usuario]);
+
+      async function callService(){
+        console.log(usuario);
+        const api  = await getServiceRequestApi();
+        const result = await api.get('/');
+        console.log(result.data);
+      }
 
     async function CarrregarComponente( component:any){
          ReactDOM.render (component, document.getElementById('main_components'));
     }; 
 
+    async function clickOpenCloseMenu(){
+        console.log("clickOpenCloseMenu")
+
+        const showNavbar = (toggleId: string, navId: string, bodyId: string, headerId: string) => {
+            const toggle = document.getElementById(toggleId),
+              nav = document.getElementById(navId),
+              bodypd = document.getElementById(bodyId),
+              headerpd = document.getElementById(headerId);
+            // Validate that all variables exist
+            if (toggle && nav && bodypd && headerpd) {
+              //toggle.addEventListener('click', () => {
+                // show navbar
+                nav.classList.toggle('show_menu')
+                // change icon
+                toggle.classList.toggle('bx-x')
+                // add padding to body
+                bodypd.classList.toggle('body-pd')
+                // add padding to header
+                headerpd.classList.toggle('body-pd')
+              //})
+            }
+          }
+        
+          showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+    };
+
+        /*===== LINK ACTIVE =====*/
+    const linkColor = document.querySelectorAll('.nav_link')
+
+    function colorLink(this: any) {
+        if (linkColor) {
+        linkColor.forEach(l => l.classList.remove('active'))
+        // eslint-disable-next-line
+        this.classList.add('active')
+        }
+    }
+    linkColor.forEach(l => l.addEventListener('click', colorLink))
+
     return (
         <div className="body-menu">
             <main id="body-pd"  style={{padding: "0px"}}>
                 <header className="header" id="header">
-                    <div className="header_toggle"> <i className='bx bx-menu' id="header-toggle"></i>  </div>
+                    <div className="header_toggle"> 
+                    <i className='bx bx-menu' id="header-toggle" onClick={clickOpenCloseMenu}></i>  </div>
                     <div><h2>{menuTitulo}</h2></div>
                     
                     {/* <div className="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div> */}

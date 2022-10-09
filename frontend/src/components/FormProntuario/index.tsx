@@ -1,5 +1,4 @@
-import request from 'axios';
-import { BASE_URL } from 'utils/resquests';
+import api from 'services/api';
 import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -78,12 +77,7 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
                 oximetria: Number(data.oximetria.replace(',', '.'))
             };
 
-            const response = await request.post(`${BASE_URL}/create/prontuarios`, pramsRequest,
-                {
-                    headers: {
-                        'Authorization': `token ${usuarioContext?.token}`
-                    }
-                });
+            const response = await api.post('/create/prontuarios', pramsRequest);
 
             setSucessoMessage(response.data.message);
             console.log(response.data);
@@ -91,9 +85,7 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
             setIsOpened(true);
 
         } catch (err) {
-            if (request.isAxiosError(err) && err.response) {
                 console.log((err.response?.data).error);
-            }
         }
 
     };
@@ -151,7 +143,7 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
                                 <h5>{errors.dataNascimentoDia?.message}</h5>
                             </div>
                             <div className="col-md-4 inputWidth">
-                                <label htmlFor="inputAltura" className="form-label">Altura(m):</label>
+                                <label htmlFor="inputAltura" className="form-label">Altura(cm):</label>
                                 <input type="text" className="form-control" id="inputAltura" disabled={isOpened}
                                     pattern="\d+,?\d{0,4}|\d+.?\d{0,4}"
                                     value={valAltura}
@@ -204,7 +196,7 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
                                 <h5>{errors.glicemia?.message}</h5>
                             </div>
                             <div className="col-md-4 inputWidth">
-                                <label htmlFor="inputPressaoArterial" className="form-label">Pressão arteria:</label>
+                                <label htmlFor="inputPressaoArterial" className="form-label">Pressão arterial:</label>
                                 <input type="text" className="form-control" id="inputPressaoArterial" disabled={isOpened}
                                     pattern="\d+/?\d{0,4}" placeholder="__/__"
                                     value={valPA}

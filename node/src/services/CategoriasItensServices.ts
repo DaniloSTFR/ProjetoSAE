@@ -26,6 +26,9 @@ class CategoriasItensServices{
     async showAllCategoriasItens(){
         const categoriasItensRepository = getCustomRepository( CategoriasItensRepository);
         const allcategoriasItens = await categoriasItensRepository.find({
+            where: [
+                { ativo: 1},
+            ],
             order: {
                 ordemCategoriaItens: "ASC",
             },

@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
-import api from 'services/api';
 import { Showcategoriasitens } from 'types/Categorias';
+import { Usuario } from 'types/Usuario';
+import api from 'services/api';
 
 type Props = {
     checkFunction: Function;
     onChecked: Function;
     nInteno: string;
+
+    usuarioContext: Usuario | undefined;
+    historyRouter: any;
 }
 
 
-const CategoriesItens = ({ checkFunction, onChecked, nInteno = "" }: Props) => {
+const CategoriesItens = ({ checkFunction, onChecked, nInteno = "", usuarioContext,historyRouter }: Props) => {
 
     const [varCategoriasItensTypes, setVarCategoriasItensTypes] = useState<Showcategoriasitens>({
         codCategoriasItensUuId: "",
@@ -22,11 +26,21 @@ const CategoriesItens = ({ checkFunction, onChecked, nInteno = "" }: Props) => {
 
     useEffect(() => {
         async function loadItens() {
-            const response = await api.post('/find/categoriasitensbynome', { nomeInternoCategoriasItens: nInteno });
+            console.log(usuarioContext);
+            //const response = await api.post('/find/categoriasitensbynome', { nomeInternoCategoriasItens: nInteno });
+            const pramsRequest = {nomeInternoCategoriasItens: nInteno };
+            const response = await api.post(`/find/categoriasitensbynome`, pramsRequest);
+/*             const response = await request.post(`${BASE_URL}/find/categoriasitensbynome`, pramsRequest,
+            {
+                headers: {
+                    'Authorization': `token ${usuarioContext?.token}`
+                }
+            }); */
             const dados = response.data as Showcategoriasitens[];
             setVarCategoriasItensTypes(dados[0]);
         }
         loadItens();
+        // eslint-disable-next-line
       }, [nInteno]);
 
 

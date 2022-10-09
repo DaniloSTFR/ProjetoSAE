@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       // Validate that all variables exist
       if (toggle && nav && bodypd && headerpd) {
         toggle.addEventListener('click', () => {
+          console.log('Show click');
           // show navbar
           nav.classList.toggle('show_menu')
           // change icon
@@ -30,9 +31,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if (linkColor) {
         linkColor.forEach(l => l.classList.remove('active'))
         this.classList.add('active')
+        console.log(this.classList)
       }
     }
     linkColor.forEach(l => l.addEventListener('click', colorLink))
+    console.log(linkColor)
 
     // Your code to run since DOM is loaded and ready
   });

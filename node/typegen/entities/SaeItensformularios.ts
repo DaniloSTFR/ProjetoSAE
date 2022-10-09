@@ -39,6 +39,9 @@ export class SaeItensformularios {
   @Column("json", { name: "opcoesItensFormJSON", nullable: true })
   opcoesItensFormJson: object | null;
 
+  @Column("int", { name: "ativo", default: () => "'0'" })
+  ativo: number;
+
   @ManyToOne(
     () => SaeCategoriasitens,
     (saeCategoriasitens) => saeCategoriasitens.saeItensformularios,

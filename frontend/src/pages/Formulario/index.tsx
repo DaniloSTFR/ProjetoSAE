@@ -1,7 +1,17 @@
 import Questoes from "components/Questoes";
 import React from "react";
 
-const Formulario = () => {
+import { Usuario } from 'types/Usuario';
+
+type Props = {
+    usuarioContext: Usuario | undefined;
+    historyRouter: any;
+    numeroprontuario: number
+    //toHomeComponent: Function;
+}
+
+const Formulario = ({ usuarioContext, historyRouter, numeroprontuario }: Props) => {
+    console.log(usuarioContext);
     return (
         <>
             
@@ -13,7 +23,7 @@ const Formulario = () => {
                 </div>
 
                 <div>
-                    <Questoes />
+                    <Questoes usuarioContext = {usuarioContext} historyRouter = {historyRouter} numeroprontuario = {numeroprontuario}/>
                 </div>
             </div>
             

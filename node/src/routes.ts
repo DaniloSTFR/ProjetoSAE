@@ -1,4 +1,6 @@
 import { Router } from "express";
+
+import { OpenConectionController } from "./controllers/OpenConectionController";
 import { CategoriasItensController } from "./controllers/CategoriasItensController";
 import { CategoriasListaOpcoesController } from "./controllers/CategoriasListaOpcoesController";
 import { ItensFormulariosController } from "./controllers/ItensFormulariosController";
@@ -28,7 +30,9 @@ const comentarioProntuarioContoller = new ComentarioProntuarioController();
 const notificacaoUsuarioController = new NotificacaoUsuarioController();
 const rascunhoProntuarioController = new RascunhoProntuarioController();
 const anamneseDiagnosticoController = new AnamneseDiagnosticoController();
+const openConectionController = new OpenConectionController();
 
+router.get("/",openConectionController.openConection );
 
 router.post("/create/categoriasitens", ensureAutenticarUsuario, ensureAdmin,categoriasItensController.createCategoriasItens );
 router.get("/showall/categoriasitens", ensureAutenticarUsuario,  categoriasItensController.showAllCategoriasItens );

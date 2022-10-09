@@ -7,6 +7,8 @@ import ReactDOM from 'react-dom';
 import api from 'services/api';
 import { CategoriasItensTypes } from 'types/Categorias';
 
+import { Usuario } from 'types/Usuario';
+
 
 type NomeCategorias = {
     nomeInteno: string[];
@@ -24,8 +26,15 @@ type KeyWordElementsArray = {
     arr: KeyWordElements[];
 }
 
+type Props = {
+    usuarioContext: Usuario | undefined;
+    historyRouter: any;
+    numeroprontuario: number
+    //toHomeComponent: Function;
+}
 
-const Questoes = () => {
+
+const Questoes = ({ usuarioContext, historyRouter, numeroprontuario }: Props) => {
     const myArray = ["Historico_de_Enfermagem", "Historia_Doenca_Atual", "Historia_Pregressa", "Exame_Fisico", "Necessidades_Psicossociais_Habitos_de_Vida", "Necessidades_Psicobiologias_Cuidado_Corporal", "Necessidades_Psicobiologias_Nutricao_e_Hidratacao", "Necessidades_Psicobiologias_Eliminacao_Urinaria", "Necessidades_Psicobiologias_Eliminacao_intestinal", "Sexualidade", "Moradia", "Instrumentos"];
 
     const [state, setState] = useState(0);
@@ -39,6 +48,7 @@ const Questoes = () => {
     useEffect(() => {
         async function loadCategoriasitens() {
             const response = await api.get('/showall/categoriasitens');
+
             const data = response.data as CategoriasItensTypes[];
             const nmInteno = data.map(x => x.nomeInternoCategoriasItens);
             const uuidItem = data.map(x => x.codCategoriasItensUuId);
@@ -121,13 +131,11 @@ const Questoes = () => {
 
             <div id="formulario">
                 <form >
-                    <CategoriesItens checkFunction={keywordExists} onChecked={onChangeItemSimples} nInteno={nomeCategorias.nomeInteno[state]} />
+                    <CategoriesItens checkFunction={keywordExists} onChecked={onChangeItemSimples} nInteno={nomeCategorias.nomeInteno[state]} usuarioContext={usuarioContext} historyRouter={historyRouter} />
                     <br />
                 </form>
 
                 <Pagination onClicked={loadPage} paginaAtual={state} tamanhaDasPaginas={nomeCategorias.nomeInteno.length} />
-
-
                 <button type="button" onClick={handleDadosAnalise} className="btn btn-outline-primary btn-lg">Analisar dados</button>
 
                 <br />

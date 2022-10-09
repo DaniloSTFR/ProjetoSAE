@@ -1,6 +1,6 @@
 import { createContext, ReactNode,useEffect,  useState } from "react";
 import { useHistory } from 'react-router-dom'
-import request from 'axios';
+import axios from 'axios';
 import { BASE_URL } from 'utils/resquests';
 import { useCookies } from 'react-cookie';
 
@@ -24,6 +24,8 @@ type AuthContextType = {
   signInAction: (nomeUsuario: string, senha: string) => Promise<void>;
   signOutAction: () => Promise<void>;
   loadContext: () => Promise<void>;
+  findUsuario: () => Promise<void>;
+  getServiceRequestApi: Function;
 }
 
 type AuthContextProviderProps = {
@@ -38,13 +40,13 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
   const [cookies, setCookie] = useCookies(['token']);
 
 useEffect(() => {
-      console.log("UseEffect: ");
-      console.log(cookies);
+      //console.log("UseEffect: ");
+      //console.log(cookies);
       const unsubscribe = async ()=>{
       if (cookies.token!==''){
         findUsuario();
       }else{
-        console.log("Token Expirado!");
+        //console.log("Token Expirado!");
         history.push('/');
       }
 
@@ -55,29 +57,33 @@ useEffect(() => {
 
   async function findUsuario(){
 
-    console.log("findUsuario");
+    //console.log("findUsuario");
+    //console.log(usuario);
     try {
 
-      const responseget = await request.get(`${BASE_URL}/find/usuario`,
-      {
-        headers: {
-          'Authorization': `token ${cookies.token}`
-        }
-      });
-  
-      await setUsuario({
-        token: cookies.token,
-        codUsuarioUuId: responseget.data.codUsuarioUuId,
-        nomeUsuario: responseget.data.nomeUsuario,
-        nomePessoa: responseget.data.nomePessoa,
-        email: responseget.data.email,
-        dataCadastro: responseget.data.dataCadastro,
-        dataExclusao: responseget.data.dataExclusao,
-        tagUsuario: responseget.data.tagUsuario
-      })
+      if(cookies.token){
+        const responseget = await axios.get(`${BASE_URL}/find/usuario`,
+        {
+          headers: {
+            'Authorization': `token ${cookies.token}`
+          }
+        });
+    
+        await setUsuario({
+          token: cookies.token,
+          codUsuarioUuId: responseget.data.codUsuarioUuId,
+          nomeUsuario: responseget.data.nomeUsuario,
+          nomePessoa: responseget.data.nomePessoa,
+          email: responseget.data.email,
+          dataCadastro: responseget.data.dataCadastro,
+          dataExclusao: responseget.data.dataExclusao,
+          tagUsuario: responseget.data.tagUsuario
+        });
+      }
+ 
         
     } catch (err) {
-        if (request.isAxiosError(err) && err.response) {
+        if (axios.isAxiosError(err) && err.response) {
             console.log((err.response?.data).error);
             history.push('/');
       }
@@ -86,7 +92,7 @@ useEffect(() => {
 
   async function signInAction(nomeUsuario: string, senhaUsuario: string) {
 
-    const responseToken = await request.post<tokenAuth>(`${BASE_URL}/autenticarusuarios`, {
+    const responseToken = await axios.post<tokenAuth>(`${BASE_URL}/autenticarusuarios`, {
       usuario: nomeUsuario,
       senha: senhaUsuario
     });
@@ -104,10 +110,27 @@ useEffect(() => {
   async function loadContext() {
     await findUsuario();
   }
-  
-  /* findUsuario(); */
+
+  async function getServiceRequestApi(){
+
+    const api = axios.create({
+      baseURL: `${BASE_URL}`,
+      headers: {
+          'Authorization': `token ${cookies.token}`
+        }
+    });
+    return api;
+  }
+
+  if(cookies.token && !usuario){
+    const call = async () => {
+      await findUsuario();
+     }
+     call();
+  }
+
   return (
-    <AuthContext.Provider value={{ usuario, signInAction, signOutAction, loadContext }}>
+    <AuthContext.Provider value={{ usuario, signInAction, signOutAction, loadContext, getServiceRequestApi,findUsuario }}>
       {props.children}
     </AuthContext.Provider>
   );
