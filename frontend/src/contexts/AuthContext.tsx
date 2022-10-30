@@ -38,6 +38,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
   const [usuario, setUsuario] = useState<Usuario>();
   const history = useHistory();
   const [cookies, setCookie] = useCookies(['token']);
+  const [cookiesUuid, setCookiesUuid] = useCookies(['uuidUser']);
 
 useEffect(() => {
       //console.log("UseEffect: ");
@@ -68,7 +69,10 @@ useEffect(() => {
             'Authorization': `token ${cookies.token}`
           }
         });
-    
+        
+        const uuid = responseget.data.codUsuarioUuId;
+        setCookiesUuid('uuidUser', uuid, { path: '/' });
+
         await setUsuario({
           token: cookies.token,
           codUsuarioUuId: responseget.data.codUsuarioUuId,
@@ -104,6 +108,9 @@ useEffect(() => {
 
   async function signOutAction() {
     await setCookie('token', '', { path: '/' });
+    if(cookiesUuid){
+      await setCookiesUuid('uuidUser', '', { path: '/' });
+    }
     history.push('/');
   }
 

@@ -1,4 +1,4 @@
-import api from 'services/api';
+
 import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -6,6 +6,10 @@ import * as yup from "yup";
 
 import { Usuario } from 'types/Usuario';
 import './styles.scss';
+//import api from 'services/api';
+import axios from 'axios';
+import cookies from 'js-cookie';
+import { BASE_URL } from 'utils/resquests';
 
 interface IFormProntuario {
     nomePaciente: string;
@@ -63,6 +67,8 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
 
         try {
             const imc = (Number(data.peso.replace(',', '.'))) / Math.pow(Number(data.altura.replace(',', '.')), 2);
+            //TODO: criar uma verificação para sempre ser em metros e kg
+            console.log(imc);
             setValIMC((+(imc.toFixed(2))).toString());
 
             const pramsRequest = {
@@ -77,6 +83,12 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
                 oximetria: Number(data.oximetria.replace(',', '.'))
             };
 
+            const api = axios.create({
+                baseURL: `${BASE_URL}`,
+                headers: {
+                    'Authorization': `token ${cookies.get('token')}`
+                  }
+              });
             const response = await api.post('/create/prontuarios', pramsRequest);
 
             setSucessoMessage(response.data.message);
@@ -85,7 +97,9 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
             setIsOpened(true);
 
         } catch (err) {
+            if (axios.isAxiosError(err) && err.response) {
                 console.log((err.response?.data).error);
+          }
         }
 
     };
@@ -143,7 +157,7 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
                                 <h5>{errors.dataNascimentoDia?.message}</h5>
                             </div>
                             <div className="col-md-4 inputWidth">
-                                <label htmlFor="inputAltura" className="form-label">Altura(cm):</label>
+                                <label htmlFor="inputAltura" className="form-label">Altura(m):</label>
                                 <input type="text" className="form-control" id="inputAltura" disabled={isOpened}
                                     pattern="\d+,?\d{0,4}|\d+.?\d{0,4}"
                                     value={valAltura}

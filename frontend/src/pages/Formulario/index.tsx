@@ -7,26 +7,14 @@ type Props = {
     usuarioContext: Usuario | undefined;
     historyRouter: any;
     numeroprontuario: number
-    //toHomeComponent: Function;
+    setTitle: Function;
 }
 
-const Formulario = ({ usuarioContext, historyRouter, numeroprontuario }: Props) => {
-    console.log(usuarioContext);
+const Formulario = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }: Props) => {
     return (
         <>
-            
-            <div className="container">
-                <div className="jumbotron">
-                    <h1 className="h2">Formulário</h1>
-                    <p className="lead">ASSISTÊNCIA DE ENFERMAGEM AO IDOSO NA ATENÇÃO PRIMARIA À SAÚDE</p>
-                    <hr />
-                </div>
-
-                <div>
-                    <Questoes usuarioContext = {usuarioContext} historyRouter = {historyRouter} numeroprontuario = {numeroprontuario}/>
-                </div>
-            </div>
-            
+            <Questoes usuarioContext = {usuarioContext} historyRouter = {historyRouter} 
+                numeroprontuario = {numeroprontuario} setTitle = {setTitle}/>     
         </>
     );
 }

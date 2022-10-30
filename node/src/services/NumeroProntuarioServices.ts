@@ -21,7 +21,15 @@ class NumeroProntuarioServices {
         return numeroprontuario;
     }
 
-    
+    async findRascunhoProntuarioByNumero(numero: number){
+        const numeroprontuarioRepository = getCustomRepository( NumeroProntuarioRepository);
+        const numeroprontuario = await numeroprontuarioRepository.findOne({
+            numeroprontuario: numero,
+        });
+        
+        return numeroprontuario;
+    }
+
 
 }
 

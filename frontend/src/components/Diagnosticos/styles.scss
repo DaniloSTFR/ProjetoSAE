@@ -1,0 +1,43 @@
+.card h5{
+    font-size: 1rem;
+    margin-bottom: 0px;
+}
+
+.h5Selected{
+    background-color: #E1F5EC;
+    color: #03AB4F;
+}
+
+.card h5 input{
+    width: 22px;
+    height: 22px;
+}
+
+.card h5 .btn-outline-success:checked{
+    background-color: #04D361;
+    border-color: #04D361;
+}
+
+.card h5 .btn-outline-success:hover{
+    //background-color: #04D361;
+    border-color: #04D361;
+}
+.card-header{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.card-body{
+    padding: 0px;
+}
+
+.accordion-body p,.accordion-body li{
+    font-weight: 500;
+    text-align: justify;
+}
+
+.selectDiag{
+    margin-right: .4rem;
+    margin-top: 0px;
+    cursor: pointer;
+    float: right;
+}

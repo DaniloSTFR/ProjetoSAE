@@ -1,11 +1,15 @@
+import './styles.scss';
 import CategoriesItens from 'components/CategoriesItens';
 import Diagnosticos from 'components/Diagnosticos';
 import IntervercoesResultados from 'components/IntervercoesResultados';
 import Pagination from 'components/Pagination';
+import BarraProgressao from 'components/BarraProgressao';
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import api from 'services/api';
 import { CategoriasItensTypes } from 'types/Categorias';
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse';
 
 import { Usuario } from 'types/Usuario';
 
@@ -30,11 +34,11 @@ type Props = {
     usuarioContext: Usuario | undefined;
     historyRouter: any;
     numeroprontuario: number
-    //toHomeComponent: Function;
+    setTitle: Function;
 }
 
 
-const Questoes = ({ usuarioContext, historyRouter, numeroprontuario }: Props) => {
+const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }: Props) => {
     const myArray = ["Historico_de_Enfermagem", "Historia_Doenca_Atual", "Historia_Pregressa", "Exame_Fisico", "Necessidades_Psicossociais_Habitos_de_Vida", "Necessidades_Psicobiologias_Cuidado_Corporal", "Necessidades_Psicobiologias_Nutricao_e_Hidratacao", "Necessidades_Psicobiologias_Eliminacao_Urinaria", "Necessidades_Psicobiologias_Eliminacao_intestinal", "Sexualidade", "Moradia", "Instrumentos"];
 
     const [state, setState] = useState(0);
@@ -42,6 +46,8 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario }: Props) =>
     const [categoriesJSON, setCategoriesJSON] = useState(myArray);
     const [nomeCategorias, setNomeCategorias] = useState<NomeCategorias>({ nomeInteno: categoriesJSON, uuid: [] });
     const [listaKeyWordElements, setlistaKeyWordElements] = useState<KeyWordElementsArray>({ arr: [] });
+    const [open, setOpen] = useState(true);
+
 
 
 
@@ -63,12 +69,11 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario }: Props) =>
     };
 
     const onChangeItemSimples = (uuid_in: string, idItem_in: number, keyword_in: string) => {
-        console.log("keyword:" + keyword_in);
+        console.log("keywordSimples:" + keyword_in);
 
         let listaUP: KeyWordElementsArray = {
             arr: listaKeyWordElements.arr
         };
-
 
         if (listaUP.arr.length === 0) {
             listaUP.arr.push(
@@ -99,8 +104,41 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario }: Props) =>
         setlistaKeyWordElements({ arr: listaUP.arr })
     }
 
+    const onChangeItemMulti = (uuid_in: string, idItem_in: number, keyword_in: string) => {
+        console.log("keywordMulti:" + keyword_in);
+
+        let listaUP: KeyWordElementsArray = {
+            arr: listaKeyWordElements.arr
+        };
+
+        if (listaUP.arr.length === 0) {
+            listaUP.arr.push(
+                {
+                    uuid: uuid_in,
+                    idItem: idItem_in,
+                    keyword: keyword_in
+                });
+
+        } else {
+
+            let idx: number = listaUP.arr.findIndex(x => (x.uuid === uuid_in && x.idItem === idItem_in && x.keyword === keyword_in));
+
+            if (idx + 1) {
+                listaUP.arr.splice(idx, 1);
+            } else {
+                listaUP.arr.push(
+                    {
+                        uuid: uuid_in,
+                        idItem: idItem_in,
+                        keyword: keyword_in
+                    });
+            }
+        }
+        setlistaKeyWordElements({ arr: listaUP.arr })
+    }
+
     useEffect(() => {
-        console.log(listaKeyWordElements);
+        console.log(listaKeyWordElements.arr);
     }, [listaKeyWordElements]);
 
 
@@ -120,36 +158,80 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario }: Props) =>
     };
 
     async function handleDadosAnalise() {
-
-        const enviar = listaKeyWordElements.arr;
-        ReactDOM.render(<Diagnosticos keyWordElementsArray={enviar} onClickedNicNoc={onClickedNicNoc} />, document.getElementById('diagnosticos'));
+        setTitle('Diagnósticos');
+        if(listaKeyWordElements.arr.length>0){
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+            setOpen(!open);
+            const enviar = listaKeyWordElements.arr;
+            ReactDOM.render(<Diagnosticos keyWordElementsArray={enviar} onClickedNicNoc={onClickedNicNoc} numeroprontuario={numeroprontuario} usuarioContext={usuarioContext}/>, document.getElementById('diagnosticos'));
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        }
     };
 
 
     return (
         <>
+            <div className="container">
+                <Collapse in={open}>
+                    <div>
+                        <BarraProgressao paginaAtual={state} tamanhaDasPaginas={nomeCategorias.nomeInteno.length} />
+                    </div>
+                </Collapse>
 
-            <div id="formulario">
-                <form >
-                    <CategoriesItens checkFunction={keywordExists} onChecked={onChangeItemSimples} nInteno={nomeCategorias.nomeInteno[state]} usuarioContext={usuarioContext} historyRouter={historyRouter} />
-                    <br />
-                </form>
+                <Collapse in={!open}>
+                    <div>
+                        <Button
+                            onClick={() => setOpen(!open)}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
+                            variant=" btn btn-primary circleButton"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                        </Button>
+                    </div>
+                </Collapse>
 
-                <Pagination onClicked={loadPage} paginaAtual={state} tamanhaDasPaginas={nomeCategorias.nomeInteno.length} />
-                <button type="button" onClick={handleDadosAnalise} className="btn btn-outline-primary btn-lg">Analisar dados</button>
+                <div>
+                    <Collapse in={open}>
+                        <div id="formulario">
+                            <form >
+                                <CategoriesItens checkFunction={keywordExists} onCheckedSimples={onChangeItemSimples} onCheckedMulti={onChangeItemMulti} nInteno={nomeCategorias.nomeInteno[state]} usuarioContext={usuarioContext} historyRouter={historyRouter} />
+                            </form>
 
-                <br />
+                            <Pagination onClicked={loadPage} onClickeAnalise={handleDadosAnalise} paginaAtual={state} tamanhaDasPaginas={nomeCategorias.nomeInteno.length} />
+                            <br />
+                        </div>
+                    </Collapse>
+                </div>
+
+                <div>
+                    <Collapse in={!open}>
+                        <div>
+                            <br />
+                            <div id="diagnosticos"></div>
+                            <br />
+
+                            <br />
+                            <div id="intervercoes_resultados"></div>
+                        </div>
+                    </Collapse>
+                </div>
             </div>
-            <br />
-            <div id="diagnosticos"></div>
-            <br />
-            <br />
-            <div id="intervercoes_resultados"></div>
         </>
     );
 }
 
 export default Questoes;
+
+
+
+
+
+
+
+
 
 
 

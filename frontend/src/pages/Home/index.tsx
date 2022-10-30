@@ -30,14 +30,16 @@ const Home = () => {
     }
 
     useEffect(() => {
+        console.log(usuario);
         if(params.id === "prontuario"){
           setMenuTitulo(`Novo paciente`);
           CarrregarComponente( <FormProntuario  usuarioContext = {usuario} toHomeComponent = {toHomeComponent}/>)
         } else
         if(params.id === "formulario"){
-            setMenuTitulo(`Formulário`);
+            setMenuTitulo(`Formulários de anamnese`);
             const numeroprontuario = Number(params.uuid);
-            CarrregarComponente(<Formulario usuarioContext = {usuario} historyRouter = {history} numeroprontuario = {numeroprontuario}/>);
+            CarrregarComponente(<Formulario usuarioContext = {usuario} historyRouter = {history} 
+                numeroprontuario = {numeroprontuario} setTitle={setMenuTitulo}/>);
         }else
         if(params.id === "historico"){
             setMenuTitulo(`Histórico`);
@@ -113,7 +115,7 @@ const Home = () => {
                 <header className="header" id="header">
                     <div className="header_toggle"> 
                     <i className='bx bx-menu' id="header-toggle" onClick={clickOpenCloseMenu}></i>  </div>
-                    <div><h2>{menuTitulo}</h2></div>
+                    <div><h2 id="titlePage" >{menuTitulo}</h2></div>
                     
                     {/* <div className="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div> */}
                 </header>

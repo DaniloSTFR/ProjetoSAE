@@ -1,14 +1,19 @@
 import { Request, Response } from "express";
 import { RascunhoProntuarioServices } from "../services/RascunhoProntuarioServices";
+import { NumeroProntuarioServices } from "../services/NumeroProntuarioServices";
 
 class RascunhoProntuarioController{
     async createRascunhoProntuarios(request: Request, response: Response){
-        const{codProntuarioUuId,codUsuarioUuId,formKeysRascunhoJson} = request.body;
+        const{numeroprontuario,codUsuarioUuId,formKeysRascunhoJson} = request.body;
         const rascunhoProntuarioServices = new RascunhoProntuarioServices();
+        const numeroProntuarioServices = new NumeroProntuarioServices();
 
         try{ 
+            const existNumeroprontuario = await numeroProntuarioServices.findRascunhoProntuarioByNumero(numeroprontuario); 
+            console.log(existNumeroprontuario);
+
             const rascunhoProntuario = await rascunhoProntuarioServices.
-            createRascunhoProntuario({codProntuarioUuId,codUsuarioUuId,formKeysRascunhoJson} );
+                createRascunhoProntuario({codProntuarioUuId: existNumeroprontuario.codProntuarioUuId,codUsuarioUuId,formKeysRascunhoJson} );
 
             return response.status(201).json({
                 message: "Rascunho criado com sucesso!",

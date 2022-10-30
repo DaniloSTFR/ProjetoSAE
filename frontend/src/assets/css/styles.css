@@ -6,7 +6,7 @@
 html, body {
     height: 100%;
     font-family: "Ubuntu", sans-serif;
-    background-color: #F7F6FB;
+    background-color: #f8f9fa ;
 }
 
 #root {
@@ -34,7 +34,7 @@ html, body {
 
 .inlineList {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     /* Below sets up your display method: flex-start|flex-end|space-between|space-around */
     justify-content: flex-start; 
     /* Below removes bullets and cleans white-space */
@@ -43,6 +43,7 @@ html, body {
     /* Bonus: forces no word-wrap */
     white-space: nowrap;
     list-style: none;
+    max-width:25rem;
   }
 
   .textareaanotacao{
