@@ -32,7 +32,8 @@ const CategoriesItens = ({ checkFunction, onCheckedSimples,onCheckedMulti, nInte
             console.log(usuarioContext);
             //const response = await api.post('/find/categoriasitensbynome', { nomeInternoCategoriasItens: nInteno });
             const pramsRequest = {nomeInternoCategoriasItens: nInteno };
-            const response = await api.post(`/find/categoriasitensbynome`, pramsRequest);
+            const apiContext = await api();
+            const response = await apiContext.post(`/find/categoriasitensbynome`, pramsRequest);
             const dados = response.data as Showcategoriasitens[];
             setVarCategoriasItensTypes(dados[0]);
         }

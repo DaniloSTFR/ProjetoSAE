@@ -1,8 +1,8 @@
 import './styles.scss';
 import CategoriesItens from 'components/CategoriesItens';
 import Diagnosticos from 'components/Diagnosticos';
-import IntervercoesResultados from 'components/IntervercoesResultados';
 import Pagination from 'components/Pagination';
+import ProntuarioPaciente from 'components/ProntuarioPaciente';
 import BarraProgressao from 'components/BarraProgressao';
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -12,6 +12,7 @@ import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
 
 import { Usuario } from 'types/Usuario';
+import { DiagnosticosItensTypes } from 'types/Diagnosticos';
 
 
 type NomeCategorias = {
@@ -30,6 +31,10 @@ type KeyWordElementsArray = {
     arr: KeyWordElements[];
 }
 
+type DiagnosticosItensTypesArr ={
+    arr: DiagnosticosItensTypes[]
+}
+
 type Props = {
     usuarioContext: Usuario | undefined;
     historyRouter: any;
@@ -38,7 +43,7 @@ type Props = {
 }
 
 
-const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }: Props) => {
+const AnamneseEnfermagem = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }: Props) => {
     const myArray = ["Historico_de_Enfermagem", "Historia_Doenca_Atual", "Historia_Pregressa", "Exame_Fisico", "Necessidades_Psicossociais_Habitos_de_Vida", "Necessidades_Psicobiologias_Cuidado_Corporal", "Necessidades_Psicobiologias_Nutricao_e_Hidratacao", "Necessidades_Psicobiologias_Eliminacao_Urinaria", "Necessidades_Psicobiologias_Eliminacao_intestinal", "Sexualidade", "Moradia", "Instrumentos"];
 
     const [state, setState] = useState(0);
@@ -46,14 +51,16 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
     const [categoriesJSON, setCategoriesJSON] = useState(myArray);
     const [nomeCategorias, setNomeCategorias] = useState<NomeCategorias>({ nomeInteno: categoriesJSON, uuid: [] });
     const [listaKeyWordElements, setlistaKeyWordElements] = useState<KeyWordElementsArray>({ arr: [] });
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState('Questoes');
+    const [diagnosticosSelectId, setDiagnosticosSelectId] = useState<DiagnosticosItensTypesArr>({arr: []});  
 
 
 
 
     useEffect(() => {
         async function loadCategoriasitens() {
-            const response = await api.get('/showall/categoriasitens');
+            const apiContext = await api();
+            const response = await apiContext.get('/showall/categoriasitens');
 
             const data = response.data as CategoriasItensTypes[];
             const nmInteno = data.map(x => x.nomeInternoCategoriasItens);
@@ -106,11 +113,9 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
 
     const onChangeItemMulti = (uuid_in: string, idItem_in: number, keyword_in: string) => {
         console.log("keywordMulti:" + keyword_in);
-
         let listaUP: KeyWordElementsArray = {
             arr: listaKeyWordElements.arr
         };
-
         if (listaUP.arr.length === 0) {
             listaUP.arr.push(
                 {
@@ -120,9 +125,7 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
                 });
 
         } else {
-
             let idx: number = listaUP.arr.findIndex(x => (x.uuid === uuid_in && x.idItem === idItem_in && x.keyword === keyword_in));
-
             if (idx + 1) {
                 listaUP.arr.splice(idx, 1);
             } else {
@@ -137,9 +140,34 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
         setlistaKeyWordElements({ arr: listaUP.arr })
     }
 
+    const onSelectDiagnosticoItem = (selectDiagnostico: DiagnosticosItensTypes) => {
+        console.log("selectDiagnosticoId:" + selectDiagnostico._id);
+
+        let selectDiagnosticoUP: DiagnosticosItensTypesArr = {
+            arr: diagnosticosSelectId.arr
+        };
+        
+        if (selectDiagnosticoUP.arr.length === 0) {
+            selectDiagnosticoUP.arr.push(selectDiagnostico);
+
+        } else {
+            let idx: number = selectDiagnosticoUP.arr.findIndex(x => (x._id === selectDiagnostico._id && x.codigo_do_diagnostico === selectDiagnostico.codigo_do_diagnostico ));
+            if (idx + 1) {
+                selectDiagnosticoUP.arr.splice(idx, 1);
+            } else {
+                selectDiagnosticoUP.arr.push(selectDiagnostico);
+            }
+        }
+        setDiagnosticosSelectId({ arr: selectDiagnosticoUP.arr })
+    }
+
     useEffect(() => {
         console.log(listaKeyWordElements.arr);
     }, [listaKeyWordElements]);
+
+    useEffect(() => {
+        console.log(diagnosticosSelectId.arr);
+    }, [diagnosticosSelectId]);
 
 
     const loadPage = (idx: number) => {
@@ -147,23 +175,23 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
     }
 
 
-    async function onClickedNicNoc(uuid_Diagnosticos: string) {
-
-        ReactDOM.render(<div></div>, document.getElementById('formulario'));
-        ReactDOM.render(<div></div>, document.getElementById('diagnosticos'));
-
-        //const uuidArray = ["60822f3f24a3f414f43be6a1","60822f3f24a3f414f43be698","60822f4724a3f414f43be6ac", "60822f4f24a3f414f43be6c9" ];
-        const uuidArray = [uuid_Diagnosticos];
-        ReactDOM.render(<IntervercoesResultados uuidDiagArray={uuidArray} />, document.getElementById('intervercoes_resultados'));
+    async function onClickedProntuarioPaciente(uuid_Diagnosticos: string) {
+        if(diagnosticosSelectId.arr.length>0){
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+            setTitle('Prontuário');
+            setOpen('Prontuario');
+            const uuidArray = [uuid_Diagnosticos];
+            ReactDOM.render(<ProntuarioPaciente uuidDiagArray={uuidArray} />, document.getElementById('prontuario_paciente'));
+        }
     };
 
     async function handleDadosAnalise() {
         setTitle('Diagnósticos');
         if(listaKeyWordElements.arr.length>0){
             window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-            setOpen(!open);
+            setOpen('Diagnosticos');
             const enviar = listaKeyWordElements.arr;
-            ReactDOM.render(<Diagnosticos keyWordElementsArray={enviar} onClickedNicNoc={onClickedNicNoc} numeroprontuario={numeroprontuario} usuarioContext={usuarioContext}/>, document.getElementById('diagnosticos'));
+            ReactDOM.render(<Diagnosticos keyWordElementsArray={enviar} onClickedProntuarioPaciente={onClickedProntuarioPaciente} selectDiagnostico={onSelectDiagnosticoItem} numeroprontuario={numeroprontuario} usuarioContext={usuarioContext}/>, document.getElementById('diagnosticos'));
             window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         }
     };
@@ -172,18 +200,18 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
     return (
         <>
             <div className="container">
-                <Collapse in={open}>
+                <Collapse in={open === 'Questoes'}>
                     <div>
                         <BarraProgressao paginaAtual={state} tamanhaDasPaginas={nomeCategorias.nomeInteno.length} />
                     </div>
                 </Collapse>
 
-                <Collapse in={!open}>
+                <Collapse in={open === 'Diagnosticos' || open === 'Prontuario'}>
                     <div>
                         <Button
-                            onClick={() => setOpen(!open)}
+                            onClick={() => setOpen(open === 'Prontuario' ?'Diagnosticos':'Questoes')}
                             aria-controls="example-collapse-text"
-                            aria-expanded={open}
+                            aria-expanded={open !== 'Questoes'}
                             variant=" btn btn-primary circleButton"
                             >
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -194,7 +222,7 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
                 </Collapse>
 
                 <div>
-                    <Collapse in={open}>
+                    <Collapse in={open==='Questoes'}>
                         <div id="formulario">
                             <form >
                                 <CategoriesItens checkFunction={keywordExists} onCheckedSimples={onChangeItemSimples} onCheckedMulti={onChangeItemMulti} nInteno={nomeCategorias.nomeInteno[state]} usuarioContext={usuarioContext} historyRouter={historyRouter} />
@@ -207,14 +235,21 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
                 </div>
 
                 <div>
-                    <Collapse in={!open}>
+                    <Collapse in={open === 'Diagnosticos'}>
                         <div>
                             <br />
                             <div id="diagnosticos"></div>
                             <br />
+                        </div>
+                    </Collapse>
+                </div>
 
+                <div>
+                    <Collapse in={open === 'Prontuario'}>
+                        <div>
                             <br />
-                            <div id="intervercoes_resultados"></div>
+                            <div id="prontuario_paciente"></div>
+                            <br />
                         </div>
                     </Collapse>
                 </div>
@@ -223,102 +258,4 @@ const Questoes = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }:
     );
 }
 
-export default Questoes;
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-                    {nomeCategorias.nomeInteno.map((dev, index) =>
-
-                        <div key={`${index}-${dev}`}>
-                            
-                            <CategoriesItens onChecked={onChangeItemSimples} nInteno={nomeCategorias.nomeInteno[state]} />
-                        </div>
-                    )}
-
-
-    useEffect(() => {
-          async function loadCategories() {
-            const response = await api.get('/categoriasitens');
-
-            const data = response.data as CategoriasItensTypes[];
-            const nmInteno = data.map(x => x.nomeInternoCategoriasItens);
-            const uuidItem = data.map(x => x.codCategoriasItensUuId);
-            setNomeCategorias({ nomeInteno: nmInteno, uuid: uuidItem });
-            //setCategoriesJSON(nmInteno);
-            //console.log(nomeCategorias);
-          }
-          loadCategories();
-        }, [load,active]); 
-
- 
-    const onChangeItem =  async(event: React.ChangeEvent<HTMLInputElement>) =>{
-            console.log(event);
-            const target = event.target;
-            // eslint-disable-next-line
-            const value = target.type === 'change' ? target.checked : target.value;
-            const name = target.name;
-            const keyword = target.defaultValue
-            setKeyword(keyword);
-            console.log(name +":"+ keyword);   
-        } 
-
-    //<CategoriesItens onChecked={onChangeItemSimples} />
-
-                 {nomeCategorias.nomeInteno.map(( dev, index ) =>
-
-                    <div key={index}> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={dev} />
-                    </div>
-                    )} 
-     
-     
-
- <button type="button" className="btn btn-outline-primary" onClick={event => setNomeCategorias({ nomeInteno: myArray, uuid: [] })} >Load page</button>
-
-
-
-<div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[0]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[1]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[2]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[3]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[4]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[5]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[6]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[7]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[8]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[9]} />
-                    </div>
-                    <div> 
-                        <CategoriesItens onChecked={onChangeItemSimples} nInteno={myArray[10]} />
-                    </div>
-*/
+export default AnamneseEnfermagem;

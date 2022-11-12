@@ -13,9 +13,13 @@ export type  DiagnosticosItensTypes = {
   }
 
 
-  export type SaeNicNocTypes = {
+export type SaeNicNocTypes = {
     uuid_diagnosticos: string,
     codigo_do_diagnostico: string,
     intervercoes_nic: [string],
     resultados_noc : [string]
+  }
+
+export type DiagnosticosSelectIdArr = {
+    arr: [string]
   }

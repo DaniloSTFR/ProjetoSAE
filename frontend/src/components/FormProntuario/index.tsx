@@ -6,10 +6,8 @@ import * as yup from "yup";
 
 import { Usuario } from 'types/Usuario';
 import './styles.scss';
-//import api from 'services/api';
+import api from 'services/api';
 import axios from 'axios';
-import cookies from 'js-cookie';
-import { BASE_URL } from 'utils/resquests';
 
 interface IFormProntuario {
     nomePaciente: string;
@@ -83,13 +81,8 @@ const FormProntuario = ({ usuarioContext, toHomeComponent }: Props) => {
                 oximetria: Number(data.oximetria.replace(',', '.'))
             };
 
-            const api = axios.create({
-                baseURL: `${BASE_URL}`,
-                headers: {
-                    'Authorization': `token ${cookies.get('token')}`
-                  }
-              });
-            const response = await api.post('/create/prontuarios', pramsRequest);
+            const apiContext = await api();
+            const response = await apiContext.post('/create/prontuarios', pramsRequest);
 
             setSucessoMessage(response.data.message);
             console.log(response.data);

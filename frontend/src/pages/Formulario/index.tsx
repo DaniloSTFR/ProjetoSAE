@@ -1,4 +1,4 @@
-import Questoes from "components/Questoes";
+import AnamneseEnfermagem from "components/AnamneseEnfermagem";
 import React from "react";
 
 import { Usuario } from 'types/Usuario';
@@ -13,7 +13,7 @@ type Props = {
 const Formulario = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }: Props) => {
     return (
         <>
-            <Questoes usuarioContext = {usuarioContext} historyRouter = {historyRouter} 
+            <AnamneseEnfermagem usuarioContext = {usuarioContext} historyRouter = {historyRouter} 
                 numeroprontuario = {numeroprontuario} setTitle = {setTitle}/>     
         </>
     );

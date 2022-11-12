@@ -8,6 +8,9 @@ import FormProntuario from "components/FormProntuario";
 import HorizontalMenu from "components/HorizontalMenu";
 import HistoricoTable from "components/HistoricoTable";
 import Formulario from "pages/Formulario";
+import Historico from "pages/Historico";
+import Rascunho from "pages/Rascunho";
+
 
 import 'styles/home-menu.scss';
 
@@ -43,12 +46,12 @@ const Home = () => {
         }else
         if(params.id === "historico"){
             setMenuTitulo(`Histórico`);
-            CarrregarComponente(<div>Formulário Histórico</div>);
+            CarrregarComponente(<Historico/>);
             callService();
         }else
         if(params.id === "rascunho"){
             setMenuTitulo(`Rascunho`);
-            CarrregarComponente(<div>Formulário Rascunho</div>);
+            CarrregarComponente(<Rascunho/>);
         } else
         if(params.id === "notificacoes"){
             setMenuTitulo(`Notificações`);
