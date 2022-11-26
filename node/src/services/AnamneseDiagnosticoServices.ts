@@ -40,6 +40,12 @@ class AnamneseDiagnosticoServices{
         return instanceToPlain(anamnesediagnostico);
     }
 
+    async findAnamneseDiagnosticoByProntuario(codProntuarioUuId: string){
+        const anamnesediagnosticoRepository = getCustomRepository( AnamnesediagnosticoRepository );
+        const anamnesediagnostico = await anamnesediagnosticoRepository.findOne({codProntuarioUuId});
+        return instanceToPlain(anamnesediagnostico);
+    }
+
     async updateAnamneseDiagnostico({
         codAnamneseDiagnosticoUuId,diagnosticosJson,intervencoesJson,resultadosJson
     }: IAnamneseDiagnostico){
@@ -64,6 +70,7 @@ class AnamneseDiagnosticoServices{
 
         anamnesediagnostico.dataCriacao = new Date(datenow);
         await anamnesediagnosticoRepository.save(anamnesediagnostico);
+        
         return anamnesediagnostico;
     }
 

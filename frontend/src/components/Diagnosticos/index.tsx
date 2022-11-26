@@ -1,6 +1,7 @@
 import api from 'services/api';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { DiagnosticosItensTypes } from 'types/Diagnosticos';
+import { DiagnosticosItensTypes, DiagnosticosItensTypesArr } from 'types/Diagnosticos';
 import Accordion from 'react-bootstrap/Accordion';
 import './styles.scss';
 
@@ -12,20 +13,15 @@ type KeyWordElements ={
     keyword:string;
 }
 
-type DiagnosticosItensTypesArr ={
-    arr: [DiagnosticosItensTypes]
-}
-
 type Props = {
     keyWordElementsArray: KeyWordElements[];
     onClickedProntuarioPaciente: Function;
-    selectDiagnostico: Function;
     numeroprontuario: number;
     usuarioContext: Usuario | undefined;
 }
 
 //const Diagnosticos = ({ onChecked, nInteno = "" }: Props) => {
-const Diagnosticos = ({ keyWordElementsArray, onClickedProntuarioPaciente, selectDiagnostico, numeroprontuario, usuarioContext }: Props) => {   
+const Diagnosticos = ({ keyWordElementsArray, onClickedProntuarioPaciente, numeroprontuario, usuarioContext }: Props) => {   
 
     const [diagnosticosItensTypesArr, setDiagnosticosItensTypesArr] = useState<DiagnosticosItensTypesArr>({
             arr: [{
@@ -41,12 +37,33 @@ const Diagnosticos = ({ keyWordElementsArray, onClickedProntuarioPaciente, selec
                 populacao_em_risco : [""],
                 fatores_de_risco : [""],
             }]
-            });      
+            });
 
-    console.log(keyWordElementsArray);
+    const [diagnosticosSelectIdArr, setDiagnosticosSelectIdArr] = useState<DiagnosticosItensTypesArr>({ arr: [] });
+          
+    const onSelectDiagnosticoItem = (selectDiagnostico: DiagnosticosItensTypes) => {
+        console.log("selectDiagnosticoId:" + selectDiagnostico._id);
+
+        let selectDiagnosticoUP: DiagnosticosItensTypesArr = {
+            arr: diagnosticosSelectIdArr.arr
+        };
+        
+        if (selectDiagnosticoUP.arr.length === 0) {
+            selectDiagnosticoUP.arr.push(selectDiagnostico);
+
+        } else {
+            let idx: number = selectDiagnosticoUP.arr.findIndex(x => (x._id === selectDiagnostico._id && x.codigo_do_diagnostico === selectDiagnostico.codigo_do_diagnostico ));
+            if (idx + 1) {
+                selectDiagnosticoUP.arr.splice(idx, 1);
+            } else {
+                selectDiagnosticoUP.arr.push(selectDiagnostico);
+            }
+        }
+        setDiagnosticosSelectIdArr({ arr: selectDiagnosticoUP.arr })
+    }
+
     useEffect(
         () => {
-
             async function doAnaliseDeDados() {
                 const apiContext = await api();
                 const response = await apiContext.post(`/analisededados`, { keyWordArrayRequest: keyWordElementsArray })
@@ -63,9 +80,26 @@ const Diagnosticos = ({ keyWordElementsArray, onClickedProntuarioPaciente, selec
         // eslint-disable-next-line    
         [keyWordElementsArray]);
 
+    async function onClickFinalizarDiagnostico(){
+        let uuidDiagArray = diagnosticosSelectIdArr.arr.map(it => it._id);
+
+        console.log(uuidDiagArray);
+        const apiContext = await api();
+        try {
+            const response = await apiContext.post(`/create/anamnesediagnosticosuuid`, 
+            { uuidDiagArray,numeroprontuario, codUsuarioUuId: usuarioContext?.codUsuarioUuId})
+            console.log(response.data);
+        } catch (err) {
+            if (axios.isAxiosError(err) && err.response) {
+                console.log((err.response?.data).error);
+          }
+        }
+        onClickedProntuarioPaciente(diagnosticosSelectIdArr)
+    }
+
     useEffect(() => {
-        console.log(diagnosticosItensTypesArr);
-    }, [diagnosticosItensTypesArr]);
+        console.log(diagnosticosSelectIdArr);
+    }, [diagnosticosSelectIdArr]);
 
     //console.log(keyWordElementsArray);
     useEffect(() => {
@@ -97,7 +131,7 @@ const Diagnosticos = ({ keyWordElementsArray, onClickedProntuarioPaciente, selec
                                             value={`${itens._id}`}
                                             id={`${itens._id}`}
                                             name={`${itens._id}`}
-                                            onChange={() => selectDiagnostico(itens)}
+                                            onChange={() => onSelectDiagnosticoItem(itens)}
                                             /* checked = {checkFunction (`${valueOP}`)? true: false } */
 
                                             className="selectDiag form-check-input btn-outline-success"
@@ -185,7 +219,7 @@ const Diagnosticos = ({ keyWordElementsArray, onClickedProntuarioPaciente, selec
                     </div>
 
                     <div className="d-flex justify-content-center">
-                        <button type="button" onClick={() => onClickedProntuarioPaciente(1)}
+                        <button type="button" onClick={() => onClickFinalizarDiagnostico()} disabled={diagnosticosSelectIdArr.arr.length <= 0}
                             className="btn btn-success btn-lg text-center">Finalizar Diagnósticos
                         </button>
                     </div>

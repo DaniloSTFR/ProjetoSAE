@@ -29,7 +29,7 @@ const CategoriesItens = ({ checkFunction, onCheckedSimples,onCheckedMulti, nInte
 
     useEffect(() => {
         async function loadItens() {
-            console.log(usuarioContext);
+            //console.log(usuarioContext);
             //const response = await api.post('/find/categoriasitensbynome', { nomeInternoCategoriasItens: nInteno });
             const pramsRequest = {nomeInternoCategoriasItens: nInteno };
             const apiContext = await api();

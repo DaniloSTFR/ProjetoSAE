@@ -1,6 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { ProntuarioRepository } from "../repositories/ProntuarioRepository";
 import { NumeroProntuarioRepository } from "../repositories/NumeroProntuarioRepository";
+import { AnamneseDiagnosticoServices } from "../services/AnamneseDiagnosticoServices";
 import { GetDateNow } from "../util/GetDateNow";
 import { instanceToPlain } from "class-transformer";
 
@@ -73,11 +74,11 @@ class ProntuarioServices {
 
         const prontuariolCompleteExists = await this.findProntuario(numeroProntuarioExists.codProntuarioUuId);
         
-        return ({numeroProntuarioExists,prontuariolCompleteExists});
+        const anamneseDiagnosticoServices = new AnamneseDiagnosticoServices();
+        const anamneseCompleteExists = await anamneseDiagnosticoServices.findAnamneseDiagnosticoByProntuario(numeroProntuarioExists.codProntuarioUuId);
+        
+        return ({numeroProntuarioExists, prontuariolCompleteExists, anamneseCompleteExists});
     }
-
-
-
 }
 
 export { ProntuarioServices };

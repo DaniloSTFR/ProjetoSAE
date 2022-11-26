@@ -50,7 +50,7 @@ class RascunhoProntuarioServices {
 
         rascunhoProntuario.formKeysRascunhoJson = formKeysRascunhoJson;
         rascunhoProntuario.dataCriacao = new Date(datenow);
-        console.log(rascunhoProntuario.dataCriacao);
+        //console.log(rascunhoProntuario.dataCriacao);
 
         await rascunhoProntuarioRepository.save(rascunhoProntuario);
 

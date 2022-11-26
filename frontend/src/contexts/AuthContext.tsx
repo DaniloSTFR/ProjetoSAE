@@ -26,6 +26,7 @@ type AuthContextType = {
   loadContext: () => Promise<void>;
   findUsuario: () => Promise<void>;
   getServiceRequestApi: Function;
+  getUsuario: Function;
 }
 
 type AuthContextProviderProps = {
@@ -45,7 +46,7 @@ useEffect(() => {
       //console.log(cookies);
       const unsubscribe = async ()=>{
       if (cookies.token!==''){
-        findUsuario();
+        await findUsuario();
       }else{
         //console.log("Token Expirado!");
         history.push('/');
@@ -54,11 +55,13 @@ useEffect(() => {
     }
     unsubscribe();
     // eslint-disable-next-line 
-  }, [cookies.token]); 
+  }, []); 
+  //}, [cookies.token]); 
+
 
   async function findUsuario(){
 
-    //console.log("findUsuario");
+    console.log("findUsuario");
     //console.log(usuario);
     try {
 
@@ -73,7 +76,7 @@ useEffect(() => {
         const uuid = responseget.data.codUsuarioUuId;
         setCookiesUuid('uuidUser', uuid, { path: '/' });
 
-        await setUsuario({
+        setUsuario({
           token: cookies.token,
           codUsuarioUuId: responseget.data.codUsuarioUuId,
           nomeUsuario: responseget.data.nomeUsuario,
@@ -118,6 +121,12 @@ useEffect(() => {
     await findUsuario();
   }
 
+  async function getUsuario(){
+    await findUsuario();
+    return usuario;
+
+  }
+
   async function getServiceRequestApi(){
 
     const api = axios.create({
@@ -129,15 +138,15 @@ useEffect(() => {
     return api;
   }
 
-  if(cookies.token && !usuario){
+/*   if(cookies.token && !usuario){
     const call = async () => {
       await findUsuario();
      }
      call();
-  }
+  } */
 
   return (
-    <AuthContext.Provider value={{ usuario, signInAction, signOutAction, loadContext, getServiceRequestApi,findUsuario }}>
+    <AuthContext.Provider value={{ usuario, signInAction, signOutAction, loadContext, getServiceRequestApi,getUsuario,findUsuario }}>
       {props.children}
     </AuthContext.Provider>
   );

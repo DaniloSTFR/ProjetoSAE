@@ -10,7 +10,7 @@ class RascunhoProntuarioController{
 
         try{ 
             const existNumeroprontuario = await numeroProntuarioServices.findRascunhoProntuarioByNumero(numeroprontuario); 
-            console.log(existNumeroprontuario);
+            //console.log(existNumeroprontuario);
 
             const rascunhoProntuario = await rascunhoProntuarioServices.
                 createRascunhoProntuario({codProntuarioUuId: existNumeroprontuario.codProntuarioUuId,codUsuarioUuId,formKeysRascunhoJson} );

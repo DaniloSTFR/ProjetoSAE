@@ -11,7 +11,6 @@ import Formulario from "pages/Formulario";
 import Historico from "pages/Historico";
 import Rascunho from "pages/Rascunho";
 
-
 import 'styles/home-menu.scss';
 
 type HomeParams = {
@@ -20,7 +19,7 @@ type HomeParams = {
   }
 
 const Home = () => {
-    const {usuario, signOutAction, getServiceRequestApi} = useAuth();
+    const {usuario, signOutAction} = useAuth();
     const [menuTitulo, setMenuTitulo] = useState(`Olá, ${usuario?.tagUsuario}`);
     const params = useParams<HomeParams>();
     const history = useHistory();
@@ -33,42 +32,39 @@ const Home = () => {
     }
 
     useEffect(() => {
-        console.log(usuario);
-        if(params.id === "prontuario"){
-          setMenuTitulo(`Novo paciente`);
-          CarrregarComponente( <FormProntuario  usuarioContext = {usuario} toHomeComponent = {toHomeComponent}/>)
-        } else
-        if(params.id === "formulario"){
-            setMenuTitulo(`Formulários de anamnese`);
-            const numeroprontuario = Number(params.uuid);
-            CarrregarComponente(<Formulario usuarioContext = {usuario} historyRouter = {history} 
-                numeroprontuario = {numeroprontuario} setTitle={setMenuTitulo}/>);
-        }else
-        if(params.id === "historico"){
-            setMenuTitulo(`Histórico`);
-            CarrregarComponente(<Historico/>);
-            callService();
-        }else
-        if(params.id === "rascunho"){
-            setMenuTitulo(`Rascunho`);
-            CarrregarComponente(<Rascunho/>);
-        } else
-        if(params.id === "notificacoes"){
-            setMenuTitulo(`Notificações`);
-            CarrregarComponente(<div>Formulário Notificações</div>);
-        }else{
+        if(usuario){
+            //console.log(usuario);
+            //console.log(params.id);
+    
+            if(params.id === "prontuario"){
+                setMenuTitulo(`Novo paciente`);
+                CarrregarComponente( <FormProntuario  usuarioContext = {usuario} toHomeComponent = {toHomeComponent}/>)
+            } else
+            if(params.id === "formulario"){
+                setMenuTitulo(`Formulários de anamnese`);
+                const numeroprontuario = Number(params.uuid);
+                CarrregarComponente(<Formulario usuarioContext = {usuario} historyRouter = {history} 
+                    numeroprontuario = {numeroprontuario} setTitle={setMenuTitulo}/>);
+            }else
+            if(params.id === "historico"){
+                setMenuTitulo(`Histórico`);
+                CarrregarComponente(<Historico/>);
+            }else
+            if(params.id === "rascunho"){
+                setMenuTitulo(`Rascunho`);
+                CarrregarComponente(<Rascunho/>);
+            } else
+            if(params.id === "notificacoes"){
+                setMenuTitulo(`Notificações`);
+                CarrregarComponente(<div>Formulário Notificações</div>);
+            }
+            else{
             setMenuTitulo(`Olá, ${usuario?.tagUsuario}`);
             CarrregarComponente(<><div><HorizontalMenu historyRouter = {history}/></div> <div><HistoricoTable/></div></>);
+            }
         }
       // eslint-disable-next-line
-      }, [params.id,usuario]);
-
-      async function callService(){
-        console.log(usuario);
-        const api  = await getServiceRequestApi();
-        const result = await api.get('/');
-        console.log(result.data);
-      }
+      }, [params.id, usuario]);
 
     async function CarrregarComponente( component:any){
          ReactDOM.render (component, document.getElementById('main_components'));

@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse';
 
 import { Usuario } from 'types/Usuario';
-import { DiagnosticosItensTypes } from 'types/Diagnosticos';
+import { DiagnosticosItensTypesArr } from 'types/Diagnosticos';
 
 
 type NomeCategorias = {
@@ -31,9 +31,6 @@ type KeyWordElementsArray = {
     arr: KeyWordElements[];
 }
 
-type DiagnosticosItensTypesArr ={
-    arr: DiagnosticosItensTypes[]
-}
 
 type Props = {
     usuarioContext: Usuario | undefined;
@@ -52,10 +49,6 @@ const AnamneseEnfermagem = ({ usuarioContext, historyRouter, numeroprontuario, s
     const [nomeCategorias, setNomeCategorias] = useState<NomeCategorias>({ nomeInteno: categoriesJSON, uuid: [] });
     const [listaKeyWordElements, setlistaKeyWordElements] = useState<KeyWordElementsArray>({ arr: [] });
     const [open, setOpen] = useState('Questoes');
-    const [diagnosticosSelectId, setDiagnosticosSelectId] = useState<DiagnosticosItensTypesArr>({arr: []});  
-
-
-
 
     useEffect(() => {
         async function loadCategoriasitens() {
@@ -76,7 +69,7 @@ const AnamneseEnfermagem = ({ usuarioContext, historyRouter, numeroprontuario, s
     };
 
     const onChangeItemSimples = (uuid_in: string, idItem_in: number, keyword_in: string) => {
-        console.log("keywordSimples:" + keyword_in);
+        //console.log("keywordSimples:" + keyword_in);
 
         let listaUP: KeyWordElementsArray = {
             arr: listaKeyWordElements.arr
@@ -112,7 +105,7 @@ const AnamneseEnfermagem = ({ usuarioContext, historyRouter, numeroprontuario, s
     }
 
     const onChangeItemMulti = (uuid_in: string, idItem_in: number, keyword_in: string) => {
-        console.log("keywordMulti:" + keyword_in);
+       //console.log("keywordMulti:" + keyword_in);
         let listaUP: KeyWordElementsArray = {
             arr: listaKeyWordElements.arr
         };
@@ -140,48 +133,21 @@ const AnamneseEnfermagem = ({ usuarioContext, historyRouter, numeroprontuario, s
         setlistaKeyWordElements({ arr: listaUP.arr })
     }
 
-    const onSelectDiagnosticoItem = (selectDiagnostico: DiagnosticosItensTypes) => {
-        console.log("selectDiagnosticoId:" + selectDiagnostico._id);
-
-        let selectDiagnosticoUP: DiagnosticosItensTypesArr = {
-            arr: diagnosticosSelectId.arr
-        };
-        
-        if (selectDiagnosticoUP.arr.length === 0) {
-            selectDiagnosticoUP.arr.push(selectDiagnostico);
-
-        } else {
-            let idx: number = selectDiagnosticoUP.arr.findIndex(x => (x._id === selectDiagnostico._id && x.codigo_do_diagnostico === selectDiagnostico.codigo_do_diagnostico ));
-            if (idx + 1) {
-                selectDiagnosticoUP.arr.splice(idx, 1);
-            } else {
-                selectDiagnosticoUP.arr.push(selectDiagnostico);
-            }
-        }
-        setDiagnosticosSelectId({ arr: selectDiagnosticoUP.arr })
-    }
-
     useEffect(() => {
-        console.log(listaKeyWordElements.arr);
+        //console.log(listaKeyWordElements.arr);
     }, [listaKeyWordElements]);
-
-    useEffect(() => {
-        console.log(diagnosticosSelectId.arr);
-    }, [diagnosticosSelectId]);
 
 
     const loadPage = (idx: number) => {
         setState(idx);
     }
 
-
-    async function onClickedProntuarioPaciente(uuid_Diagnosticos: string) {
+    async function onClickedProntuarioPaciente(diagnosticosSelectId: DiagnosticosItensTypesArr) {
         if(diagnosticosSelectId.arr.length>0){
             window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
             setTitle('Prontuário');
             setOpen('Prontuario');
-            const uuidArray = [uuid_Diagnosticos];
-            ReactDOM.render(<ProntuarioPaciente uuidDiagArray={uuidArray} />, document.getElementById('prontuario_paciente'));
+            ReactDOM.render(<ProntuarioPaciente  numeroprontuario={numeroprontuario} usuarioContext={usuarioContext}/>, document.getElementById('prontuario_paciente'));
         }
     };
 
@@ -191,7 +157,7 @@ const AnamneseEnfermagem = ({ usuarioContext, historyRouter, numeroprontuario, s
             window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
             setOpen('Diagnosticos');
             const enviar = listaKeyWordElements.arr;
-            ReactDOM.render(<Diagnosticos keyWordElementsArray={enviar} onClickedProntuarioPaciente={onClickedProntuarioPaciente} selectDiagnostico={onSelectDiagnosticoItem} numeroprontuario={numeroprontuario} usuarioContext={usuarioContext}/>, document.getElementById('diagnosticos'));
+            ReactDOM.render(<Diagnosticos keyWordElementsArray={enviar} onClickedProntuarioPaciente={onClickedProntuarioPaciente}  numeroprontuario={numeroprontuario} usuarioContext={usuarioContext}/>, document.getElementById('diagnosticos'));
             window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         }
     };
@@ -215,7 +181,7 @@ const AnamneseEnfermagem = ({ usuarioContext, historyRouter, numeroprontuario, s
                             variant=" btn btn-primary circleButton"
                             >
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                            <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </Button>
                     </div>

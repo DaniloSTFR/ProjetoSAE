@@ -74,8 +74,9 @@ router.patch("/update/rascunhoprontuarios", ensureAutenticarUsuario, rascunhoPro
 router.delete("/delete/rascunhoprontuarios", ensureAutenticarUsuario, rascunhoProntuarioController.deleteRascunhoProntuarios );
 
 router.post("/create/anamnesediagnosticos", ensureAutenticarUsuario, anamneseDiagnosticoController.createAnamneseDiagnosticos );
+router.post("/create/anamnesediagnosticosuuid", ensureAutenticarUsuario, anamneseDiagnosticoController.createAnamneseDiagnosticosUuid );
 router.patch("/update/anamnesediagnosticos", ensureAutenticarUsuario, anamneseDiagnosticoController.updateAnamneseDiagnosticos );
-router.post("/find/AnamneseDiagnostico", ensureAutenticarUsuario, anamneseDiagnosticoController.findAnamneseDiagnostico );
-
+router.post("/find/anamneseDiagnostico", ensureAutenticarUsuario, anamneseDiagnosticoController.findAnamneseDiagnostico );
+router.post("/find/anamnesediagnosticobynumprontuario", ensureAutenticarUsuario, anamneseDiagnosticoController.findAnamneseDiagnosticoByNumProntuario );
 
 export { router}
