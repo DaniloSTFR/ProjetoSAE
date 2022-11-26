@@ -1,24 +1,20 @@
-import Footer from "components/Footer";
-import NavBar from "components/NavBar";
-import Questoes from "components/Questoes";
+import AnamneseEnfermagem from "components/AnamneseEnfermagem";
 import React from "react";
 
-const Formulario = () => {
+import { Usuario } from 'types/Usuario';
+
+type Props = {
+    usuarioContext: Usuario | undefined;
+    historyRouter: any;
+    numeroprontuario: number
+    setTitle: Function;
+}
+
+const Formulario = ({ usuarioContext, historyRouter, numeroprontuario, setTitle }: Props) => {
     return (
         <>
-            <NavBar />
-            <div className="container">
-                <div className="jumbotron">
-                    <h1 className="h2">Formulário</h1>
-                    <p className="lead">ASSISTÊNCIA DE ENFERMAGEM AO IDOSO NA ATENÇÃO PRIMARIA À SAÚDE</p>
-                    <hr />
-                </div>
-
-                <div>
-                    <Questoes />
-                </div>
-            </div>
-            <Footer />
+            <AnamneseEnfermagem usuarioContext = {usuarioContext} historyRouter = {historyRouter} 
+                numeroprontuario = {numeroprontuario} setTitle = {setTitle}/>     
         </>
     );
 }

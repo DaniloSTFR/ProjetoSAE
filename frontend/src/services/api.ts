@@ -1,7 +1,10 @@
-import axios from 'axios';
-import { BASE_URL } from 'utils/resquests';
 
-const api = axios.create({
-  baseURL: `${BASE_URL}`
-});
+import InstanceApi from './InstanceApi';
+
+async function api(){
+  let instanceApi = await InstanceApi.getInstance();
+  let apiContext = instanceApi.getApiContext();
+  return apiContext
+}
+
 export default api;

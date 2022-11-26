@@ -1,24 +1,27 @@
+import api from 'services/api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { BASE_URL } from 'utils/resquests';
-import { DiagnosticosItensTypes } from 'types/Diagnosticos';
+import { DiagnosticosItensTypes, DiagnosticosItensTypesArr } from 'types/Diagnosticos';
+import Accordion from 'react-bootstrap/Accordion';
+import './styles.scss';
 
-type Props = {
-    keyWordElementsArray: KeyWordElements[];
-    onClickedNicNoc: Function;
-}
+import { Usuario } from 'types/Usuario';
+
 type KeyWordElements ={
     uuid:string; 
     idItem:number; 
     keyword:string;
 }
 
-type DiagnosticosItensTypesArr ={
-    arr: [DiagnosticosItensTypes]
+type Props = {
+    keyWordElementsArray: KeyWordElements[];
+    onClickedProntuarioPaciente: Function;
+    numeroprontuario: number;
+    usuarioContext: Usuario | undefined;
 }
 
 //const Diagnosticos = ({ onChecked, nInteno = "" }: Props) => {
-const Diagnosticos = ({ keyWordElementsArray,onClickedNicNoc }: Props) => {   
+const Diagnosticos = ({ keyWordElementsArray, onClickedProntuarioPaciente, numeroprontuario, usuarioContext }: Props) => {   
 
     const [diagnosticosItensTypesArr, setDiagnosticosItensTypesArr] = useState<DiagnosticosItensTypesArr>({
             arr: [{
@@ -36,114 +39,193 @@ const Diagnosticos = ({ keyWordElementsArray,onClickedNicNoc }: Props) => {
             }]
             });
 
-    useEffect(() => {
-             axios.post(`${BASE_URL}/analisededados`, {keyWordArrayRequest: keyWordElementsArray})
-            .then(response => {
-                //const data = response.data as CategoriasItensTypes[];
-                const dados = response.data.respostaDagnostico as [DiagnosticosItensTypes];
-                setDiagnosticosItensTypesArr({arr:dados});
-            })
-            .finally( () => console.log('Fim do Post Analise de daddos dentro do Diagnosticos:')   )
-  
+    const [diagnosticosSelectIdArr, setDiagnosticosSelectIdArr] = useState<DiagnosticosItensTypesArr>({ arr: [] });
+          
+    const onSelectDiagnosticoItem = (selectDiagnostico: DiagnosticosItensTypes) => {
+        console.log("selectDiagnosticoId:" + selectDiagnostico._id);
+
+        let selectDiagnosticoUP: DiagnosticosItensTypesArr = {
+            arr: diagnosticosSelectIdArr.arr
+        };
         
-    }, [keyWordElementsArray]);
+        if (selectDiagnosticoUP.arr.length === 0) {
+            selectDiagnosticoUP.arr.push(selectDiagnostico);
+
+        } else {
+            let idx: number = selectDiagnosticoUP.arr.findIndex(x => (x._id === selectDiagnostico._id && x.codigo_do_diagnostico === selectDiagnostico.codigo_do_diagnostico ));
+            if (idx + 1) {
+                selectDiagnosticoUP.arr.splice(idx, 1);
+            } else {
+                selectDiagnosticoUP.arr.push(selectDiagnostico);
+            }
+        }
+        setDiagnosticosSelectIdArr({ arr: selectDiagnosticoUP.arr })
+    }
+
+    useEffect(
+        () => {
+            async function doAnaliseDeDados() {
+                const apiContext = await api();
+                const response = await apiContext.post(`/analisededados`, { keyWordArrayRequest: keyWordElementsArray })
+                const dados = response.data.respostaDagnostico as [DiagnosticosItensTypes];
+                setDiagnosticosItensTypesArr({ arr: dados });
+            }
+
+            doAnaliseDeDados().finally(async () => {
+                const apiContext = await api();
+                console.log('Fim do Post Analise de dados dentro do Diagnosticos:');
+                apiContext.post(`/create/rascunhoprontuarios`, { numeroprontuario, codUsuarioUuId: usuarioContext?.codUsuarioUuId, formKeysRascunhoJson: keyWordElementsArray })
+            })
+        },
+        // eslint-disable-next-line    
+        [keyWordElementsArray]);
+
+    async function onClickFinalizarDiagnostico(){
+        let uuidDiagArray = diagnosticosSelectIdArr.arr.map(it => it._id);
+
+        console.log(uuidDiagArray);
+        const apiContext = await api();
+        try {
+            const response = await apiContext.post(`/create/anamnesediagnosticosuuid`, 
+            { uuidDiagArray,numeroprontuario, codUsuarioUuId: usuarioContext?.codUsuarioUuId})
+            console.log(response.data);
+        } catch (err) {
+            if (axios.isAxiosError(err) && err.response) {
+                console.log((err.response?.data).error);
+          }
+        }
+        onClickedProntuarioPaciente(diagnosticosSelectIdArr)
+    }
 
     useEffect(() => {
-        console.log(diagnosticosItensTypesArr);
-    }, [diagnosticosItensTypesArr]);
+        console.log(diagnosticosSelectIdArr);
+    }, [diagnosticosSelectIdArr]);
 
     //console.log(keyWordElementsArray);
-    // {varCategoriasItensTypes.saeItensformularios[0].opcoesItensFormJson[0].valores.map(( it, index ) =>
-/*
-    txt = txt.replace("Definição",                   '+ definicao : ')------------
-    txt = txt.replace("Características definidoras", '+ "caracteristicas_definidoras" : ')--------
-    txt = txt.replace("Código do diagnóstico",       '+ "codigo_do_diagnostico" : ')----------------
-    txt = txt.replace("Condições associadas",        '+ "condicoes_associadas" : ')-----------------
-    txt = txt.replace("Fatores relacionados",        '+ "fatores_relacionados" : ')-------------------
-    txt = txt.replace("Populações em risco",         '+ "populacao_em_risco" : ')
-    txt = txt.replace("Fatores de risco",            '+ "fatores_de_risco" : ')---------------------
-*/
+    useEffect(() => {
+        toTop()
+    }, []);
 
+    function toTop(){
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    }
 
     return (
         <>
             <div>
-                <h4>Diagnósticos</h4>
+                <p>Os seguintes dignósticos foram indicados para o paciente. Defina o(s) dignostico(s) mais adequado(s):</p>
             </div>
             <div>
-                {diagnosticosItensTypesArr.arr.length > 0 ? (
+                {diagnosticosItensTypesArr.arr.length > 0 ? 
+                (
+                <div>
                     <div>
-                        {diagnosticosItensTypesArr.arr.map(( itens, index ) =>
-                            
+                        {diagnosticosItensTypesArr.arr.map((itens, index) =>
+
                             <div key={index}>
 
                                 <div className="card">
-                                <h5 className="card-header">{itens.codigo_do_diagnostico}</h5>
-                                <div className="card-body">
-                                    <h6 className="card-title">Definição: {itens.definicao}</h6>
+                                    <h5 className="card-header">{itens.codigo_do_diagnostico}
+                                        <input
+                                            type="checkbox"
+                                            value={`${itens._id}`}
+                                            id={`${itens._id}`}
+                                            name={`${itens._id}`}
+                                            onChange={() => onSelectDiagnosticoItem(itens)}
+                                            /* checked = {checkFunction (`${valueOP}`)? true: false } */
 
-                                    <p className="card-text">Características definidoras:</p>
-                                        <ul>
-                                            {itens.caracteristicas_definidoras.map(( itkey, idx ) => 
-                                                <li key={idx}>
-                                                    {itkey}
-                                                </li>
-                                            )}
-                                            {itens.caracteristicas_definidoras.length<1?  "Nenhuma": "" }
-                                        </ul>
+                                            className="selectDiag form-check-input btn-outline-success"
+                                        />
+                                    </h5>
 
-                                    <p className="card-text">Condições associadas:</p>
-                                        <ul>
-                                            {itens.condicoes_associadas?.map(( itkey, idx ) => 
-                                                <li key={idx}>
-                                                    {itkey}
-                                                </li>
-                                            )}
-                                            {itens.condicoes_associadas.length<1?  "Nenhuma": "" }
-                                        </ul>
-                                                        
-
-                                    <p className="card-text">Fatores relacionados:</p>
-                                        <ul>
-                                            {itens.fatores_relacionados?.map(( itkey, idx ) => 
-                                                <li key={idx}>
-                                                    {itkey}
-                                                </li>
-                                            )}
-                                            {itens.fatores_relacionados.length<1?  "Nenhum": "" }
-                                        </ul>
-
-                                    <p className="card-text">Fatores de risco:</p>
-                                        <ul>
-                                            {itens.fatores_de_risco?.map(( itkey, idx ) => 
-                                                <li key={idx}>
-                                                    {itkey}
-                                                </li>
-                                            )}
-                                            {itens.fatores_de_risco.length<1?  "Nenhum": "" }
-                                        </ul>    
-                                    <p className="card-text">Populações em risco:</p>
-                                        <ul>
-                                            {itens.populacao_em_risco?.map(( itkey, idx ) => 
-                                                <li key={idx}>
-                                                    {itkey}
-                                                </li>
-                                            )}
-                                            {itens.populacao_em_risco.length<1?  "Nenhuma": "" }
-                                        </ul>                
-
-
-                                    {/* <a href="#diagnosticos" className="btn btn-primary">Diagnóstico mais adequado</a>  */}
-                                    <button type="button" onClick={() => onClickedNicNoc(itens._id)} className="btn btn-outline-primary btn-lg">Diagnóstico mais adequado</button>          
-                                </div>
+                                    <div className="card-body">
+                                        <Accordion defaultActiveKey="0" flush>
+                                            <Accordion.Item eventKey="0">
+                                                <Accordion.Header><h5 className="card-title">Definição: </h5></Accordion.Header>
+                                                <Accordion.Body><p className="card-text">{itens.definicao}</p></Accordion.Body>
+                                            </Accordion.Item>
+                                            <Accordion.Item eventKey="1">
+                                                <Accordion.Header><p className="card-text">Características definidoras:</p></Accordion.Header>
+                                                <Accordion.Body>
+                                                    <ul>
+                                                        {itens.caracteristicas_definidoras.map((itkey, idx) =>
+                                                            <li key={idx}>
+                                                                {itkey}
+                                                            </li>
+                                                        )}
+                                                        {itens.caracteristicas_definidoras.length < 1 ? "Nenhuma" : ""}
+                                                    </ul>
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                            <Accordion.Item eventKey="2">
+                                                <Accordion.Header><p className="card-text">Condições associadas:</p></Accordion.Header>
+                                                <Accordion.Body>
+                                                    <ul>
+                                                        {itens.condicoes_associadas?.map((itkey, idx) =>
+                                                            <li key={idx}>
+                                                                {itkey}
+                                                            </li>
+                                                        )}
+                                                        {itens.condicoes_associadas.length < 1 ? "Nenhuma" : ""}
+                                                    </ul>
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                            <Accordion.Item eventKey="3">
+                                                <Accordion.Header><p className="card-text">Fatores relacionados:</p></Accordion.Header>
+                                                <Accordion.Body>
+                                                    <ul>
+                                                        {itens.fatores_relacionados?.map((itkey, idx) =>
+                                                            <li key={idx}>
+                                                                {itkey}
+                                                            </li>
+                                                        )}
+                                                        {itens.fatores_relacionados.length < 1 ? "Nenhum" : ""}
+                                                    </ul>
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                            <Accordion.Item eventKey="4">
+                                                <Accordion.Header><p className="card-text">Fatores de risco:</p></Accordion.Header>
+                                                <Accordion.Body>
+                                                    <ul>
+                                                        {itens.fatores_de_risco?.map((itkey, idx) =>
+                                                            <li key={idx}>
+                                                                {itkey}
+                                                            </li>
+                                                        )}
+                                                        {itens.fatores_de_risco.length < 1 ? "Nenhum" : ""}
+                                                    </ul>
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                            <Accordion.Item eventKey="5">
+                                                <Accordion.Header><p className="card-text">Populações em risco::</p></Accordion.Header>
+                                                <Accordion.Body>
+                                                    <ul>
+                                                        {itens.populacao_em_risco?.map((itkey, idx) =>
+                                                            <li key={idx}>
+                                                                {itkey}
+                                                            </li>
+                                                        )}
+                                                        {itens.populacao_em_risco.length < 1 ? "Nenhuma" : ""}
+                                                    </ul>
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        </Accordion>
+                                        {/* <a href="#diagnosticos" className="btn btn-primary">Diagnóstico mais adequado</a>  */}
+                                    </div>
                                 </div>
                                 <br />
-                            </div>   
-                        )}    
+                            </div>
+                        )}
                     </div>
+
+                    <div className="d-flex justify-content-center">
+                        <button type="button" onClick={() => onClickFinalizarDiagnostico()} disabled={diagnosticosSelectIdArr.arr.length <= 0}
+                            className="btn btn-success btn-lg text-center">Finalizar Diagnósticos
+                        </button>
+                    </div>
+                </div>
                 ): 
-                
-                     <p>Sem Diagnósticos</p>
+                    <p>Sem Diagnósticos</p>
                 }
                 
             </div>

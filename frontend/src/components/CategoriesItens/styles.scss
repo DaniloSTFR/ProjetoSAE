@@ -1,0 +1,39 @@
+.iten-size {
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.btn-outline-success {
+    color: #000000;
+    border-color: #a9a9af;
+    border-width: 1px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.btn-check:checked + .btn-outline-success, .input-group-text:focus{
+    background: #cae1d6;
+    border: 1px solid #B8DBCB;
+    border-radius: 10px;
+    color: #056e05;
+    font-weight: 500;
+}
+
+.h5subTitle{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #A6A1B2;
+}
+
+.selectItem{
+    margin-right: .4rem;
+    margin-top: 0px;
+    cursor: pointer;
+}

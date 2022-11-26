@@ -24,6 +24,9 @@ export class SaeCategoriasitens {
   @Column("int", { name: "ordemCategoriaItens", nullable: true, unique: true })
   ordemCategoriaItens: number | null;
 
+  @Column("int", { name: "ativo", default: () => "'0'" })
+  ativo: number;
+
   @OneToMany(
     () => SaeItensformularios,
     (saeItensformularios) => saeItensformularios.codCategoriasItensUu

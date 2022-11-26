@@ -6,6 +6,7 @@
     "username": "developer",
     "password": "developer",
     "database": "projetosae",
+    "timezone" : "-03:00Z",
     "logging": false,
     "entities": ["./src/models/**/*.ts"],
     "migrations": ["./src/database/migrations/*.ts"],

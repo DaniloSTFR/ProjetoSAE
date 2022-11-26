@@ -1,9 +1,5 @@
 import { Request, Response } from "express";
-import { getCustomRepository } from "typeorm";
-import { CategoriasItensRepository } from "../repositories/CategoriasItensRepository";
-
-import saeNandaSchema from "../models/SaeNandaSchema";
-import saeNicNocShema from "../models/SaeNicNocShema";
+import { DiagnosticosNicNocServices } from "../services/DiagnosticosNicNocServices";
 
 type KeyWordElements ={
     uuid:string; 
@@ -11,25 +7,16 @@ type KeyWordElements ={
     keyword:string;
 }
 
-
-
 class AnalseDeDadosController {
 
     async analisededados(request: Request, response: Response){
         
         const { keyWordArrayRequest } = request.body ;
         const keyWordArray =  keyWordArrayRequest as KeyWordElements[];
-
-        //const keyWordarr = ['ACIDENTE_VASCULAR_CEREBRAL_SIM'];
         const keyWordarr = keyWordArray.map(x => x.keyword);
 
-        const respostaDagnostico = await saeNandaSchema.find(
-            {keyword: {
-                $in:keyWordarr,
-              }}
-            ).limit(4);
-        //console.log(respostaDagnostico);
-        //console.log(keyWordArray);
+        const diagnosticosNicNocServices = new DiagnosticosNicNocServices();
+        const respostaDagnostico = await diagnosticosNicNocServices.getAnaliseDeDadoskeyword(keyWordarr);
 
         return response.json({ 
         respostaDagnostico
@@ -40,19 +27,13 @@ class AnalseDeDadosController {
         
         const { uuidDiagArray } = request.body ;
 
-        const respostasNICNOC = await saeNicNocShema.find(
-            {uuid_diagnosticos: {
-                $in:uuidDiagArray,
-              }}
-            );
-        //console.log(uuidDiagArray);
-        //console.log(respostasNICNOC);
+        const diagnosticosNicNocServices = new DiagnosticosNicNocServices();
+        const respostasNICNOC = await diagnosticosNicNocServices.getAnaliseDiagnostico(uuidDiagArray);
 
         return response.json({ 
             respostasNICNOC
        });
     }
-
 }
 
 export { AnalseDeDadosController };

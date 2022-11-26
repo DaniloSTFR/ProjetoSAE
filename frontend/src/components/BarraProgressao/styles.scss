@@ -1,0 +1,32 @@
+.progress {
+    display: flex;
+    height: 0.5rem;
+    overflow: hidden;
+    font-size: 0.75rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+.bg-success {
+    background-color: #04D361 !important;
+}
+
+.progressbar{
+    max-width: 30rem;
+}
+
+.labelProgessBar{
+    color: #A6A1B2;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    
+    .labelStart{
+        text-align: start;
+    }
+
+    .labelEnd{
+        text-align: end;
+    }
+}

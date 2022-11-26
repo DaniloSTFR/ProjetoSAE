@@ -1,54 +1,49 @@
 import { Request, Response } from "express";
-import { getCustomRepository } from "typeorm";
-import { CategoriasListaOpcoesRepository } from "../repositories/CategoriasListaOpcoesRepository";
+import { CategoriasListaOpcoesServices } from "../services/CategoriasListaOpcoesServices";
+
 
 class CategoriasListaOpcoesController {
-    async create(request: Request, response: Response){
+    async createCategoriasListaOpcoes(request: Request, response: Response){
         const {descricaoCategoriasOpcoes, nomeInternoCategoriasOpcoes, ordemCategoriasOpcoes } 
         = request.body;
 
-        const categoriasListaOpcoesRepository = getCustomRepository( CategoriasListaOpcoesRepository);
+        const categoriasListaOpcoesServices = new CategoriasListaOpcoesServices();
+        const categoriasListaOpcoesAlreadyExists = 
+            await categoriasListaOpcoesServices.findOneCategoriasListaOpcoesByNome(nomeInternoCategoriasOpcoes);
 
-        
-        const categoriasListaOpcoesAlreadyExists = await categoriasListaOpcoesRepository.findOne({
-            nomeInternoCategoriasOpcoes,
-        })
-
-        if (categoriasListaOpcoesAlreadyExists){
+        if (typeof categoriasListaOpcoesAlreadyExists !== 'undefined'){
             return response.status(400).json({
                 error: "A opção para Item já existe!",
             });
         }
 
-        const categoriasListaOpcoes = categoriasListaOpcoesRepository.create({
-            descricaoCategoriasOpcoes, 
-            nomeInternoCategoriasOpcoes, 
-            ordemCategoriasOpcoes,
-        });
+        try{ 
+            const categoriasListaOpcoes = await categoriasListaOpcoesServices.
+                createCategoriasListaOpcoes( {descricaoCategoriasOpcoes, nomeInternoCategoriasOpcoes, ordemCategoriasOpcoes } );
+            return response.status(201).json({
+                message: "Item criado com sucesso!",
+                status: true,
+                categoriasListaOpcoes,
+            });
 
-        await categoriasListaOpcoesRepository.save(categoriasListaOpcoes);
-
-        return response.status(201).json(categoriasListaOpcoes);
+        }catch (err){
+            return response.status(400).json({
+                error: err,
+            });
+        }
     }
 
-    async show(request: Request, response: Response){
-        const categoriasListaOpcoesRepository = getCustomRepository( CategoriasListaOpcoesRepository);
-        const all = await categoriasListaOpcoesRepository.find();
-        return response.json(all);
+    async showAllCategoriasListaOpcoes(request: Request, response: Response){
+        const categoriasListaOpcoesServices = new CategoriasListaOpcoesServices();
+        const allCategoriasListaOpcoes = await categoriasListaOpcoesServices.showAllCategoriasListaOpcoes();
+        return response.json(allCategoriasListaOpcoes);
     }
 
-    async showcategoriaslistaopcoes(request: Request, response: Response){
+    async findCategoriasListaOpcoesByUuId(request: Request, response: Response){
         const { codCategoriasListaOpcoesUuId} = request.body;
-
-        const categoriasListaOpcoesRepository = getCustomRepository( CategoriasListaOpcoesRepository);
-        const all = await categoriasListaOpcoesRepository.find({
-            where: [{codCategoriasListaOpcoesUuId}],
-            relations: ["saeItensopcoes"],  
-            order: {
-                ordemCategoriasOpcoes: "ASC",
-            },
-        });
-        return response.json(all);
+        const categoriasListaOpcoesServices = new CategoriasListaOpcoesServices();
+        const categoriasListaOpcoes = await categoriasListaOpcoesServices.findCategoriasListaOpcoesByUuId(codCategoriasListaOpcoesUuId);
+        return response.json(categoriasListaOpcoes);
     }
 }
 

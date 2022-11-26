@@ -1,0 +1,84 @@
+{
+    "_id": "60822f3f24a3f414f43be698",
+    "classe": "1-Percepção da saúde",
+    "dominio": "1-Promoção da saúde",
+    "keyword": [
+        "DIABETES_SIM",
+        "SINDROMES_GERIATRICAS_SIM",
+        "ALIMENTACAO_RICA_GORDURA_SIM",
+        "ALIMENTACAO_RICA_CARBOIDRATOS_SIM",
+        "DEPRESSAO_SIM"
+    ],
+    "definicao": "Um hábito de vida que se caracteriza por baixo nível de atividade física.",
+    "fatores_de_risco": [],
+    "populacao_em_risco": [],
+    "condicoes_associadas": [],
+    "fatores_relacionados": [
+        "Conhecimento insuficiente sobre os benefícios à saúde associados ao exercício físico",
+        "Interesse insuficiente em atividades físicas",
+        "Motivação insuficiente para a atividade física",
+        "Recursos insuficientes para a atividade física",
+        "Treinamento insuficiente para fazer exercício físico"
+    ],
+    "codigo_do_diagnostico": "00168 - Estilo de vida sedentário",
+    "caracteristicas_definidoras": [
+        "Falta de condicionamento físico",
+        "Média de atividade física diária inferior à recomendada para idade e sexo",
+        "Preferência por atividades com pouca atividade física"
+    ]
+},
+{
+    "_id": "60822f4724a3f414f43be6ac",
+    "classe": "1-Ingestão",
+    "dominio": "2-Nutrição",
+    "keyword": [
+        "SINDROMES_GERIATRICAS_SIM",
+        "UMIDADE_PELE_SECA",
+        "HIDRATACAO_AGUA_INSATISFATORIA",
+        "ALIMENTACAO_RICA_LEGUMES_VERDURAS_NAO",
+        "ALIMENTACAO _RICA_PROTEÍNA_NAO",
+        "ALIMENTACAO_RICA_FRUTAS_NAO",
+        "ALIMENTACAO_RICA_CARBOIDRATOS_NAO",
+        "DEPRESSAO_SIM"
+    ],
+    "definicao": "Ingestão de nutrientes insuficiente para satisfazer às necessidades metabólicas.",
+    "fatores_de_risco": [],
+    "populacao_em_risco": [
+        "Desfavorecido economicamente",
+        "Fatores biológicos"
+    ],
+    "condicoes_associadas": [
+        "Incapacidade de absorver nutrientes",
+        "Incapacidade de digerir os alimentos",
+        "Incapacidade de ingerir os alimentos",
+        "Transtorno psicológico"
+    ],
+    "fatores_relacionados": [
+        "Ingestão alimentar insuficiente"
+    ],
+    "codigo_do_diagnostico": "00002 - Nutrição desequilibrada menor do que as necessidades corporais",
+    "caracteristicas_definidoras": [
+        "Alteração no paladar",
+        "Aversão a alimento",
+        "Cavidade oral ferida",
+        "Cólica abdominal",
+        "Diarreia",
+        "Dor abdominal",
+        "Fragilidade capilar",
+        "Fraqueza dos músculos necessários à deglutição",
+        "Fraqueza dos músculos necessários à mastigação",
+        "Incapacidade percebida de ingestão de alimentos",
+        "Informações incorretas",
+        "Informações insuficientes",
+        "Ingestão de alimentos menor que a ingestão diária recomendada (IDR)",
+        "Interesse insuficiente pelos alimentos",
+        "Membranas mucosas pálidas",
+        "Percepções incorretas",
+        "Perda de peso com ingestão adequada de alimentos",
+        "Perda excessiva de pelos",
+        "Peso corporal 20% ou mais abaixo do ideal",
+        "Ruídos intestinais hiperativos",
+        "Saciedade imediatamente após a ingestão de alimentos",
+        "Tônus muscular insuficiente"
+    ]
+}
