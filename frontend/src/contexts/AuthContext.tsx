@@ -138,12 +138,12 @@ useEffect(() => {
     return api;
   }
 
-/*   if(cookies.token && !usuario){
+  if(!cookies.token && !usuario){
     const call = async () => {
       await findUsuario();
      }
      call();
-  } */
+  } 
 
   return (
     <AuthContext.Provider value={{ usuario, signInAction, signOutAction, loadContext, getServiceRequestApi,getUsuario,findUsuario }}>
